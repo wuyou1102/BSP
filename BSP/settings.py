@@ -52,7 +52,7 @@ ROOT_URLCONF = 'BSP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + "DailyVersion/templates", ],
+        'DIRS': [BASE_DIR + "BSP/DailyVersion/templates", ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
