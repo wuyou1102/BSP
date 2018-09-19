@@ -19,5 +19,5 @@ import DailyVersion
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', DailyVersion.view.hello),
+    url(r'^$', DailyVersion.hello),
 ]
