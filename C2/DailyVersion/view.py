@@ -37,7 +37,8 @@ def __get_binary(path):
         if f.endswith('.zip'):
             file_path = os.path.join(path, f)
             file_name = f.rstrip('.zip')
-            lst.append((file_name, file_path))
+            binary_file = [file_name, file_path]
+            lst.append(binary_file)
     return lst
 
 
