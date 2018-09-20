@@ -2,11 +2,11 @@
 <html lang="en">
 <script>
 function AddRows(){
-    var table = document.getElementById("daily_version_table");
-    var builds = {{builds|safe}};
-    for(i in builds){
-        var TableRow=CreateRow(builds[i]);
-        table.appendChild(TableRow);
+    var Table = document.getElementById("daily_version_table");
+    var Builds = {{ builds|safe }};
+    for(i in Builds){
+        var TableRow=CreateRow(Builds[i]);
+        Table.appendChild(TableRow);
     }
     var rows = table.getElementsByTagName("tr");
     for(i = 0; i < rows.length; i++){
@@ -39,6 +39,7 @@ window.onload=function(){
 
 
 
+
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -67,6 +68,7 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
 
 
 
