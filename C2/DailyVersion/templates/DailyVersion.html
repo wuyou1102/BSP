@@ -3,7 +3,12 @@
 <script>
 function AddRows(){
     var Table = document.getElementById("daily_version_table");
-    var Builds = {{ builds|safe }};
+    var builds = {{builds|safe}};
+    for(i in builds){
+        alert(builds[i]);
+        alert(builds[i].name);
+        alert(builds[i].binary);
+        }
     for(i in Builds){
         var TableRow=CreateRow(Builds[i]);
         Table.appendChild(TableRow);
@@ -40,6 +45,7 @@ window.onload=function(){
 
 
 
+
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -68,6 +74,7 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
 
 
 
