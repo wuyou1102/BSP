@@ -17,7 +17,6 @@ function AddRows(){
 function CreateRow(build){
     var Row=document.createElement('tr');
     var name =  CreateNameTD(build.name);
-    alert(build.binary);
     var binary = CreateBinaryTD(build.binary);
     debug_info=build.debug_info;
     release_notes = build.release_notes;
@@ -33,17 +32,35 @@ function CreateNameTD(Name){
 }
 function CreateBinaryTD(Binary){
     var table_data=document.createElement('td');
-    alert(Binary);
     for(i in Binary){
-        var b = Binary[i];
+        var bin = Binary[i];
+        var name=bin[0];
+        var path=bin[1];
+        var hyperlink = CreateHref(name,path)
+        table_data.appendChild(hyperlink);
     }
     return table_data
+}
+function CreateHref(Name,Path){
+    var hyperlink = document.createElement('a');
+    hyperlink.href="hello world";
+    hyperlink.value=Path;
+    var text_name=document.createTextNode(Name);
+    hyperlink.appendChild(text_name);
+    return hyperlink
 }
 
 
 window.onload=function(){
     AddRows();
 }
+
+
+
+
+
+
+
 
 
 
@@ -87,6 +104,13 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
+
+
+
+
+
+
 
 
 

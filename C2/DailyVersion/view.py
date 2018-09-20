@@ -37,8 +37,8 @@ def __get_binary(path):
         if f.endswith('.zip'):
             file_path = os.path.join(path, f)
             file_name = f.rstrip('.zip')
-            binary_file = [file_name, file_path]
-            lst.append(binary_file)
+            _file = [file_name, file_path]
+            lst.append(_file)
     return lst
 
 
@@ -48,7 +48,8 @@ def __get_debug_info(path):
         if f.endswith('.zip'):
             file_path = os.path.join(path, f)
             file_name = f.rstrip('.zip')
-            lst.append((file_name, file_path))
+            _file = [file_name, file_path]
+            lst.append(_file)
     return lst
 
 
