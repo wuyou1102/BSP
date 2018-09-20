@@ -21,6 +21,7 @@ function CreateRow(build){
     debug_info=build.debug_info;
     release_notes = build.release_notes;
     Row.appendChild(name)
+    Row.appendChild(binary)
     return Row
 }
 function CreateNameTD(Name){
@@ -31,6 +32,7 @@ function CreateNameTD(Name){
 }
 function CreateBinaryTD(Binary){
     var table_data=document.createElement('td');
+    alert(Binary);
     for(i in Binary){
         var b = Binary[i];
         alert(b);
@@ -45,6 +47,7 @@ function CreateBinaryTD(Binary){
 window.onload=function(){
     AddRows();
 }
+
 
 
 
@@ -82,6 +85,7 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
 
 
 
