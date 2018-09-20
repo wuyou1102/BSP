@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
-function altRows(id){
-    if(document.getElementsByTagName){
-
-        var table = document.getElementById(id);
-        var rows = table.getElementsByTagName("tr");
-
-        for(i = 0; i < rows.length; i++){
-            if(i % 2 == 0){
-                rows[i].className = "evenrowcolor";
-            }else{
-                rows[i].className = "oddrowcolor";
-            }
+function AddRows(){
+    var table = document.getElementById("daily_version_table");
+    var builds = {{context.builds}};
+    for build in builds:
+    {
+        alert(build);
+    }
+    var rows = table.getElementsByTagName("tr");
+    for(i = 0; i < rows.length; i++){
+        if(i % 2 == 0){
+            rows[i].className = "evenrowcolor";
+        }else{
+            rows[i].className = "oddrowcolor";
         }
     }
 }
 
 window.onload=function(){
-    altRows('alternatecolor');
+    AddRows();
 }
 
 
@@ -52,12 +53,17 @@ window.onload=function(){
     }
 
 
+
+
+
+
+
 </style>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <h1>{{ hello }}</h1>
-    <table class="altrowstable" id="alternatecolor">
+    <table class="altrowstable" id="daily_version_table">
         <tr>
             <th>Info Header 1</th>
             <th>Info Header 2</th>
