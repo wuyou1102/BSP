@@ -3,12 +3,7 @@
 <script>
 function AddRows(){
     var Table = document.getElementById("daily_version_table");
-    var builds = {{builds|safe}};
-    for(i in builds){
-        alert(builds[i]);
-        alert(builds[i].name);
-        alert(builds[i].binary);
-        }
+    var Builds = {{builds|safe}};
     for(i in Builds){
         var TableRow=CreateRow(Builds[i]);
         Table.appendChild(TableRow);
