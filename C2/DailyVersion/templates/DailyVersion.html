@@ -19,9 +19,11 @@ function CreateRow(build){
     var name =  CreateNameTD(build.name);
     var binary = CreateBinaryTD(build.binary);
     var debug_info = CreateDebugInfo(build.debug_info);
-    release_notes = build.release_notes;
+    var release_notes = CreateReleaseNotes(build.release_notes);
     Row.appendChild(name)
     Row.appendChild(binary)
+    Row.appendChild(debug_info)
+    Row.appendChild(release_notes)
     return Row
 }
 function CreateNameTD(Name){
@@ -62,7 +64,17 @@ function CreateDebugInfo(DebugInfo){
     }
     return table_data
 }
+def CreateReleaseNotes(ReleaseNotes){
+    var table_data=document.createElement('td');
+    if (ReleaseNotes == "None"){
+        alert("hhh");
+    }else{
+        var hyperlink = CreateHref("View",ReleaseNotes)
+        table_data.appendChild(hyperlink);
+    }
+    return table_data
 
+}
 window.onload=function(){
     AddRows();
 }

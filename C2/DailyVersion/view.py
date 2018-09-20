@@ -56,5 +56,5 @@ def __get_debug_info(path):
 def __get_release_notes(path):
     if os.path.exists(path):
         file_path, file_name = os.path.split(path)
-        return file_name, path
-    return None, None
+        return file_path
+    return None
