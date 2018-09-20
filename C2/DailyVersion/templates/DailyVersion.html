@@ -5,8 +5,8 @@ function AddRows(){
     var table = document.getElementById("daily_version_table");
     var builds = {{builds|safe}};
     for(i in builds){
-        alert(builds[i].name);
-        alert(builds[i].binary);
+        var TableRow=CreateRow(builds[i]);
+        table.appendChild(TableRow);
     }
     var rows = table.getElementsByTagName("tr");
     for(i = 0; i < rows.length; i++){
@@ -17,11 +17,25 @@ function AddRows(){
         }
     }
 }
+function CreateRow(build){
+    var Row=document.createElement('tr');
+    var name =  CreateNameTD(build.name);
+    binary = build.binary;
+    debug_info=build.debug_info;
+    release_notes = build.release_notes;
+    Row.appendChild(name)
+    return Row
+}
+function CreateNameTD(name){
+    var text_name=document.createTextNode(name);
+    var table_data=document.createElement('td');
+    table_data.appendChild(text_name);
+    return table_data
+}
 
 window.onload=function(){
     AddRows();
 }
-
 
 
 
@@ -63,21 +77,25 @@ window.onload=function(){
 
 
 
-
-
 </style>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <h1>{{ hello }}</h1>
+    <title>感悟科技</title>
+    <h1>C2(Surf) Daily Build</h1>
     <table class="altrowstable" id="daily_version_table">
         <tr>
-            <th>Info Header 1</th>
-            <th>Info Header 2</th>
-            <th>Info Header 3</th>
+            <th>Data</th>
+            <th>Version</th>
+            <th>Debug Info</th>
+            <th>Release Notes</th>
         </tr>
         <tr>
-            <td>Text 1A</td>
+
+            <td>
+                <a href="url" value="ssss">Link text</a>
+                <br>
+                <a href="url">Link text</a>
+            </td>
             <td>Text 1B</td>
             <td>Text 1C</td>
         </tr>
