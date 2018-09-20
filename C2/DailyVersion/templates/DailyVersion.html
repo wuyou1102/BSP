@@ -17,7 +17,8 @@ function AddRows(){
 function CreateRow(build){
     var Row=document.createElement('tr');
     var name =  CreateNameTD(build.name);
-    var binary = CreateBinaryTD(build["binary"]);
+    alert(build.binary);
+    var binary = CreateBinaryTD(build.binary);
     debug_info=build.debug_info;
     release_notes = build.release_notes;
     Row.appendChild(name)
@@ -43,6 +44,7 @@ function CreateBinaryTD(Binary){
 window.onload=function(){
     AddRows();
 }
+
 
 
 
@@ -85,6 +87,7 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
 
 
 
