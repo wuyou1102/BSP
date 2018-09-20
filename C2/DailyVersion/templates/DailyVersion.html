@@ -4,8 +4,8 @@
 function AddRows(){
     var table = document.getElementById("daily_version_table");
     var builds = {{builds|safe}};
-    for(build in builds){
-        alert(build);
+    for(i in builds){
+        alert(builds[i]);
     }
     var rows = table.getElementsByTagName("tr");
     for(i = 0; i < rows.length; i++){
@@ -20,6 +20,7 @@ function AddRows(){
 window.onload=function(){
     AddRows();
 }
+
 
 
 </script>
@@ -50,6 +51,7 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
 
 
 
