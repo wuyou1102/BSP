@@ -17,8 +17,8 @@ function AddRows(){
 function CreateRow(build){
     var Row=document.createElement('tr');
     var name =  CreateNameTD(build.name);
-    var Binary={{build.binary|safe}}
-    alert(Binary);
+    var Binary={{build.binary|safe}};
+    alert({{build.binary|safe}});
     var binary =CreateBinaryTD(build.binary);
     debug_info=build.debug_info;
     release_notes = build.release_notes;
@@ -34,14 +34,8 @@ function CreateNameTD(Name){
 }
 function CreateBinaryTD(Binary){
     var table_data=document.createElement('td');
-    alert(Binary);
     for(i in Binary){
         var b = Binary[i];
-        alert(b);
-        alert(b[0]);
-        alert(b[1]);
-        alert(b[2]);
-        alert(b[3]);
     }
     return table_data
 }
@@ -50,6 +44,8 @@ function CreateBinaryTD(Binary){
 window.onload=function(){
     AddRows();
 }
+
+
 
 
 
@@ -88,6 +84,8 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
+
 
 
 
