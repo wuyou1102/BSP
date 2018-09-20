@@ -6,22 +6,19 @@ function AddRows(){
     var Builds = {{builds|safe}};
     for(i in Builds){
         var TableRow=CreateRow(Builds[i]);
-        Table.appendChild(TableRow);
-    }
-    var rows = table.getElementsByTagName("tr");
-    for(i = 0; i < rows.length; i++){
         if(i % 2 == 0){
-            rows[i].className = "evenrowcolor";
+            TableRow.className = "evenrowcolor";
         }else{
-            rows[i].className = "oddrowcolor";
+           TableRow.className = "oddrowcolor";
         }
+        Table.appendChild(TableRow);
     }
 }
 function CreateRow(build){
     var Row=document.createElement('tr');
     var name =  CreateNameTD(build.name);
     var binary = CreateBinaryTD(build.binary);
-    debug_info=build.debug_info;
+    var debug_info = CreateDebugInfo(build.debug_info);
     release_notes = build.release_notes;
     Row.appendChild(name)
     Row.appendChild(binary)
@@ -53,7 +50,18 @@ function CreateHref(Name,Path){
     hyperlink.appendChild(text_name);
     return hyperlink
 }
-
+function CreateDebugInfo(DebugInfo){
+    var table_data=document.createElement('td');
+    for(i in DebugInfo){
+        var info = DebugInfo[i];
+        var name=info[0];
+        var path=info[1];
+        var hyperlink = CreateHref(name,path)
+        table_data.appendChild(hyperlink);
+        table_data.appendChild(document.createElement("br"));
+    }
+    return table_data
+}
 
 window.onload=function(){
     AddRows();
