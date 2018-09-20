@@ -6,36 +6,45 @@ function AddRows(){
     var Builds = {{builds|safe}};
     for(i in Builds){
         var TableRow=CreateRow(Builds[i]);
-        Table.appendChild(TableRow);
-    }
-    var rows = table.getElementsByTagName("tr");
-    for(i = 0; i < rows.length; i++){
         if(i % 2 == 0){
-            rows[i].className = "evenrowcolor";
+            TableRow.className = "evenrowcolor";
         }else{
-            rows[i].className = "oddrowcolor";
+            TableRow.className = "oddrowcolor";
         }
+        Table.appendChild(TableRow);
     }
 }
 function CreateRow(build){
     var Row=document.createElement('tr');
     var name =  CreateNameTD(build.name);
-    binary = build.binary;
+    var binary =CreateBinaryTD(build.binary);
     debug_info=build.debug_info;
     release_notes = build.release_notes;
     Row.appendChild(name)
     return Row
 }
-function CreateNameTD(name){
-    var text_name=document.createTextNode(name);
+function CreateNameTD(Name){
+    var text_name=document.createTextNode(Name);
     var table_data=document.createElement('td');
     table_data.appendChild(text_name);
     return table_data
 }
+function CreateBinaryTD(Binary){
+    var table_data=document.createElement('td');
+    for(i in Binary){
+        var b = Binary[i];
+        alert(b[0]);
+        alert(b[1]);
+    }
+}
+
 
 window.onload=function(){
     AddRows();
 }
+
+
+
 
 
 
@@ -69,6 +78,9 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
+
+
 
 
 
