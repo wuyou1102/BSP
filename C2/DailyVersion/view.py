@@ -22,6 +22,7 @@ def __get_daily_build_info():
         binary = os.path.join(build_path, 'Binary')
         debuginfo = os.path.join(build_path, 'DebugInfo')
         release_notes = os.path.join(build_path, 'ReleaseNotes.txt')
+        dict_build['name'] = build
         dict_build['binary'] = __get_binary(binary)
         dict_build['debug_info'] = __get_debug_info(debuginfo)
         dict_build['release_notes'] = __get_release_notes(release_notes)
