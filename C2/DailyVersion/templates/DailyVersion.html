@@ -6,12 +6,15 @@ function AddRows(){
     var Builds = {{builds|safe}};
     for(i in Builds){
         var TableRow=CreateRow(Builds[i]);
-        if(i % 2 == 0){
-            TableRow.className = "evenrowcolor";
-        }else{
-            TableRow.className = "oddrowcolor";
-        }
         Table.appendChild(TableRow);
+    }
+    var rows = table.getElementsByTagName("tr");
+    for(i = 0; i < rows.length; i++){
+        if(i % 2 == 0){
+            rows[i].className = "evenrowcolor";
+        }else{
+            rows[i].className = "oddrowcolor";
+        }
     }
 }
 function CreateRow(build){
@@ -38,6 +41,7 @@ function CreateBinaryTD(Binary){
         var path=bin[1];
         var hyperlink = CreateHref(name,path)
         table_data.appendChild(hyperlink);
+        table_data.appendChild(document.createElement("br"));
     }
     return table_data
 }
@@ -54,26 +58,6 @@ function CreateHref(Name,Path){
 window.onload=function(){
     AddRows();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </script>
@@ -133,6 +117,7 @@ window.onload=function(){
 
 
 
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -141,40 +126,9 @@ window.onload=function(){
     <table class="altrowstable" id="daily_version_table">
         <tr>
             <th>Data</th>
-            <th>Version</th>
-            <th>Debug Info</th>
+            <th>Version<br>Download</th>
+            <th>Debug Info<br>Download</th>
             <th>Release Notes</th>
-        </tr>
-        <tr>
-
-            <td>
-                <a href="url" value="ssss">Link text</a>
-                <br>
-                <a href="url">Link text</a>
-            </td>
-            <td>Text 1B</td>
-            <td>Text 1C</td>
-        </tr>
-        <tr>
-            <td>Text 2A</td>
-            <td>Text 2B</td>
-            <td>Text 2C</td>
-        </tr>
-        </tr>
-        <tr>
-            <td>Text 3A</td>
-            <td>Text 3B</td>
-            <td>Text 3C</td>
-        </tr>
-        <tr>
-            <td>Text 4A</td>
-            <td>Text 4B</td>
-            <td>Text 4C</td>
-        </tr>
-        <tr>
-            <td>Text 5A</td>
-            <td>Text 5B</td>
-            <td>Text 5C</td>
         </tr>
     </table>
 </head>
