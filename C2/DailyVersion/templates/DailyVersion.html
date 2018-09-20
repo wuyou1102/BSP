@@ -3,7 +3,7 @@
 <script>
 function AddRows(){
     var table = document.getElementById("daily_version_table");
-    var builds = {{context.builds}};
+    var builds = {{builds}};
     for build in builds:
     {
         alert(build);
@@ -21,6 +21,7 @@ function AddRows(){
 window.onload=function(){
     AddRows();
 }
+
 
 
 </script>
@@ -51,6 +52,7 @@ window.onload=function(){
     .evenrowcolor{
         background-color:#c3dde0;
     }
+
 
 
 
