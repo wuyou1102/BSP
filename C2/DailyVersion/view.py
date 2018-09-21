@@ -8,24 +8,31 @@ import os
 DailyBuildPath = "/home/bspserver/sda/C2_DailyBuild/"
 
 
-def download_file(request):
-    def file_iterator(file_name, chunk_size=1024):
-        with open(file_name) as f:
-            while True:
-                c = f.read(chunk_size)
-                if c:
-                    yield c
-                else:
-                    break
+def file_iterator(file_name, chunk_size=1024):
+    with open(file_name) as f:
+        while True:
+            c = f.read(chunk_size)
+            if c:
+                yield c
+            else:
+                break
 
-    relative_path = request.GET["path"]
-    print relative_path
-    file_path = os.path.join(DailyBuildPath, relative_path)
-    if os.path.exists(file_path):
-        response = StreamingHttpResponse(file_iterator(file_path))
-        return response
+
+def download_file(request):
+    if request.method == 'GET':
+        relative_path = request.GET["path"]
+        file_path = os.path.join(DailyBuildPath, relative_path)
+        if os.path.exists(file_path):
+            FileName = "SSSS.zip"
+            response = StreamingHttpResponse(file_iterator(file_path))
+            response['Content-Type'] = 'application/octet-stream'
+            response['Content-Disposition'] = 'attachment;filename=%s' % FileName
+            return response
+        else:
+            return HttpResponse(u"对不起，没有找到文件：%s" % relative_path)
+            return response
     else:
-        return HttpResponse(u"错误，没有找到文件：%s" % relative_path)
+        return HttpResponse('method must be get')
 
 
 def get_daily_build_info(request):
@@ -55,9 +62,7 @@ def __get_binary(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f)
-            print file_path
-            print file_path.replace(DailyBuildPath,'')
+            file_path = os.path.join(path, f).replace(DailyBuildPath, '')
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
