@@ -18,15 +18,21 @@ def file_iterator(file_name, chunk_size=1024):
                 break
 
 
+def format_file_name(path):
+    _path = path.split(os.sep)
+    _path[-1] = os.path.splitext(_path[-1])[0]
+    return "_".join(_path)
+
+
 def download_file(request):
     if request.method == 'GET':
         relative_path = request.GET["path"]
         file_path = os.path.join(DailyBuildPath, relative_path)
         if os.path.exists(file_path):
-            FileName = "SSSS.zip"
+            file_name = format_file_name(relative_path)
             response = StreamingHttpResponse(file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
-            response['Content-Disposition'] = 'attachment;filename=%s' % FileName
+            response['Content-Disposition'] = 'attachment;filename=%s' % file_name
             return response
         else:
             return HttpResponse(u"对不起，没有找到文件：%s" % relative_path)
