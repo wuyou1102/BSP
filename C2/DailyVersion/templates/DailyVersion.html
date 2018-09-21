@@ -47,7 +47,7 @@ function CreateDownloadHref(Name,Path){
     url="Download?path="+Path
     hyperlink.href=url;
     hyperlink.onclick =function() {
-        return confirm("Are you sure you want to leave?");
+        return confirm("是否确认下载?");
     };
     hyperlink.download ="";
     var text_name=document.createTextNode(Name);
@@ -76,15 +76,10 @@ function CreateReleaseNotes(ReleaseNotes){
     }
     return table_data
 }
-function ClickOnDownload(){
-    alert("ssss");
-    return false;
-}
+
 window.onload=function(){
     AddRows();
 }
-
-
 
 </script>
 <style type="text/css">
@@ -120,8 +115,6 @@ window.onload=function(){
     .row_data {
         background-color:#d4e3e5;
     }
-
-
 
 </style>
 <head>
