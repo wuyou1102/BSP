@@ -20,7 +20,9 @@ def file_iterator(file_name, chunk_size=1024):
 
 def format_file_name(path):
     _path = path.split(os.sep)
-    _path[-1] = os.path.splitext(_path[-1])[0]
+    for m in ["Binary", "DebugInfo"]:
+        if m in _path:
+            _path.remove(m)
     return "_".join(_path)
 
 
