@@ -5,13 +5,9 @@ function AddRows(){
     var Table = document.getElementById("daily_version_table");
     var Builds = {{builds|safe}};
     console.log(Builds);
+    var TableRow="";
     for(i in Builds){
-        var TableRow=CreateRow(Builds[i]);
-        if(i % 2 == 0){
-            TableRow.className = "evenrowcolor";
-        }else{
-           TableRow.className = "oddrowcolor";
-        }
+        TableRow=CreateRow(Builds[i]);
         Table.appendChild(TableRow);
     }
 }
@@ -82,6 +78,7 @@ window.onload=function(){
 
 
 
+
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -104,15 +101,11 @@ window.onload=function(){
         border-style: solid;
         border-color: #a9c6c9;
     }
-    .oddrowcolor{
-        background-color:#d4e3e5;
-    }
-    .evenrowcolor{
-        background-color:#c3dde0;
-    }
+
     table tr:nth-child(2n){
          background-color:#c3dde0;
     }
+
 
 
 </style>
