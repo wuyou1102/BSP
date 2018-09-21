@@ -36,16 +36,19 @@ function CreateBinaryTD(Binary){
         var bin = Binary[i];
         var name=bin[0];
         var path=bin[1];
-        var hyperlink = CreateHref(name,path)
+        var hyperlink = CreateDownloadHref(name,path)
         table_data.appendChild(hyperlink);
         table_data.appendChild(document.createElement("br"));
     }
     return table_data
 }
-function CreateHref(Name,Path){
+function CreateDownloadHref(Name,Path){
     var hyperlink = document.createElement('a');
     url="Download?path="+Path
+
     hyperlink.href=url;
+    hyperlink.onclick=""
+
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
     return hyperlink
@@ -56,7 +59,7 @@ function CreateDebugInfo(DebugInfo){
         var info = DebugInfo[i];
         var name=info[0];
         var path=info[1];
-        var hyperlink = CreateHref(name,path)
+        var hyperlink = CreateDownloadHref(name,path)
         table_data.appendChild(hyperlink);
         table_data.appendChild(document.createElement("br"));
     }
@@ -67,18 +70,17 @@ function CreateReleaseNotes(ReleaseNotes){
     if (ReleaseNotes == "None"){
         alert("hhh");
     }else{
-        var hyperlink = CreateHref("View",ReleaseNotes)
+        var hyperlink = CreateDownloadHref("View",ReleaseNotes)
         table_data.appendChild(hyperlink);
     }
     return table_data
-
+}
+function ClickOnDownload(){
+    alert("ssss");
 }
 window.onload=function(){
     AddRows();
 }
-
-
-
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -113,8 +115,6 @@ window.onload=function(){
     .row_data {
         background-color:#d4e3e5;
     }
-
-
 </style>
 <head>
     <meta charset="UTF-8">
