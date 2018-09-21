@@ -44,8 +44,8 @@ function CreateBinaryTD(Binary){
 }
 function CreateHref(Name,Path){
     var hyperlink = document.createElement('a');
-    hyperlink.href="hello world";
-    hyperlink.value=Path;
+    url="Download?path="+Path;
+    hyperlink.href=url;
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
     return hyperlink
@@ -76,7 +76,6 @@ function CreateReleaseNotes(ReleaseNotes){
 window.onload=function(){
     AddRows();
 }
-
 
 
 </script>
@@ -121,10 +120,11 @@ window.onload=function(){
     <h1>C2(Surf) Daily Build</h1>
     <table class="altrowstable" id="daily_version_table">
         <tr class="row_title">
-            <th>Data</th>
+            <th>Release Data</th>
             <th>Version<br>Download</th>
             <th>Debug Info<br>Download</th>
             <th>Release<br>Notes</th>
+            <th>Report</th>
         </tr>
     </table>
 </head>

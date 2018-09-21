@@ -6,6 +6,26 @@ import os
 
 DailyBuildPath = "/home/bspserver/sda/C2_DailyBuild/"
 
+from django.http import StreamingHttpResponse
+
+
+def download_file(request):
+    # do something...
+
+    def file_iterator(file_name, chunk_size=512):
+        with open(file_name) as f:
+            while True:
+                c = f.read(chunk_size)
+                if c:
+                    yield c
+                else:
+                    break
+
+    the_file_name = "file_name.txt"
+    response = StreamingHttpResponse(file_iterator(the_file_name))
+
+    return response
+
 
 def get_daily_build_info(request):
     context = dict()
@@ -35,7 +55,7 @@ def __get_binary(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f)
+            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -46,7 +66,7 @@ def __get_debug_info(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f)
+            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -55,6 +75,5 @@ def __get_debug_info(path):
 
 def __get_release_notes(path):
     if os.path.exists(path):
-        file_path, file_name = os.path.split(path)
-        return file_path
+        return path.lstrip(DailyBuildPath)
     return None
