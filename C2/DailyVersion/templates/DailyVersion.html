@@ -47,7 +47,7 @@ function CreateDownloadHref(Name,Path){
     url="Download?path="+Path
 
     hyperlink.href=url;
-    hyperlink.addEventListener("click", ClickOnDownload)
+    hyperlink.Attributes.Add("onclick", "return confirm('是否下载?')");
 
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
