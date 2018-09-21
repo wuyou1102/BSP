@@ -1,18 +1,14 @@
 # -*- encoding:UTF-8 -*-
-from django.http import HttpResponse
 
 from django.shortcuts import render
+from django.http import StreamingHttpResponse
 import os
 
 DailyBuildPath = "/home/bspserver/sda/C2_DailyBuild/"
 
-from django.http import StreamingHttpResponse
-
 
 def download_file(request):
-    # do something...
-
-    def file_iterator(file_name, chunk_size=512):
+    def file_iterator(file_name, chunk_size=1024):
         with open(file_name) as f:
             while True:
                 c = f.read(chunk_size)
@@ -21,8 +17,10 @@ def download_file(request):
                 else:
                     break
 
-    the_file_name = "file_name.txt"
-    response = StreamingHttpResponse(file_iterator(the_file_name))
+    relative_path = request.GET["path"]
+    print relative_path
+    file_path = os.path.join(DailyBuildPath, relative_path)
+    response = StreamingHttpResponse(file_iterator(file_path))
 
     return response
 
@@ -55,7 +53,7 @@ def __get_binary(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
+            file_path = os.path.join(path, f)
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -66,7 +64,7 @@ def __get_debug_info(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
+            file_path = os.path.join(path, f)
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -75,5 +73,5 @@ def __get_debug_info(path):
 
 def __get_release_notes(path):
     if os.path.exists(path):
-        return path.lstrip(DailyBuildPath)
+        return path
     return None
