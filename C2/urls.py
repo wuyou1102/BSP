@@ -20,5 +20,5 @@ import DailyVersion
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', DailyVersion.get_daily_build_info),
-    url(r'^Download/', DailyVersion.get_daily_build_info),
+    url(r'^Download/', DailyVersion.download_file),
 ]

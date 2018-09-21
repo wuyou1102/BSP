@@ -53,7 +53,7 @@ def __get_binary(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f)
+            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -64,7 +64,7 @@ def __get_debug_info(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f)
+            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -73,5 +73,5 @@ def __get_debug_info(path):
 
 def __get_release_notes(path):
     if os.path.exists(path):
-        return path
+        return path.lstrip(DailyBuildPath)
     return None
