@@ -46,7 +46,9 @@ function CreateDownloadHref(Name,Path){
     var hyperlink = document.createElement('a');
     url="Download?path="+Path
     hyperlink.href=url;
-    hyperlink.onclick ="javascript:return confirm('Are you sure?')";
+    hyperlink.onclick =function() {
+        return confirm("Are you sure you want to leave?");
+    };
     hyperlink.download ="";
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
