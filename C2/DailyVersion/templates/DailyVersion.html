@@ -13,6 +13,7 @@ function AddRows(){
 }
 function CreateRow(build){
     var Row=document.createElement('tr');
+    Row.className = "row_data";
     var name =  CreateNameTD(build.name);
     var binary = CreateBinaryTD(build.binary);
     var debug_info = CreateDebugInfo(build.debug_info);
@@ -78,9 +79,6 @@ window.onload=function(){
 
 
 
-
-
-
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -103,13 +101,13 @@ window.onload=function(){
         border-style: solid;
         border-color: #a9c6c9;
     }
-    table.altrowstable tr {
+    .row_data {
         background-color:#d4e3e5;
     }
-    table tr:nth-child(2n){
+    table.row_data  tr:nth-child(2n){
          background-color:#c3dde0;
     }
-    .table_title {
+    table.table_title{
         font-family: verdana,arial,sans-serif;
         font-size:15px;
         background-color:#C4C4BF;
