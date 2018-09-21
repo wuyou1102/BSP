@@ -45,7 +45,7 @@ function CreateBinaryTD(Binary){
 function CreateHref(Name,Path){
     var hyperlink = document.createElement('a');
 
-    hyperlink.href="Path";
+    hyperlink.href=Path;
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
     return hyperlink
