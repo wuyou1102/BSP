@@ -25,13 +25,12 @@ def download_file(request):
         response = StreamingHttpResponse(file_iterator(file_path))
         return response
     else:
-        return HttpResponse("错误，没有找到文件：%s" % relative_path)
+        return HttpResponse(u"错误，没有找到文件：%s" % relative_path)
 
 
 def get_daily_build_info(request):
     context = dict()
     context['builds'] = __get_daily_build_info()
-    print context
     return render(request, 'DailyVersion.html', context)
 
 
@@ -56,7 +55,9 @@ def __get_binary(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).replace(DailyBuildPath, '')
+            file_path = os.path.join(path, f)
+            print file_path
+            print file_path.replace(DailyBuildPath,'')
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
