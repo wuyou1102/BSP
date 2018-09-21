@@ -4,6 +4,7 @@
 function AddRows(){
     var Table = document.getElementById("daily_version_table");
     var Builds = {{builds|safe}};
+    console.log(Builds);
     for(i in Builds){
         var TableRow=CreateRow(Builds[i]);
         if(i % 2 == 0){
@@ -80,6 +81,7 @@ window.onload=function(){
 }
 
 
+
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -110,34 +112,6 @@ window.onload=function(){
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 <head>
     <meta charset="UTF-8">
@@ -148,7 +122,7 @@ window.onload=function(){
             <th>Data</th>
             <th>Version<br>Download</th>
             <th>Debug Info<br>Download</th>
-            <th>Release Notes</th>
+            <th>Release<br>Notes</th>
         </tr>
     </table>
 </head>
