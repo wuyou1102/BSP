@@ -47,7 +47,7 @@ function CreateDownloadHref(Name,Path){
     url="Download?path="+Path
 
     hyperlink.href=url;
-    hyperlink.addEventListener("click",ClickOnDownload)
+    hyperlink.addEventListener("click",return ClickOnDownload)
 
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
@@ -81,6 +81,7 @@ function ClickOnDownload(){
 window.onload=function(){
     AddRows();
 }
+
 
 </script>
 <style type="text/css">
@@ -116,6 +117,7 @@ window.onload=function(){
     .row_data {
         background-color:#d4e3e5;
     }
+
 
 </style>
 <head>
