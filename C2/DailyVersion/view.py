@@ -2,6 +2,7 @@
 
 from django.shortcuts import render
 from django.http import StreamingHttpResponse
+from django.http import HttpResponse
 import os
 
 DailyBuildPath = "/home/bspserver/sda/C2_DailyBuild/"
@@ -20,9 +21,11 @@ def download_file(request):
     relative_path = request.GET["path"]
     print relative_path
     file_path = os.path.join(DailyBuildPath, relative_path)
-    response = StreamingHttpResponse(file_iterator(file_path))
-
-    return response
+    if os.path.exists(file_path):
+        response = StreamingHttpResponse(file_iterator(file_path))
+        return response
+    else:
+        return HttpResponse("错误，没有找到文件：%s" % relative_path)
 
 
 def get_daily_build_info(request):
@@ -53,7 +56,7 @@ def __get_binary(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
+            file_path = os.path.join(path, f).replace(DailyBuildPath, '')
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -64,7 +67,7 @@ def __get_debug_info(path):
     lst = list()
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).lstrip(DailyBuildPath)
+            file_path = os.path.join(path, f).replace(DailyBuildPath, '')
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -73,5 +76,5 @@ def __get_debug_info(path):
 
 def __get_release_notes(path):
     if os.path.exists(path):
-        return path.lstrip(DailyBuildPath)
+        return path.replace(DailyBuildPath, '')
     return None
