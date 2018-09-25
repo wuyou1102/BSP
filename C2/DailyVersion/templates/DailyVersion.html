@@ -54,6 +54,14 @@ function CreateDownloadHref(Name,Path){
     hyperlink.appendChild(text_name);
     return hyperlink
 }
+function CreateReleaseNotesHref(Path){
+    var hyperlink = document.createElement('a');
+    url="ReleaseNotes?path="+Path
+    hyperlink.href=url;
+    var text_name=document.createTextNode("View");
+    hyperlink.appendChild(text_name);
+    return hyperlink
+}
 function CreateDebugInfo(DebugInfo){
     var table_data=document.createElement('td');
     for(i in DebugInfo){
@@ -68,10 +76,8 @@ function CreateDebugInfo(DebugInfo){
 }
 function CreateReleaseNotes(ReleaseNotes){
     var table_data=document.createElement('td');
-    if (ReleaseNotes == "None"){
-        alert("hhh");
-    }else{
-        var hyperlink = CreateDownloadHref("View",ReleaseNotes)
+    if (ReleaseNotes != "None"){
+        var hyperlink = CreateReleaseNotesHref(ReleaseNotes)
         table_data.appendChild(hyperlink);
     }
     return table_data
@@ -80,6 +86,9 @@ function CreateReleaseNotes(ReleaseNotes){
 window.onload=function(){
     AddRows();
 }
+
+
+
 
 </script>
 <style type="text/css">
@@ -116,11 +125,20 @@ window.onload=function(){
         background-color:#d4e3e5;
     }
 
+
 </style>
 <head>
     <meta charset="UTF-8">
     <title>感悟科技</title>
-    <h1>C2(Surf) Daily Build</h1>
+    <link href="css/demo.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <script src="js/jquery.ffform.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>C2(Surf) Daily Build</h1>
+<div>
     <table class="altrowstable" id="daily_version_table">
         <tr class="row_title">
             <th>Release Data</th>
@@ -130,8 +148,6 @@ window.onload=function(){
             <th>Report</th>
         </tr>
     </table>
-</head>
-<body>
-
+</div>
 </body>
 </html>
