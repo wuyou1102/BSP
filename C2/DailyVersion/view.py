@@ -1,38 +1,27 @@
 # -*- encoding:UTF-8 -*-
-
 from django.shortcuts import render
 from django.http import StreamingHttpResponse
 from django.http import HttpResponse
 import os
+from C2 import Utility
 
 DailyBuildPath = "/home/bspserver/sda/C2_DailyBuild/"
 
-
-def file_iterator(file_name, chunk_size=1024):
-    with open(file_name) as f:
-        while True:
-            c = f.read(chunk_size)
-            if c:
-                yield c
-            else:
-                break
-
-
-def format_file_name(path):
-    _path = path.split(os.sep)
-    for m in ["Binary", "DebugInfo"]:
-        if m in _path:
-            _path.remove(m)
-    return "_".join(_path)
-
+def view_release_notes(request):
+    if request.method == 'GET':
+        context = dict()
+        # context['builds'] = __get_daily_build_info()
+        return render(request, 'ReleaseNotes.html', context)
+    else:
+        return HttpResponse('method must be get')
 
 def download_file(request):
     if request.method == 'GET':
         relative_path = request.GET["path"]
         file_path = os.path.join(DailyBuildPath, relative_path)
         if os.path.exists(file_path):
-            file_name = format_file_name(relative_path)
-            response = StreamingHttpResponse(file_iterator(file_path))
+            file_name = __format_file_name(relative_path)
+            response = StreamingHttpResponse(Utility.file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
             response['Content-Disposition'] = 'attachment; filename=%s' % file_name
             return response
@@ -96,3 +85,11 @@ def __get_release_notes(path):
     if os.path.exists(path):
         return path.replace(DailyBuildPath, '')
     return None
+
+
+def __format_file_name(path):
+    _path = path.split(os.sep)
+    for m in ["Binary", "DebugInfo"]:
+        if m in _path:
+            _path.remove(m)
+    return "_".join(_path)
