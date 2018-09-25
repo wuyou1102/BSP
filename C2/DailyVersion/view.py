@@ -63,11 +63,14 @@ def __get_daily_build_info():
         dict_build['debug_info'] = __get_debug_info(debuginfo)
         dict_build['release_notes'] = __get_release_notes(release_notes)
         lst.append(dict_build)
+    sorted(lst, key=lambda k: k['name'], reverse=True)
     return lst
 
 
 def __get_binary(path):
     lst = list()
+    if not os.path.exists(path):
+        return lst
     for f in os.listdir(path):
         if f.endswith('.zip'):
             file_path = os.path.join(path, f).replace(DailyBuildPath, '')
@@ -79,6 +82,8 @@ def __get_binary(path):
 
 def __get_debug_info(path):
     lst = list()
+    if not os.path.exists(path):
+        return lst
     for f in os.listdir(path):
         if f.endswith('.zip'):
             file_path = os.path.join(path, f).replace(DailyBuildPath, '')
