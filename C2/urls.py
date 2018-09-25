@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', DailyVersion.get_daily_build_info),
     url(r'^Download/', DailyVersion.download_file),
-    url(r'^ReleaseNotes/', DailyVersion.download_file),
+    url(r'^ReleaseNotes/', DailyVersion.view_release_notes),
 ]
