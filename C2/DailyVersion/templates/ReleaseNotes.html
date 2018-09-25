@@ -8,7 +8,33 @@
     window.onload=function(){
     AddReleaseNotes();
 }
+
+
 </script>
+<style>
+    .attr_name {
+        font-size:20px;
+        font-family: Georgia;
+        font-weight:bold;
+        float: left;
+        width: 17%;
+        <!--height: 50px;-->
+        <!--background-color: red;-->
+    }
+    .attr_value {
+        font-size:20px;
+        font-family: Georgia;
+        float: left;
+        <!--height: 50px;-->
+        <!--background-color: orange;-->
+    }
+
+    .clearfix {
+        margin-top:20px;
+    }
+
+
+</style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>感悟科技</title>
@@ -17,6 +43,11 @@
     <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-ui.js" type="text/javascript"></script>
     <script src="/static/js/jquery.ffform.js" type="text/javascript"></script>
+    <!--<link href="static/css/demo.css" rel="stylesheet" type="text/css">-->
+    <!--<script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
+    <!--<script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
+    <!--<script src="static/js/jquery-ui.js" type="text/javascript"></script>-->
+    <!--<script src="static/js/jquery.ffform.js" type="text/javascript"></script>-->
 
 </head>
 <body>
@@ -27,58 +58,75 @@
         </h1>
     </div>
     <div class="container">
-        <div class="contact" id="form">
+        <div class="contact">
             <div class="row clearfix">
-                <div class="lbl">
-                    <label for="name">
-                        Name</label>
-                </div>
-                <div class="ctrl">
-                    <input type="text" id="name" name="name" data-required="true" data-validation="text"
-                           data-msg="Invalid Name" placeholder="Ex: John Donga">
-                </div>
+                <div class="attr_name">Commit :</div>
+                <div class="attr_value">8cb315146bd9c7133ef483bba4d5923a82a87e01</div>
             </div>
             <div class="row clearfix">
-                <div class="lbl">
-                    <label for="email">
-                        E-Mail</label>
-                </div>
-                <div class="ctrl">
-                    <input type="text" id="email" name="email" data-required="true" data-validation="email"
-                           data-msg="Invalid E-Mail" placeholder="Ex: youremail@domain.com">
-                </div>
+                <div class="attr_name">Auther :</div>
+                <div class="attr_value">qingjunwang</div>
             </div>
             <div class="row clearfix">
-                <div class="lbl">
-                    <label for="email">
-                        Phone</label>
-                </div>
-                <div class="ctrl">
-                    <input type="text" id="phone" name="phone" data-required="true" data-validation="custom"
-                           data-msg="Invalid Phone #" placeholder="Ex: 111-258-444">
-                </div>
+                <div class="attr_name">Date :</div>
+                <div class="attr_value">Tue Sep 18 10:03:46 2018 +0800</div>
             </div>
             <div class="row clearfix">
-                <div class="lbl">
-                    <label for="subject">
-                        Subject</label>
-                </div>
-                <div class="ctrl">
-                    <input type="text" name="subject" id="subject" placeholder="Ex: Quote for Project">
-                </div>
+                <div class="attr_name">Change-Id :</div>
+                <div class="attr_value">Ib8b0e9a6385016eb85c0e474c878d627958d5ef6</div>
             </div>
             <div class="row clearfix">
-                <div class="lbl">
-                    <label for="message">
-                        Message</label>
-                </div>
-                <div class="ctrl">
-                    <textarea id="message" name="message" rows="6" cols="10"></textarea>
+                <div class="attr_name">Signed-Off :</div>
+                <div class="attr_value">qingjunwang</div>
+            </div>
+            <div class="row clearfix">
+                <div class="lbl attr_name">Message :</div>
+                <div class="attr_value">
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
                 </div>
             </div>
-            <div class="row  clearfix">
-                <div class="span10 offset2">
-                    <input type="submit" name="submit" id="submit" class="submit" value="Send Message">
+        </div>
+    </div>
+    <div class="container">
+        <div class="contact">
+            <div class="row clearfix">
+                <div class="attr_name">Commit :</div>
+                <div class="attr_value">8cb315146bd9c7133ef483bba4d5923a82a87e01</div>
+            </div>
+            <div class="row clearfix">
+                <div class="attr_name">Auther :</div>
+                <div class="attr_value">qingjunwang</div>
+            </div>
+            <div class="row clearfix">
+                <div class="attr_name">Date :</div>
+                <div class="attr_value">Tue Sep 18 10:03:46 2018 +0800</div>
+            </div>
+            <div class="row clearfix">
+                <div class="attr_name">Change-Id :</div>
+                <div class="attr_value">Ib8b0e9a6385016eb85c0e474c878d627958d5ef6</div>
+            </div>
+            <div class="row clearfix">
+                <div class="attr_name">Signed-Off :</div>
+                <div class="attr_value">qingjunwang</div>
+            </div>
+            <div class="row clearfix">
+                <div class="lbl attr_name">Message :</div>
+                <div class="attr_value">
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
+                    <h1>ssss</h1>
                 </div>
             </div>
         </div>
