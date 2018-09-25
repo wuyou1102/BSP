@@ -63,8 +63,7 @@ def __get_daily_build_info():
         dict_build['debug_info'] = __get_debug_info(debuginfo)
         dict_build['release_notes'] = __get_release_notes(release_notes)
         lst.append(dict_build)
-    sorted(lst, key=lambda k: k['name'], reverse=True)
-    return lst
+    return sorted(lst, key=lambda k: k['name'], reverse=True)
 
 
 def __get_binary(path):
