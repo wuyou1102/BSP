@@ -6,6 +6,7 @@
         var Commits = {{commits|safe}};
         var Container="";
         for(i in Commits){
+            alert("sss");
             Container=CreateContainer(Commits[i]);
             Table.appendChild(Container);
         }
