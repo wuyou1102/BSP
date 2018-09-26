@@ -2,12 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script>
     function AddReleaseNotes(){
+        var Table = document.getElementById("getintouch");
+        var Commits = {{commits|safe}};
+        <!--console.log(Notes);-->
+        var Container="";
+        for(i in Commits){
+            Container=CreateContainer(Commits[i]);
+            Table.appendChild(Container);
+        }
+    }
+    function CreateContainer(Commit){
+        var Container=document.createElement('div');
+        Container.className = "container";
+        var Attributes = Commit.attr;
+        var Message=Commit.msg
+        console.log(Attributes);
+        console.log(Message);
+        return Container;
 
     }
 
     window.onload=function(){
     AddReleaseNotes();
 }
+
 
 
 </script>
@@ -34,20 +52,21 @@
     }
 
 
+
 </style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>感悟科技</title>
-    <link href="/static/css/demo.css" rel="stylesheet" type="text/css">
-    <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="/static/js/jquery-ui.js" type="text/javascript"></script>
-    <script src="/static/js/jquery.ffform.js" type="text/javascript"></script>
-    <!--<link href="static/css/demo.css" rel="stylesheet" type="text/css">-->
-    <!--<script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
-    <!--<script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
-    <!--<script src="static/js/jquery-ui.js" type="text/javascript"></script>-->
-    <!--<script src="static/js/jquery.ffform.js" type="text/javascript"></script>-->
+    <!--<link href="/static/css/demo.css" rel="stylesheet" type="text/css">-->
+    <!--<script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
+    <!--<script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
+    <!--<script src="/static/js/jquery-ui.js" type="text/javascript"></script>-->
+    <!--<script src="/static/js/jquery.ffform.js" type="text/javascript"></script>-->
+    <link href="static/css/demo.css" rel="stylesheet" type="text/css">
+    <script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="static/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="static/js/jquery.ffform.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -58,41 +77,41 @@
         </h1>
     </div>
     <div class="container">
-        <div class="contact">
-            <div class="row clearfix">
-                <div class="attr_name">Commit :</div>
-                <div class="attr_value">8cb315146bd9c7133ef483bba4d5923a82a87e01</div>
-            </div>
-            <div class="row clearfix">
-                <div class="attr_name">Auther :</div>
-                <div class="attr_value">qingjunwang</div>
-            </div>
-            <div class="row clearfix">
-                <div class="attr_name">Date :</div>
-                <div class="attr_value">Tue Sep 18 10:03:46 2018 +0800</div>
-            </div>
-            <div class="row clearfix">
-                <div class="attr_name">Change-Id :</div>
-                <div class="attr_value">Ib8b0e9a6385016eb85c0e474c878d627958d5ef6</div>
-            </div>
-            <div class="row clearfix">
-                <div class="attr_name">Signed-Off :</div>
-                <div class="attr_value">qingjunwang</div>
-            </div>
-            <div class="row clearfix">
-                <div class="lbl attr_name">Message :</div>
-                <div class="attr_value">
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                    <h1>ssss</h1>
-                </div>
+
+        <div class="row clearfix">
+            <div class="attr_name">Commit :</div>
+            <div class="attr_value">8cb315146bd9c7133ef483bba4d5923a82a87e01</div>
+        </div>
+        <div class="row clearfix">
+            <div class="attr_name">Auther :</div>
+            <div class="attr_value">qingjunwang</div>
+        </div>
+        <div class="row clearfix">
+            <div class="attr_name">Date :</div>
+            <div class="attr_value">Tue Sep 18 10:03:46 2018 +0800</div>
+        </div>
+        <div class="row clearfix">
+            <div class="attr_name">Change-Id :</div>
+            <div class="attr_value">Ib8b0e9a6385016eb85c0e474c878d627958d5ef6</div>
+        </div>
+        <div class="row clearfix">
+            <div class="attr_name">Signed-Off :</div>
+            <div class="attr_value">qingjunwang</div>
+        </div>
+        <div class="row clearfix">
+            <div class="lbl attr_name">Message :</div>
+            <div class="attr_value">
+                <h1>ssss</h1>
+                <h1>ssss</h1>
+                <h1>ssss</h1>
+                <h1>ssss</h1>
+                <h1>ssss</h1>
+                <h1>ssss</h1>
+                <h1>ssss</h1>
+                <h1>ssss</h1>
             </div>
         </div>
+        <!--</div>-->
     </div>
     <div class="container">
         <div class="contact">
@@ -112,10 +131,7 @@
                 <div class="attr_name">Change-Id :</div>
                 <div class="attr_value">Ib8b0e9a6385016eb85c0e474c878d627958d5ef6</div>
             </div>
-            <div class="row clearfix">
-                <div class="attr_name">Signed-Off :</div>
-                <div class="attr_value">qingjunwang</div>
-            </div>
+
             <div class="row clearfix">
                 <div class="lbl attr_name">Message :</div>
                 <div class="attr_value">

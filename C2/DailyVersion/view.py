@@ -7,13 +7,18 @@ from C2 import Utility
 
 DailyBuildPath = "/home/bspserver/sda/C2_DailyBuild/"
 
+
 def view_release_notes(request):
     if request.method == 'GET':
         context = dict()
-        # context['builds'] = __get_daily_build_info()
+        relative_path = request.GET["path"]
+        path = os.path.join(DailyBuildPath, relative_path)
+        context['name'] = __get_build_name(relative_path)
+        context['notes'] = __parse_release_notes(path)
         return render(request, 'ReleaseNotes.html', context)
     else:
         return HttpResponse('method must be get')
+
 
 def download_file(request):
     if request.method == 'GET':
@@ -93,3 +98,23 @@ def __format_file_name(path):
         if m in _path:
             _path.remove(m)
     return "_".join(_path)
+
+
+def __get_build_name(path):
+    name, text = os.path.split(path)
+    return name
+
+
+def __parse_release_notes(path):
+    if os.path.exists(path):
+        with open(path, 'r') as rfile:
+            lines = rfile.readlines()
+            return Utility.format_commit_msg(lines)
+    else:
+        return []
+
+
+if __name__ == '__main__':
+    commits = __parse_release_notes('D:\Profile\Desktop\ReleaseNotes.txt')
+    print len(commits)
+    print commits
