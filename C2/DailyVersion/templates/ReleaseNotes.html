@@ -5,6 +5,7 @@
         var Table = document.getElementById("getintouch");
         var Commits = {{commits|safe}};
         var Container="";
+        alert("DdD");
         for(i in Commits){
             alert("sss");
             Container=CreateContainer(Commits[i]);
@@ -72,15 +73,6 @@
     window.onload=function(){
     AddReleaseNotes();
 }
-
-
-
-
-
-
-
-
-
 </script>
 <style>
     .attr_name {
@@ -103,14 +95,6 @@
     .clearfix {
         margin-top:20px;
     }
-
-
-
-
-
-
-
-
 
 </style>
 <head>
