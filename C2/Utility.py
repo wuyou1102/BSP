@@ -15,7 +15,7 @@ __dict_commit = {
     "Date:   ": "Data :",
     "Change-Id: ": "Change Id :",
     "Signed-off-by: ": "Signed Off :",
-    "BugID: ": "'Bug Id :"
+    "BugID: ": "Bug Id :"
 }
 
 
@@ -55,7 +55,7 @@ def format_commit_msg(lines):
                     commit_attrs.append([v, line.lstrip(k)])
                     block.remove(line)
                     break
-        commit["msg"] = "<br>".join(block)
+        commit["msg"] = ['Message :', "<br>".join(block)]
         commit["attr"] = commit_attrs
         lst.append(commit)
     return lst
