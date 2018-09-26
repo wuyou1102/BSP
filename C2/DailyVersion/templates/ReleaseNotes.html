@@ -58,13 +58,12 @@
     }
     function CreateMsgDiv(Message){
         var Div=document.createElement('div');
+        Div.className="attr_value";
         console.log(Message);
-        var Text="";
-        var BR=document.createElement("br");
         for(i in Message){
-            Text = document.createTextNode(Message[i]);
+            var Text = document.createTextNode(Message[i]);
             Div.appendChild(Text);
-            Div.appendChild(BR);
+            Div.appendChild(document.createElement("br");
         }
         return Div;
     }
