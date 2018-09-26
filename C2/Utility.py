@@ -39,7 +39,8 @@ def get_commit_blocks(lines):
                 blocks.append(block)
                 block = list()
         block.append(line)
-    blocks.append(block)
+    if block:
+        blocks.append(block)
     return blocks
 
 
@@ -58,5 +59,4 @@ def format_commit_msg(lines):
         commit["msg"] = block
         commit["attr"] = commit_attrs
         lst.append(commit)
-    print lst
     return lst
