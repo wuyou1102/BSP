@@ -14,7 +14,7 @@ def view_release_notes(request):
         relative_path = request.GET["path"]
         path = os.path.join(DailyBuildPath, relative_path)
         context['name'] = __get_build_name(relative_path)
-        context['notes'] = __parse_release_notes(path)
+        context['commits'] = __parse_release_notes(path)
         return render(request, 'ReleaseNotes.html', context)
     else:
         return HttpResponse('method must be get')
