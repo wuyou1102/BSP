@@ -55,7 +55,7 @@ def format_commit_msg(lines):
                     commit_attrs.append([v, line.lstrip(k)])
                     block.remove(line)
                     break
-        commit["msg"] = ['Message :', "<br>".join(block)]
+        commit["msg"] = block
         commit["attr"] = commit_attrs
         lst.append(commit)
     return lst

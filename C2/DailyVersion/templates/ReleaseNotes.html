@@ -21,12 +21,11 @@
             AttrRow=CreateAttrRow(Attributes[i]);
             Container.appendChild(AttrRow);
         }
-        var MsgRow = CreateAttrRow(Message)
+        var MsgRow = CreateMsgRow(Message)
         Container.appendChild(MsgRow);
         return Container;
     }
     function CreateAttrRow(Attribute){
-        console.log(Attribute);
         var Div=document.createElement('div');
         Div.className="row clearfix";
         var DivName=CreateAttrName(Attribute[0]);
@@ -49,11 +48,33 @@
         Div.appendChild(Text);
         return Div;
     }
-
+    function CreateMsgRow(Message){
+        var Div=document.createElement('div');
+        Div.className="row clearfix";
+        var DivName=CreateAttrName("Message :");
+        var DivMsg = CreateMsgDiv(Message);
+        Div.appendChild(DivName);
+        Div.appendChild(DivMsg);
+        return Div;
+    }
+    function CreateMsgDiv(Message){
+        var Div=document.createElement('div');
+        var Text="";
+        var BR=document.createElement("br");
+        for(i in Message){
+            Text = document.createTextNode(Message[i]);
+            Div.appendChild(Text);
+            Div.appendChild(BR);
+        }
+        return Div;
+    }
 
     window.onload=function(){
     AddReleaseNotes();
 }
+
+
+
 
 
 
@@ -82,6 +103,9 @@
     .clearfix {
         margin-top:20px;
     }
+
+
+
 
 
 
