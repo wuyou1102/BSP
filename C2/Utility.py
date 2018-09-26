@@ -58,4 +58,5 @@ def format_commit_msg(lines):
         commit["msg"] = block
         commit["attr"] = commit_attrs
         lst.append(commit)
+    print lst
     return lst
