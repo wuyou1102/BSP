@@ -47,15 +47,15 @@ def format_commit_msg(lines):
     blocks = get_commit_blocks(lines=lines)
     lst = list()
     for block in blocks:
-        commit_dict = dict()
+        commit = dict()
         commit_attrs = list()
         for line in block[:]:
             for k, v in __dict_commit.items():
                 if line.startswith(k):
-                    commit_attrs.append((v, line.lstrip(k)))
+                    commit_attrs.append([v, line.lstrip(k)])
                     block.remove(line)
                     break
-        commit_dict["msg"] = "\n".join(block)
-        commit_dict["attr"] = commit_attrs
-        lst.append(commit_dict)
+        commit["msg"] = "\n".join(block)
+        commit["attr"] = commit_attrs
+        lst.append(commit)
     return lst
