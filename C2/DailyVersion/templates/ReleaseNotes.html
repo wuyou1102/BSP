@@ -4,7 +4,7 @@
     function AddReleaseNotes(){
         var Table = document.getElementById("getintouch");
         var Commits = {{commits|safe}};
-        <!--console.log(Notes);-->
+        console.log(Commits);
         var Container="";
         for(i in Commits){
             Container=CreateContainer(Commits[i]);
