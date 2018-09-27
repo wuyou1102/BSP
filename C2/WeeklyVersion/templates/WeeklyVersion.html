@@ -6,9 +6,11 @@ function AddRows(){
     var Builds = {{builds|safe}};
     console.log(Builds);
     var TableRow="";
+    for (var i=0;i<100;i++){
     for(i in Builds){
         TableRow=CreateRow(Builds[i]);
         Table.appendChild(TableRow);
+    }
     }
 }
 function CreateRow(build){
