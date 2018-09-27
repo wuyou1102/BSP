@@ -2,3 +2,38 @@
     margin-left:10%;
     padding:0px 0px;
 }
+.build_body {
+    margin:15px;
+}
+    table.altrowstable {
+        font-family: verdana,arial,sans-serif;
+        font-size:15px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #a9c6c9;
+        border-collapse: collapse;
+    }
+    table.altrowstable th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+    table.altrowstable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table tr:nth-child(2n){
+         background-color:#c3dde0;
+    }
+    .row_title{
+        font-family: verdana,arial,sans-serif;
+        font-size:18px;
+        background-color:#008FFF;
+    }
+    .row_data {
+        background-color:#d4e3e5;
+    }

@@ -2,7 +2,7 @@
 <html lang="en">
 <script>
 function AddRows(){
-    var Table = document.getElementById("daily_version_table");
+    var Table = document.getElementById("version_table");
     var Builds = {{builds|safe}};
     console.log(Builds);
     var TableRow="";
@@ -93,42 +93,6 @@ window.onload=function(){
 }
 </script>
 <style type="text/css">
-    table.altrowstable {
-        font-family: verdana,arial,sans-serif;
-        font-size:15px;
-        color:#333333;
-        border-width: 1px;
-        border-color: #a9c6c9;
-        border-collapse: collapse;
-    }
-    table.altrowstable th {
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #a9c6c9;
-    }
-    table.altrowstable td {
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #a9c6c9;
-    }
-
-    table tr:nth-child(2n){
-         background-color:#c3dde0;
-    }
-    .row_title{
-        font-family: verdana,arial,sans-serif;
-        font-size:18px;
-        background-color:#008FFF;
-    }
-    .row_data {
-        background-color:#d4e3e5;
-    }
-    .build_body {
-        margin:5px;
-    }
-
 </style>
 <head>
     <meta charset="UTF-8">
@@ -144,7 +108,7 @@ window.onload=function(){
             {% include "NavigationBar.html"%}
         </div>
         <div class="build_table">
-            <table class="altrowstable" id="daily_version_table">
+            <table class="altrowstable" id="version_table">
                 <tr class="row_title">
                     <th>Release Data</th>
                     <th>Version<br>Download</th>
