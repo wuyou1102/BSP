@@ -44,7 +44,7 @@ function CreateBinaryTD(Binary){
 }
 function CreateDownloadHref(Name,Path){
     var hyperlink = document.createElement('a');
-    url="Download?type=Daily&path="+Path
+    url="/Download?type=Daily&path="+Path
     hyperlink.href=url;
     hyperlink.onclick =function() {
         return confirm("是否确认下载?");
