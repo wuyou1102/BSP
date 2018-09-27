@@ -52,7 +52,7 @@ def __parse_commits(path):
 
 def __format_file_name(path):
     _path = path.split(os.sep)
-    for m in ["Binary", "DebugInfo"]:
-        if m in _path:
-            _path.remove(m)
+    # for m in ["Binary", "DebugInfo"]:
+    #     if m in _path:
+    #         _path.remove(m)
     return "_".join(_path)
