@@ -22,7 +22,7 @@ def __get_daily_build_info():
         dict_build['name'] = build
         dict_build['binary'] = __get_binary(binary)
         dict_build['debug_info'] = __get_debug_info(debuginfo)
-        dict_build['release_notes'] = __get_release_notes(release_notes)
+        dict_build['commit_history'] = __get_commit_history(release_notes)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
 
@@ -53,7 +53,7 @@ def __get_debug_info(path):
     return lst
 
 
-def __get_release_notes(path):
+def __get_commit_history(path):
     if os.path.exists(path):
         return path.replace(Path.DailyBuild, '')
     return None
