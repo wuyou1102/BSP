@@ -9,8 +9,8 @@ from C2.Utility import Function, Path
 def commit_history(request):
     if request.method == 'GET':
         context = dict()
-        relative_path = request.GET.get('path')
-        _type = request.GET.get('type')
+        relative_path = request.GET["path"]
+        _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
         context['name'] = __get_commit_history_name(relative_path)
         context['commits'] = __parse_commits(abs_path)
@@ -21,8 +21,8 @@ def commit_history(request):
 
 def download_file(request):
     if request.method == 'GET':
-        relative_path = request.GET.get('path')
-        _type = request.GET.get('type')
+        relative_path = request.GET["path"]
+        _type = request.GET["type"]
         file_path = os.path.join(Path.get_path(_type), relative_path)
         if os.path.exists(file_path):
             file_name = __format_file_name(relative_path)
