@@ -1,0 +1,1 @@
+from view import get_build_info
