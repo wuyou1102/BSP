@@ -4,7 +4,7 @@ from django.http import StreamingHttpResponse
 from django.http import HttpResponse
 import os
 from C2 import Path
-from C2 import Utility
+from C2.Utility import Function
 
 
 def commit_history(request):
@@ -27,7 +27,7 @@ def download_file(request):
         file_path = os.path.join(Path.get_path(_type), relative_path)
         if os.path.exists(file_path):
             file_name = __format_file_name(relative_path)
-            response = StreamingHttpResponse(Utility.file_iterator(file_path))
+            response = StreamingHttpResponse(Function.file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
             response['Content-Disposition'] = 'attachment; filename=%s' % file_name
             return response
@@ -46,7 +46,7 @@ def __parse_commits(path):
     if os.path.exists(path):
         with open(path, 'r') as rfile:
             lines = rfile.readlines()
-            return Utility.format_commit_msg(lines)
+            return Function.format_commit_msg(lines)
     else:
         return []
 
