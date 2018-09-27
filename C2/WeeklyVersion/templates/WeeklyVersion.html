@@ -82,9 +82,13 @@ function CreateCommitHistory(CommitHistory){
     }
     return table_data
 }
-
+function Active(){
+    var navi = document.getElementById("C2_WeeklyBuild");
+    navi.className = "active";
+}
 window.onload=function(){
     AddRows();
+    Active();
 }
 
 </script>
@@ -123,15 +127,16 @@ window.onload=function(){
     }
 
 
-
 </style>
 <head>
     <meta charset="UTF-8">
     <title>感悟科技</title>
 </head>
 <body>
-<h1>C2(Surf) Daily Build</h1>
 <div>
+    {% include "NavigationBar.html"%}
+</div>
+<div class="build_table">
     <table class="altrowstable" id="daily_version_table">
         <tr class="row_title">
             <th>Release Data</th>

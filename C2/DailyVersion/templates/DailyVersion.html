@@ -82,9 +82,14 @@ function CreateCommitHistory(CommitHistory){
     }
     return table_data
 }
+function Active(){
+    var navi = document.getElementById("C2_DailyBuild");
+    navi.className = "active";
+}
 
 window.onload=function(){
     AddRows();
+    Active();
 }
 </script>
 <style type="text/css">
