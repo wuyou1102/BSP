@@ -91,6 +91,7 @@ window.onload=function(){
     Active();
 }
 
+
 </script>
 <style type="text/css">
     table.altrowstable {
@@ -125,6 +126,9 @@ window.onload=function(){
     .row_data {
         background-color:#d4e3e5;
     }
+    .build_body {
+        margin:5px;
+    }
 
 
 </style>
@@ -133,25 +137,25 @@ window.onload=function(){
     <title>感悟科技</title>
 </head>
 <body>
+<div>
+    {% include "LogoTitle.html"%}
+</div>
+<div class="build_body">
     <div>
-        {% include "LogoTitle.html"%}
+        {% include "NavigationBar.html"%}
     </div>
-    <div>
-        <div>
-            {% include "NavigationBar.html"%}
-        </div>
-        <div class="build_table">
-            <table class="altrowstable" id="daily_version_table">
-                <tr class="row_title">
-                    <th>Release Data</th>
-                    <th>Version<br>Download</th>
-                    <th>Debug Info<br>Download</th>
-                    <th>Commit<br>History</th>
-                    <th>Release<br>Notes</th>
-                    <th>Test<br>Report</th>
-                </tr>
-            </table>
-        </div>
+    <div class="build_table">
+        <table class="altrowstable" id="daily_version_table">
+            <tr class="row_title">
+                <th>Release Data</th>
+                <th>Version<br>Download</th>
+                <th>Debug Info<br>Download</th>
+                <th>Commit<br>History</th>
+                <th>Release<br>Notes</th>
+                <th>Test<br>Report</th>
+            </tr>
+        </table>
     </div>
+</div>
 </body>
 </html>
