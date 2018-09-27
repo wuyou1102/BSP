@@ -38,7 +38,7 @@ def download_file(request):
 
 def __get_commit_history_name(path):
     name, text = os.path.split(path)
-    return name + " Commit History"
+    return name
 
 
 def __parse_commits(path):

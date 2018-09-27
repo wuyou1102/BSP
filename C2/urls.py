@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 import DailyVersion
+import WeeklyVersion
 import CommonRequest
 
 from django.conf.urls.static import static
@@ -23,7 +24,9 @@ from django.conf import settings
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
-                  url(r'^$', DailyVersion.get_daily_build_info),
+                  url(r'^$', DailyVersion.get_build_info),
+                  url(r'^DailyBuild/', DailyVersion.get_build_info),
+                  url(r'^WeeklyBuild/', WeeklyVersion.get_build_info),
                   url(r'^Download/', CommonRequest.download_file),
                   url(r'^CommitHistory/', CommonRequest.commit_history),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

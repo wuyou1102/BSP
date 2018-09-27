@@ -7,7 +7,7 @@ from C2.Utility import Path
 def get_build_info(request):
     context = dict()
     context['builds'] = __get_daily_build_info()
-    return render(request, 'DailyVersion.html', context)
+    return render(request, 'WeeklyVersion.html', context)
 
 
 def __get_daily_build_info():

@@ -1,1 +1,1 @@
-from view import get_daily_build_info
+from view import get_build_info
