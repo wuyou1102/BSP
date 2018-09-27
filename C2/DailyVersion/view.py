@@ -1,8 +1,7 @@
 # -*- encoding:UTF-8 -*-
 from django.shortcuts import render
 import os
-from C2 import Path
-
+from C2.Utility import Path
 
 
 def get_daily_build_info(request):
@@ -13,10 +12,10 @@ def get_daily_build_info(request):
 
 def __get_daily_build_info():
     lst = []
-    builds = os.listdir(Path.DailyBuildPath)
+    builds = os.listdir(Path.DailyBuild)
     for build in builds:
         dict_build = dict()
-        build_path = os.path.join(Path.DailyBuildPath, build)
+        build_path = os.path.join(Path.DailyBuild, build)
         binary = os.path.join(build_path, 'Binary')
         debuginfo = os.path.join(build_path, 'DebugInfo')
         release_notes = os.path.join(build_path, 'ReleaseNotes.txt')
@@ -34,7 +33,7 @@ def __get_binary(path):
         return lst
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).replace(Path.DailyBuildPath, '')
+            file_path = os.path.join(path, f).replace(Path.DailyBuild, '')
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -47,7 +46,7 @@ def __get_debug_info(path):
         return lst
     for f in os.listdir(path):
         if f.endswith('.zip'):
-            file_path = os.path.join(path, f).replace(Path.DailyBuildPath, '')
+            file_path = os.path.join(path, f).replace(Path.DailyBuild, '')
             file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
@@ -56,7 +55,7 @@ def __get_debug_info(path):
 
 def __get_release_notes(path):
     if os.path.exists(path):
-        return path.replace(Path.DailyBuildPath, '')
+        return path.replace(Path.DailyBuild, '')
     return None
 
 

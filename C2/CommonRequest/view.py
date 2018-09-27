@@ -3,8 +3,7 @@ from django.shortcuts import render
 from django.http import StreamingHttpResponse
 from django.http import HttpResponse
 import os
-from C2 import Path
-from C2.Utility import Function
+from C2.Utility import Function, Path
 
 
 def commit_history(request):
