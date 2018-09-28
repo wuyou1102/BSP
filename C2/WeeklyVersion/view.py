@@ -22,7 +22,7 @@ def __get_daily_build_info():
         debuginfo = os.path.join(build_path, 'DebugInfo')
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
         release_notes = os.path.join(build_path, 'ReleaseNotes.txt')
-        report = os.path.join(build_path, 'Report')
+        report = os.path.join(build_path, 'Reports')
         dict_build['name'] = build
         dict_build['binary'] = __get_binary(binary)
         dict_build['debug_info'] = __get_debug_info(debuginfo)
@@ -41,11 +41,9 @@ def __get_release_notes(path):
 
 def __get_test_reports(path):
     lst = list()
-    print path
     if not os.path.exists(path):
         return lst
     for f in os.listdir(path):
-        print f
         file_path = os.path.join(path, f).replace(PATH_WEEKLY, '')
         _file = [f, file_path]
         lst.append(_file)
