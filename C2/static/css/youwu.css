@@ -20,6 +20,7 @@
         border-style: solid;
         border-color: #a9c6c9;
         padding: 8px;
+        margin: 0 auto;
 
     }
     table.altrowstable td {
@@ -27,7 +28,7 @@
         border-style: solid;
         border-color: #a9c6c9;
         padding: 4px;
-
+        margin: 0 auto;
     }
 
     table tr:nth-child(2n){
