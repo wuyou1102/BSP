@@ -5,6 +5,9 @@ from django.http import HttpResponse
 import os
 from C2.Utility import Function, Path
 
+PATH_WEEKLY = Path.DailyBuild
+PATH_DAILY = Path.DailyBuild
+
 
 def commit_history(request):
     if request.method == 'GET':
@@ -41,15 +44,60 @@ def upload_file(request):
         file = request.FILES.get('file')
         _data = request.POST["version"]
         _type = request.POST["type"]
+
+        backup_folder = Function.create_folder(os.path.join(PATH_WEEKLY, _data, "Backup"))
+        history_text = os.path.join(backup_folder, "History.txt")
         if file is None:
             return HttpResponse("Nothing Upload")
         else:
-            with open(os.path.join(Path.DailyBuild, _data, file.name), 'wb+') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
-            return HttpResponse('OK')
+            if _type == "ReleaseNotes":
+                store_path = Function.create_folder(os.path.join(PATH_WEEKLY, _data))
+                result = store_release_notes(store_path=store_path, uploadfile=file, history=history_text,
+                                             backup=backup_folder)
+                return HttpResponse(result)
+            elif _type == "Report":
+                return HttpResponse(store_report(os.path.join(PATH_WEEKLY, _data, "Reports"), file))
+            return HttpResponse('Error')
     else:
         return HttpResponse('method must be post')
+
+
+def store_release_notes(store_path, uploadfile, history, backup):
+    file_name = uploadfile.name
+    Function.create_folder(path=store_path)
+    __write_history(history=history, msg="Upload %s" % file_name)
+    if not file_name.endswith(".txt"):
+        __write_history(history=history, msg="Upload Fail %s" % file_name)
+        return u"版本说明文件格式不正确"
+    file_path = os.path.join(store_path, "ReleaseNotes.txt")
+    if os.path.exists(file_path):
+        __write_history(history=history, msg="Find duplicate release notes")
+        backup_file = "ReleaseNotes.txt.%s" % Function.get_time()
+        os.rename(file_path, os.path.join(backup, backup_file))
+        __write_history(history=history, msg="{src}  --->  {dst}".format(src="ReleaseNotes.txt", dst=backup_file))
+    with open(file_path, 'wb+') as f:
+        for chunk in file.chunks():
+            f.write(chunk)
+    return u"OK"
+
+
+def store_report(path, file):
+    Function.create_folder(path=path)
+    with open(os.path.join(path, file.name), 'wb+') as f:
+        for chunk in file.chunks():
+            f.write(chunk)
+    return "OK"
+
+
+def __init_store(store_path, file_name, history):
+    __write_history(history=history, msg="Upload file_name")
+    if os.path.exists(os.path.join(store_path, file_name)):
+        os.rename()
+
+
+def __write_history(history, msg):
+    with open(history, 'a') as f:
+        f.write("{time} : {msg}\n".format(time=Function.get_timestamp(), msg=msg))
 
 
 def __get_commit_history_name(path):

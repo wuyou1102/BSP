@@ -1,4 +1,8 @@
 # -*- encoding:UTF-8 -*-
+import os
+import time
+
+
 def file_iterator(file_name, chunk_size=1024):
     with open(file_name) as f:
         while True:
@@ -60,3 +64,19 @@ def format_commit_msg(lines):
         commit["attr"] = commit_attrs
         lst.append(commit)
     return lst
+
+
+def create_folder(path):
+    if not os.path.exists(path):
+        print "Create New Folder: %s " % path
+        os.makedirs(path)
+    return path
+
+
+def get_timestamp(time_fmt='%Y_%m_%d-%H_%M_%S', t=None):
+    t = t if t else time.time()
+    return time.strftime(time_fmt, time.localtime(t))
+
+
+def get_time():
+    return time.time()
