@@ -126,7 +126,7 @@ function AjaxUpload(){
                headers: {
                   "Cache-Control":"no-cache",
                   "X-Requested-With": "XMLHttpRequest",
-                  "X-File-Name":fname
+                  "X-File-Name":file_name
                }
            })
            .done(function(res) {})
