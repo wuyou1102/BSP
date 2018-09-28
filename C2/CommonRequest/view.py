@@ -56,7 +56,10 @@ def upload_file(request):
                                              backup=backup_folder)
                 return HttpResponse(result)
             elif _type == "Report":
-                return HttpResponse(store_report(os.path.join(PATH_WEEKLY, _data, "Reports"), uploadfile))
+                store_path = Function.create_folder(os.path.join(PATH_WEEKLY, _data, "Reports"))
+                result = store_report(store_path=store_path, uploadfile=uploadfile, history=history_text,
+                                      backup=backup_folder)
+                return HttpResponse(result)
             return HttpResponse('Error')
     else:
         return HttpResponse('method must be post')
@@ -88,7 +91,7 @@ def store_report(store_path, uploadfile, history, backup):
     file_path = os.path.join(store_path, file_name)
     if os.path.exists(file_path):
         __write_history(history=history, msg="Find duplicate %s" % file_name)
-        backup_file = "%s.%s" % (file_name,Function.get_time())
+        backup_file = "%s.%s" % (file_name, Function.get_time())
         os.rename(file_path, os.path.join(backup, backup_file))
         __write_history(history=history, msg="{src}  --->  {dst}".format(src=file_name, dst=backup_file))
     with open(file_path, 'wb+') as f:
