@@ -39,11 +39,11 @@ def upload_file(request):
     print 'ssssssssss'
     if request.method == 'POST':
         file = request.FILES.get('file')
-        _data= request.GET["version"]
-        _data= request.GET["type"]
+        _data= request.POST["version"]
+        _type= request.POST["type"]
         print file
         print _data
-        print _data
+        print _type
         return HttpResponse('ok')
     else:
         return HttpResponse('method must be post')
