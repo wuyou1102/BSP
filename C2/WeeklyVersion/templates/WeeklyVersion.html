@@ -21,11 +21,15 @@ function CreateRow(build){
     var debug_info = CreateDebugInfo(build.debug_info);
     var commit_history = CreateCommitHistory(build.commit_history);
     var release_notes= CreateReleaseNotes(build.release_notes);
+    var test_reports = CreateReleaseNotes(build.release_notes);
+    var upload_button = CreateUpload(build.name);
     Row.appendChild(name)
     Row.appendChild(binary)
     Row.appendChild(debug_info)
     Row.appendChild(commit_history)
     Row.appendChild(release_notes)
+    Row.appendChild(test_reports)
+    Row.appendChild(upload_button)
     return Row
 }
 
@@ -61,6 +65,8 @@ window.onload=function(){
                     <th>提交记录</th>
                     <th>版本注释</th>
                     <th>测试报告</th>
+                    <th>文件上传</th>
+                    <th>历史记录</th>
                 </tr>
             </table>
         </div>

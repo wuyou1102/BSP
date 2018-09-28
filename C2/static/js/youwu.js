@@ -68,21 +68,27 @@ function CreateReleaseNotesHref(Path){
     hyperlink.appendChild(text_name);
     return hyperlink;
 }
-
-function CreateUploadBtn(){
+function CreateUpload(Name){
+    var Div=document.createElement('div');
+    var URN=CreateUploadReleaseNotes("Release"+Name);
+    var UR=CreateUploadReleaseNotes("Report");
+    Div.appendChild(URN);
+    Div.appendChild(UR);
+    return Div;
+}
+function CreateUploadReleaseNotes(Name){
     var Div=document.createElement('div');
     Div.className="fileUpload btn btn-primary";
     var Span =document.createElement("span")
-    var TextUpload=document.createTextNode("上传");
+    var TextUpload=document.createTextNode("Upload:"+Name);
     Span.appendChild(TextUpload);
     var Input =document.createElement("input");
     Input.id="uploadBtn";
     Input.type="file";
-    Input.className="upload";
+    Input.className="upload uploadBtn";
     Div.appendChild(Span);
     Div.appendChild(Input);
     return Div;
-
 }
 
 function CreateReleaseNotes(ReleaseNotes){
@@ -91,7 +97,5 @@ function CreateReleaseNotes(ReleaseNotes){
         var hyperlink = CreateReleaseNotesHref(ReleaseNotes)
         table_data.appendChild(hyperlink);
     }
-    var UploadBtn=CreateUploadBtn();
-    table_data.appendChild(UploadBtn);
     return table_data;
 }
