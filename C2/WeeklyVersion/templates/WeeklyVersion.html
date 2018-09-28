@@ -6,11 +6,9 @@ function AddRows(){
     var Builds = {{builds|safe}};
     console.log(Builds);
     var TableRow="";
-    for (var x=0;x<50;x++){
     for(i in Builds){
         TableRow=CreateRow(Builds[i]);
         Table.appendChild(TableRow);
-    }
     }
 }
 function CreateRow(build){
@@ -21,7 +19,7 @@ function CreateRow(build){
     var debug_info = CreateDebugInfo(build.debug_info);
     var commit_history = CreateCommitHistory(build.commit_history);
     var release_notes= CreateReleaseNotes(build.release_notes);
-    var test_reports = CreateReleaseNotes(build.release_notes);
+    var test_reports = CreateTestReports(build.test_reports);
     var upload_button = CreateUpload(build.name);
     Row.appendChild(name)
     Row.appendChild(binary)

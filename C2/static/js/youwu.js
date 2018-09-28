@@ -109,6 +109,18 @@ function CreateReleaseNotes(ReleaseNotes){
     }
     return table_data;
 }
+function CreateTestReports(TestReports){
+    var table_data=document.createElement('td');
+    for(i in TestReports){
+        var info = TestReports[i];
+        var name=info[0];
+        var path=info[1];
+        var hyperlink = CreateDownloadHref(name,path)
+        table_data.appendChild(hyperlink);
+        table_data.appendChild(document.createElement("br"));
+    }
+    return table_data;
+}
 
 function AjaxUpload(){
         var xhr = new XMLHttpRequest();
@@ -124,7 +136,7 @@ function AjaxUpload(){
                 var response=xhr.responseText;
                 alert(response);
                 if(response=="上传成功"){
-                    alert("hello world");
+                    location.reload();
                 }
             }
         };
