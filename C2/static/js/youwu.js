@@ -123,12 +123,10 @@ function AjaxUpload(){
                cache: false,
                data: formData,
                processData: false,
-               headers: {
-                  "Cache-Control":"no-cache",
-                  "X-Requested-With": "XMLHttpRequest",
-                  "X-File-Name":file_name
-               }
-           })
-           .done(function(res) {})
-           .fail(function(res) {});
+               contentType:false,
+               success:function(data){
+                    window.clearInterval(timer);
+                    console.log("over..");
+                },;
+            });
 }

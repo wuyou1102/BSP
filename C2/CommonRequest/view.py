@@ -36,6 +36,7 @@ def download_file(request):
         return HttpResponse('method must be get')
 
 def upload_file(request):
+    print 'ssssssssss'
     if request.method == 'POST':
         file = request.FILES.get('file')
         _data= request.GET["version"]
