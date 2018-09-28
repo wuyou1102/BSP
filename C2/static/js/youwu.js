@@ -81,10 +81,10 @@ function CreateUploadButton(Name,Type){
     var Div=document.createElement('div');
     if (Type=="ReleaseNotes"){
         var ClassName="fileUpload btn btn-primary upload-btn";
-        var Name="上传版本注释";
+        var Name="版本注释";
     }else if (Type=="Report"){
         var ClassName="fileUpload btn btn-success upload-btn";
-        var Name="上传测试报告";
+        var Name="测试报告";
     }
     Div.className=ClassName;
     var Span =document.createElement("span")
