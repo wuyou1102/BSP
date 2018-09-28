@@ -93,7 +93,7 @@ function CreateUploadButton(Data,Type){
     var Input =document.createElement("input");
     Input.type="file";
     Input.className="upload uploadBtn";
-    Input.x=Daily;
+    Input.x=Data;
     Input.y=Type;
     Input.addEventListener("change",AjaxUpload);
     Div.appendChild(Span);
