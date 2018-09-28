@@ -125,7 +125,7 @@ function AjaxUpload(){
             };
         };
         xhr.send(formData);
-        var response = xhr.statusText;
+        var response=JSON.parse(xhr.responseText);
         alert(response);
         if (xhr.status == 200 && response.status == 'OK') {
             console.log('successful');
