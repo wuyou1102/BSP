@@ -59,3 +59,4 @@ function CreateCommitHistory(CommitHistory){
         table_data.appendChild(hyperlink);
     }
     return table_data
+}
