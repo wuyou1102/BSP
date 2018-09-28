@@ -38,7 +38,7 @@ def download_file(request):
 def upload_file(request):
     if request.method == 'POST':
         file = request.FILES.get('file')
-        _data= request.GET["data"]
+        _data= request.GET["version"]
         _data= request.GET["type"]
         print file
         print _data
