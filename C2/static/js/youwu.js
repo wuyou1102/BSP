@@ -118,7 +118,7 @@ function AjaxUpload(){
         formData.append('version',this.x);
         formData.append('type',this.y);
         $.ajax({
-               url: '/Upload',
+               url: '/Upload/',
                type: 'POST',
                cache: false,
                data: formData,
