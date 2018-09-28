@@ -122,6 +122,7 @@ function AjaxUpload(){
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 console.log(xhr.responseText)
+                alert('sss');
             };
         };
         xhr.send(formData);
