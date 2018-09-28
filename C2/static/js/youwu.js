@@ -111,22 +111,18 @@ function CreateReleaseNotes(ReleaseNotes){
 }
 
 function AjaxUpload(){
+        var xhr = new XMLHttpRequest();
         var formData = new FormData();
         var file = this.files[0];
         var file_name= file.name;
         formData.append('file',file);
         formData.append('version',this.x);
         formData.append('type',this.y);
-        $.ajax({
-               url: '/Upload/',
-               type: 'POST',
-               cache: false,
-               data: formData,
-               processData: false,
-               contentType:false,
-               success:function(data){
-                    window.clearInterval(timer);
-                    console.log("over..");
-                },;
-            });
+        xhr.open('post', '/Upload/', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                console.log(xhr.responseText)               
+            };
+        };
+        xhr.send(fm)
 }
