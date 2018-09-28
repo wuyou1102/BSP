@@ -91,7 +91,6 @@ function CreateUploadButton(Name,Type){
     var TextUpload=document.createTextNode(Name);
     Span.appendChild(TextUpload);
     var Input =document.createElement("input");
-    Input.id="uploadBtn";
     Input.type="file";
     Input.className="upload uploadBtn";
     Div.appendChild(Span);
