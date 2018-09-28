@@ -77,7 +77,7 @@ function CreateUpload(Name){
     table_data.appendChild(UR);
     return table_data;
 }
-function CreateUploadButton(Name,Type){
+function CreateUploadButton(Data,Type){
     var Div=document.createElement('div');
     if (Type=="ReleaseNotes"){
         var ClassName="fileUpload btn btn-primary upload-btn";
@@ -93,6 +93,9 @@ function CreateUploadButton(Name,Type){
     var Input =document.createElement("input");
     Input.type="file";
     Input.className="upload uploadBtn";
+    Input.addEventListener("change",AjaxUpload(this));
+    Input.x=Data;
+    Input.y=Type
     Div.appendChild(Span);
     Div.appendChild(Input);
     return Div;
@@ -105,4 +108,8 @@ function CreateReleaseNotes(ReleaseNotes){
         table_data.appendChild(hyperlink);
     }
     return table_data;
+}
+
+function AjaxUpload(obj){
+    alert(this.x)
 }
