@@ -124,5 +124,5 @@ function AjaxUpload(){
                 console.log(xhr.responseText)
             };
         };
-        xhr.send(fm)
+        xhr.send(formData)
 }
