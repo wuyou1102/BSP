@@ -110,6 +110,7 @@ function CreateReleaseNotes(ReleaseNotes){
     return table_data;
 }
 function CreateTestReports(TestReports){
+    console.log(TestReports)
     var table_data=document.createElement('td');
     for(i in TestReports){
         var info = TestReports[i];
