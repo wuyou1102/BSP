@@ -37,17 +37,9 @@ def download_file(request):
 
 def upload_file(request):
     if request.method == 'POST':
-        relative_path = request.PO["path"]
-        _type = request.GET["type"]
-        file_path = os.path.join(Path.get_path(_type), relative_path)
-        if os.path.exists(file_path):
-            file_name = __format_file_name(relative_path)
-            response = StreamingHttpResponse(Function.file_iterator(file_path))
-            response['Content-Type'] = 'application/octet-stream'
-            response['Content-Disposition'] = 'attachment; filename=%s' % file_name
-            return response
-        else:
-            return HttpResponse(u"对不起，没有找到文件：%s" % relative_path)
+        file = request.FILES.get('file')
+        print file
+
     else:
         return HttpResponse('method must be post')
 def __get_commit_history_name(path):

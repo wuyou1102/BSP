@@ -110,8 +110,19 @@ function CreateReleaseNotes(ReleaseNotes){
     return table_data;
 }
 
-function AjaxUpload(obj){
-    alert(this.type )
-    alert(this.x )
-    alert(this.y )
+function AjaxUpload(){
+        var xhr = new XMLHttpRequest();                            // 创建XMLHttpRequest 对象
+        var fm = new FormData()                                    // 创建表单
+        var file_obj = this.files[0]    // 获取上传的文件对象
+        console.log(file_obj)                                      // 打印文件对象
+        fm.append('file',file_obj)                                //  将文件对象添加到form 里面
+        fm.append('type',this.y)                                //  将文件对象添加到form 里面
+        fm.append('version',this.x)                                //  将文件对象添加到form 里面
+        xhr.open('post', '/Upload/', true);                       //  创建post 请求
+        xhr.onreadystatechange = function () {                    //  请求成功执行回调函数
+            if (xhr.readyState == 4) {                            //  服务期返回 状态码 4的时候
+                console.log(xhr.responseText)                     //   打印服务器回调信息
+            };
+        };
+        xhr.send(fm)
 }
