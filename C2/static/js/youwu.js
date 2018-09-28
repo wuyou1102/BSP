@@ -73,6 +73,7 @@ function CreateUpload(Name){
     var URN=CreateUploadReleaseNotes("Release"+Name);
     var UR=CreateUploadReleaseNotes("Report");
     Div.appendChild(URN);
+    Div.appendChild(document.createElement('br'))
     Div.appendChild(UR);
     return Div;
 }
@@ -80,7 +81,7 @@ function CreateUploadReleaseNotes(Name){
     var Div=document.createElement('div');
     Div.className="fileUpload btn btn-primary";
     var Span =document.createElement("span")
-    var TextUpload=document.createTextNode("Upload:"+Name);
+    var TextUpload=document.createTextNode(Name);
     Span.appendChild(TextUpload);
     var Input =document.createElement("input");
     Input.id="uploadBtn";
