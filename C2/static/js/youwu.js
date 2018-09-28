@@ -79,7 +79,7 @@ function CreateUpload(Name){
 }
 function CreateUploadReleaseNotes(Name){
     var Div=document.createElement('div');
-    Div.className="fileUpload btn btn-primary";
+    Div.className="fileUpload btn btn-primary upload-btn";
     var Span =document.createElement("span")
     var TextUpload=document.createTextNode(Name);
     Span.appendChild(TextUpload);
