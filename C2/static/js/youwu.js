@@ -125,7 +125,8 @@ function AjaxUpload(){
             };
         };
         xhr.send(formData);
-        var response = JSON.parse(xhr.responseText);
+        var response = xhr.responseText;
+        alert(response);
         if (xhr.status == 200 && response.status == 'OK') {
             console.log('successful');
         } else {
