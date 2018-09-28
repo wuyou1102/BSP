@@ -1,6 +1,6 @@
     .build_table {
         margin-left:10%;
-        padding:0px 1px;
+        padding:0px 0px;
     }
     .build_body {
         margin-top:4%;
@@ -20,7 +20,7 @@
         padding: 8px;
         border-style: solid;
         border-color: #a9c6c9;
-        background-color: #61c4bf;
+
     }
     table.altrowstable td {
         border-width: 1px;
@@ -35,7 +35,7 @@
     .row_title{
         font-family: verdana,arial,sans-serif;
         font-size:18px;
-        background-color:#008FFF;
+        background-color: #61c4bf;
     }
     .row_data {
         background-color:#d4e3e5;
