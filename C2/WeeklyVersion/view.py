@@ -36,7 +36,7 @@ def __get_daily_build_info():
 def __get_release_notes(path):
     if os.path.exists(path):
         return path.replace(PATH_WEEKLY, '')
-    return None
+    return "None"
 
 
 def __get_test_reports(path):
@@ -79,4 +79,4 @@ def __get_debug_info(path):
 def __get_commit_history(path):
     if os.path.exists(path):
         return path.replace(PATH_WEEKLY, '')
-    return None
+    return "None"

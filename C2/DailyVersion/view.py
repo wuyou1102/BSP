@@ -58,4 +58,4 @@ def __get_debug_info(path):
 def __get_commit_history(path):
     if os.path.exists(path):
         return path.replace(PATH_DAILY, '')
-    return None
+    return "None"
