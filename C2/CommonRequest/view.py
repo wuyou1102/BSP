@@ -82,7 +82,7 @@ def store_release_notes(store_path, uploadfile, history, backup):
         for chunk in uploadfile.chunks():
             f.write(chunk)
     __write_history(history=history, msg="Upload %s Success" % file_name)
-    return u"OK"
+    return u"上传成功"
 
 
 def store_report(store_path, uploadfile, history, backup):
@@ -99,7 +99,7 @@ def store_report(store_path, uploadfile, history, backup):
         for chunk in uploadfile.chunks():
             f.write(chunk)
     __write_history(history=history, msg="Upload %s Success" % file_name)
-    return u"OK"
+    return u"上传成功"
 
 
 def __write_history(history, msg):

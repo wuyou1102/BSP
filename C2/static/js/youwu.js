@@ -121,17 +121,12 @@ function AjaxUpload(){
         xhr.open('post', '/Upload/', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
-                console.log(xhr.responseText)
-                alert('sss');
-            };
+                var response=JSON.parse(xhr.responseText);
+                alert(response);
+                if(response=="上传成功"){
+                    alert("hello world");
+                }
+            }
         };
         xhr.send(formData);
-        var response=JSON.parse(xhr.responseText);
-        alert(response);
-        if (xhr.status == 200 && response.status == 'OK') {
-            console.log('successful');
-        } else {
-            console.log('failed');
-        }
-
 }
