@@ -81,12 +81,20 @@ def store_release_notes(store_path, uploadfile, history, backup):
     return u"OK"
 
 
-def store_report(path, uploadfile):
-    Function.create_folder(path=path)
-    with open(os.path.join(path, file.name), 'wb+') as f:
-        for chunk in file.chunks():
+def store_report(store_path, uploadfile, history, backup):
+    file_name = uploadfile.name
+    Function.create_folder(path=store_path)
+    __write_history(history=history, msg="Upload %s" % file_name)
+    file_path = os.path.join(store_path, file_name)
+    if os.path.exists(file_path):
+        __write_history(history=history, msg="Find duplicate %s" % file_name)
+        backup_file = "%s.%s" % (file_name,Function.get_time())
+        os.rename(file_path, os.path.join(backup, backup_file))
+        __write_history(history=history, msg="{src}  --->  {dst}".format(src=file_name, dst=backup_file))
+    with open(file_path, 'wb+') as f:
+        for chunk in uploadfile.chunks():
             f.write(chunk)
-    return "OK"
+    return u"OK"
 
 
 def __write_history(history, msg):
