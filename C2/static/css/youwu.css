@@ -32,7 +32,7 @@
     table tr{
          text-align: center;
     }
-
+    
     table tr:nth-child(2n){
          background-color:#c3dde0;
     }
@@ -40,6 +40,7 @@
         font-family: verdana,arial,sans-serif;
         font-size:18px;
         background-color: #61c4bf;
+        text-align: center;
     }
     .row_data {
         background-color:#d4e3e5;
