@@ -114,9 +114,9 @@ function AjaxUpload(){
         var formData = new FormData();
         var file = this.files[0];
         var file_name= file.name;
-        formData.append('file',file)
-        formData.append('version',this.x)
-        formData.append('type',this.y)
+        formData.append('file',file);
+        formData.append('version',this.x);
+        formData.append('type',this.y);
         $.ajax({
                url: 'upload.php',
                type: 'POST',
