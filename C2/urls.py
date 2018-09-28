@@ -28,5 +28,6 @@ urlpatterns = [
                   url(r'^DailyBuild/', DailyVersion.get_build_info),
                   url(r'^WeeklyBuild/', WeeklyVersion.get_build_info),
                   url(r'^Download/', CommonRequest.download_file),
+                  url(r'^Upload/', CommonRequest.upload_file),
                   url(r'^CommitHistory/', CommonRequest.commit_history),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
