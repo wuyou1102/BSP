@@ -41,22 +41,22 @@ def download_file(request):
 
 def upload_file(request):
     if request.method == 'POST':
-        file = request.FILES.get('file')
+        uploadfile = request.FILES.get('file')
         _data = request.POST["version"]
         _type = request.POST["type"]
 
         backup_folder = Function.create_folder(os.path.join(PATH_WEEKLY, _data, "Backup"))
         history_text = os.path.join(backup_folder, "History.txt")
-        if file is None:
+        if uploadfile is None:
             return HttpResponse("Nothing Upload")
         else:
             if _type == "ReleaseNotes":
                 store_path = Function.create_folder(os.path.join(PATH_WEEKLY, _data))
-                result = store_release_notes(store_path=store_path, uploadfile=file, history=history_text,
+                result = store_release_notes(store_path=store_path, uploadfile=uploadfile, history=history_text,
                                              backup=backup_folder)
                 return HttpResponse(result)
             elif _type == "Report":
-                return HttpResponse(store_report(os.path.join(PATH_WEEKLY, _data, "Reports"), file))
+                return HttpResponse(store_report(os.path.join(PATH_WEEKLY, _data, "Reports"), uploadfile))
             return HttpResponse('Error')
     else:
         return HttpResponse('method must be post')
@@ -76,23 +76,17 @@ def store_release_notes(store_path, uploadfile, history, backup):
         os.rename(file_path, os.path.join(backup, backup_file))
         __write_history(history=history, msg="{src}  --->  {dst}".format(src="ReleaseNotes.txt", dst=backup_file))
     with open(file_path, 'wb+') as f:
-        for chunk in file.chunks():
+        for chunk in uploadfile.chunks():
             f.write(chunk)
     return u"OK"
 
 
-def store_report(path, file):
+def store_report(path, uploadfile):
     Function.create_folder(path=path)
     with open(os.path.join(path, file.name), 'wb+') as f:
         for chunk in file.chunks():
             f.write(chunk)
     return "OK"
-
-
-def __init_store(store_path, file_name, history):
-    __write_history(history=history, msg="Upload file_name")
-    if os.path.exists(os.path.join(store_path, file_name)):
-        os.rename()
 
 
 def __write_history(history, msg):
