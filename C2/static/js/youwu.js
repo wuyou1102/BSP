@@ -121,7 +121,7 @@ function AjaxUpload(){
         xhr.open('post', '/Upload/', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
-                var response=JSON.parse(xhr.responseText);
+                var response=xhr.responseText;
                 alert(response);
                 if(response=="上传成功"){
                     alert("hello world");
