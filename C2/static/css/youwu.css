@@ -4,13 +4,12 @@
     }
     .build_body {
         margin-top:4%;
-        padding:10px 0px;
-        background-color: black;
+        padding:0px 0px;
     }
     table.altrowstable {
         font-family: verdana,arial,sans-serif;
         font-size:15px;
-        color:#5fc2bd;
+        color:black;
         border-width: 1px;
         border-color: #a9c6c9;
         border-collapse: collapse;
