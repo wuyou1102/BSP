@@ -4,7 +4,7 @@
     }
     .build_body {
         margin-top:4%;
-        padding:0px 8px;
+        padding:8px 0px;
     }
     table.altrowstable {
         font-family: verdana,arial,sans-serif;
@@ -22,7 +22,6 @@
     }
     table.altrowstable td {
         border-width: 1px;
-        padding: 8px;
         border-style: solid;
         border-color: #a9c6c9;
     }
