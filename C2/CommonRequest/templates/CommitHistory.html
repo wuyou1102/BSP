@@ -58,7 +58,7 @@
     }
     function CreateMsgDiv(Message){
         var Div=document.createElement('div');
-        Div.className="attr_value";
+        Div.className="attr_msg";
         console.log(Message);
         for(i in Message){
             var Text = document.createTextNode(Message[i]);
@@ -88,6 +88,9 @@
         float: left;
         <!--height: 50px;-->
         <!--background-color: orange;-->
+    }
+    .attr_msg{
+        font-color:#02B5BB;
     }
     .commit_history_title {
         font-size:26px;
