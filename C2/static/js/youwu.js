@@ -93,6 +93,8 @@ function CreateUploadButton(Data,Type){
     var Input =document.createElement("input");
     Input.type="file";
     Input.className="upload uploadBtn";
+    Input.x=Daily;
+    Input.y=Type;
     Input.addEventListener("change",AjaxUpload);
     Div.appendChild(Span);
     Div.appendChild(Input);
@@ -110,4 +112,6 @@ function CreateReleaseNotes(ReleaseNotes){
 
 function AjaxUpload(obj){
     alert(this.type )
+    alert(this.x )
+    alert(this.y )
 }
