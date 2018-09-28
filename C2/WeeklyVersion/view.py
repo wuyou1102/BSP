@@ -41,9 +41,11 @@ def __get_release_notes(path):
 
 def __get_test_reports(path):
     lst = list()
+    print path
     if not os.path.exists(path):
         return lst
     for f in os.listdir(path):
+        print f
         file_path = os.path.join(path, f).replace(PATH_WEEKLY, '')
         _file = [f, file_path]
         lst.append(_file)
