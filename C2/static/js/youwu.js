@@ -70,16 +70,23 @@ function CreateReleaseNotesHref(Path){
 }
 function CreateUpload(Name){
     var Div=document.createElement('div');
-    var URN=CreateUploadReleaseNotes("Release"+Name);
-    var UR=CreateUploadReleaseNotes("Report");
+    var URN=CreateUploadButton(Name,"ReleaseNotes");
+    var UR=CreateUploadButton(Name,"Report");
     Div.appendChild(URN);
     Div.appendChild(document.createElement('br'))
     Div.appendChild(UR);
     return Div;
 }
-function CreateUploadReleaseNotes(Name){
+function CreateUploadButton(Name,Type){
     var Div=document.createElement('div');
-    Div.className="fileUpload btn btn-primary upload-btn";
+    if (Type=="ReleaseNotes"){
+        var ClassName="fileUpload btn btn-primary upload-btn";
+        var Name="上传版本注释";
+    }else if (Type=="Report"){
+        var ClassName="fileUpload btn btn-success upload-btn";
+        var Name="上传测试报告";
+    }
+    Div.className=ClassName;
     var Span =document.createElement("span")
     var TextUpload=document.createTextNode(Name);
     Span.appendChild(TextUpload);

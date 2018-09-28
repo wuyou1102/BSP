@@ -61,6 +61,6 @@
         filter: alpha(opacity=0);
     }
     .upload-btn {
-        margin: 0px;
-        padding: 1px;
+        margin: 1px;
+        padding: 0px;
     }
