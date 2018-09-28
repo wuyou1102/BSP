@@ -124,5 +124,12 @@ function AjaxUpload(){
                 console.log(xhr.responseText)
             };
         };
-        xhr.send(formData)
+        xhr.send(formData);
+        var response = JSON.parse(xhr.responseText);
+        if (xhr.status == 200 && response.status == 'OK') {
+            console.log('successful');
+        } else {
+            console.log('failed');
+        }
+
 }

@@ -35,18 +35,23 @@ def download_file(request):
     else:
         return HttpResponse('method must be get')
 
+
 def upload_file(request):
-    print 'ssssssssss'
     if request.method == 'POST':
         file = request.FILES.get('file')
-        _data= request.POST["version"]
-        _type= request.POST["type"]
-        print file
-        print _data
-        print _type
-        return HttpResponse('ok')
+        _data = request.POST["version"]
+        _type = request.POST["type"]
+        if file is None:
+            return HttpResponse("Nothing Upload")
+        else:
+            with open(os.path.join(Path.DailyBuild, _data, file.name), 'wb+') as f:
+                for chunk in file.chunks():
+                    f.write(chunk)
+            return HttpResponse('OK')
     else:
         return HttpResponse('method must be post')
+
+
 def __get_commit_history_name(path):
     name, text = os.path.split(path)
     return name
