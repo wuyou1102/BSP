@@ -6,7 +6,7 @@ function CreateNameTD(Name){
     var text_name=document.createTextNode(Name);
     var table_data=document.createElement('td');
     table_data.appendChild(text_name);
-    return table_data
+    return table_data;
 }
 function CreateBinaryTD(Binary){
     var table_data=document.createElement('td');
@@ -18,7 +18,7 @@ function CreateBinaryTD(Binary){
         table_data.appendChild(hyperlink);
         table_data.appendChild(document.createElement("br"));
     }
-    return table_data
+    return table_data;
 }
 function CreateDownloadHref(Name,Path){
     var hyperlink = document.createElement('a');
@@ -30,7 +30,7 @@ function CreateDownloadHref(Name,Path){
     hyperlink.download ="";
     var text_name=document.createTextNode(Name);
     hyperlink.appendChild(text_name);
-    return hyperlink
+    return hyperlink;
 }
 function CreateCommitHistoryHref(Path){
     var hyperlink = document.createElement('a');
@@ -38,7 +38,7 @@ function CreateCommitHistoryHref(Path){
     hyperlink.href=url;
     var text_name=document.createTextNode("查看");
     hyperlink.appendChild(text_name);
-    return hyperlink
+    return hyperlink;
 }
 function CreateDebugInfo(DebugInfo){
     var table_data=document.createElement('td');
@@ -50,7 +50,7 @@ function CreateDebugInfo(DebugInfo){
         table_data.appendChild(hyperlink);
         table_data.appendChild(document.createElement("br"));
     }
-    return table_data
+    return table_data;
 }
 function CreateCommitHistory(CommitHistory){
     var table_data=document.createElement('td');
@@ -58,5 +58,40 @@ function CreateCommitHistory(CommitHistory){
         var hyperlink = CreateCommitHistoryHref(CommitHistory)
         table_data.appendChild(hyperlink);
     }
-    return table_data
+    return table_data;
+}
+function CreateReleaseNotesHref(Path){
+    var hyperlink = document.createElement('a');
+    url="/CommitHistory?type=Daily&path="+Path
+    hyperlink.href=url;
+    var text_name=document.createTextNode("查看");
+    hyperlink.appendChild(text_name);
+    return hyperlink;
+}
+
+function CreateUploadBtn(){
+    var Div=document.createElement('div');
+    Div.className="fileUpload btn btn-primary";
+    var Span =document.createElement("span")
+    var TextUpload=document.createTextNode("上传");
+    Span.appendChild(TextUpload);
+    var Input =document.createElement("input");
+    Input.id="uploadBtn";
+    Input.type="file";
+    Input.className="upload";
+    Div.appendChild(Span);
+    Div.appendChild(Input);
+    return Div;
+
+}
+
+function CreateReleaseNotes(ReleaseNotes){
+    var table_data=document.createElement('td');
+    if (ReleaseNotes != "None"){
+        var hyperlink = CreateReleaseNotesHref(ReleaseNotes)
+        table_data.appendChild(hyperlink);
+    }
+    var UploadBtn=CreateUploadBtn();
+    table_data.appendChild(UploadBtn);
+    return table_data;
 }

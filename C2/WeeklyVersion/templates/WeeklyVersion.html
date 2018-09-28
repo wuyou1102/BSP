@@ -20,10 +20,12 @@ function CreateRow(build){
     var binary = CreateBinaryTD(build.binary);
     var debug_info = CreateDebugInfo(build.debug_info);
     var commit_history = CreateCommitHistory(build.commit_history);
+    var release_notes= CreateReleaseNotes(build.release_notes);
     Row.appendChild(name)
     Row.appendChild(binary)
     Row.appendChild(debug_info)
     Row.appendChild(commit_history)
+    Row.appendChild(release_notes)
     return Row
 }
 
@@ -38,6 +40,7 @@ window.onload=function(){
 <head>
     <meta charset="UTF-8">
     <link href="/static/css/youwu.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script src="/static/js/youwu.js" type="text/javascript"></script>
     <title>感悟科技</title>
 </head>
