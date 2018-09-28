@@ -69,13 +69,13 @@ function CreateReleaseNotesHref(Path){
     return hyperlink;
 }
 function CreateUpload(Name){
-    var Div=document.createElement('div');
+    var table_data=document.createElement('td');
     var URN=CreateUploadButton(Name,"ReleaseNotes");
     var UR=CreateUploadButton(Name,"Report");
-    Div.appendChild(URN);
-    Div.appendChild(document.createElement('br'))
-    Div.appendChild(UR);
-    return Div;
+    table_data.appendChild(URN);
+    table_data.appendChild(document.createElement('br'))
+    table_data.appendChild(UR);
+    return table_data;
 }
 function CreateUploadButton(Name,Type){
     var Div=document.createElement('div');
