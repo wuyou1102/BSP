@@ -121,7 +121,7 @@ function AjaxUpload(){
         xhr.open('post', '/Upload/', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
-                console.log(xhr.responseText)               
+                console.log(xhr.responseText)
             };
         };
         xhr.send(fm)
