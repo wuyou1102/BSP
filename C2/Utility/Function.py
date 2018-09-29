@@ -26,12 +26,11 @@ __dict_commit = {
 def get_commit_blocks(lines):
     def remove_empty_lines():
         lines_with_out_empty = list()
-        for l in lines:
-            if '    ' in l:
-                l = l.replace('    ', '')
-            print l
-            if l:
-                lines_with_out_empty.append(l)
+        for ln in lines:
+            if '    ' in ln:
+                ln = ln.replace('    ', '')
+            if ln:
+                lines_with_out_empty.append(ln)
         return lines_with_out_empty
 
     lines = remove_empty_lines()

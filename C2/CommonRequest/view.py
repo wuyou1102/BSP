@@ -21,7 +21,7 @@ def commit_history(request):
         # context['name'] = __get_commit_history_name(relative_path)
         name="王庆军，请教大王"
         print repr(name)
-        context['name'] = name
+        context['name'] = repr(name)
         context['commits'] = __parse_commits(abs_path)
         return render(request, 'CommitHistory.html', context)
     else:
