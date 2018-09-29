@@ -4,6 +4,7 @@
     function AddReleaseNotes(){
         var Table = document.getElementById("getintouch");
         var Commits = {{commits|safe}};
+        console.log(Commits);
         var Container="";
         for(i in Commits){
             Container=CreateContainer(Commits[i]);
@@ -59,10 +60,8 @@
     function CreateMsgDiv(Message){
         var Div=document.createElement('div');
         Div.className="attr_value attr_msg";
-        console.log(Message);
         for(i in Message){
             alert(Message[i]);
-            console.log(Message[i]);
             var Text = document.createTextNode(Message[i]);
             Div.appendChild(Text);
             Div.appendChild(document.createElement("br"));
@@ -107,10 +106,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>感悟科技</title>
-    <!--<link href="/static/css/demo.css" rel="stylesheet" type="text/css">-->
-    <!--<script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
-    <!--<script src="/static/js/jquery-ui.js" type="text/javascript"></script>-->
-    <!--<script src="/static/js/jquery.ffform.js" type="text/javascript"></script>-->
+    <link href="/static/css/demo.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/static/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.ffform.js" type="text/javascript"></script>
     <!--<link href="static/css/demo.css" rel="stylesheet" type="text/css">-->
     <!--<script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
     <!--<script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script>-->
