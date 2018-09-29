@@ -135,10 +135,17 @@ def __parse_commits(path):
             return Function.format_commit_msg(lines)
     else:
         return []
+
+
 def __parse_release_note(path):
     if os.path.exists(path):
         with open(path, 'r') as rfile:
-            return rfile.readlines()
+            lst = []
+            for line in rfile.readlines():
+                line = line.strip('\r\n')
+                if line:
+                    lst.append(line)
+            return lst
     else:
         return []
 
