@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.90.42',
     'jenkins.sensethink.cn',
+    'rombuild.sensethink.cn',
 ]
 
 # Application definition

@@ -3,7 +3,7 @@ from django.shortcuts import render
 import os
 from C2.Utility import Path
 
-PATH_WEEKLY = Path.DailyBuild
+PATH_WEEKLY = Path.WeeklyBuild
 
 
 def get_build_info(request):
