@@ -27,9 +27,6 @@ def get_commit_blocks(lines):
     def remove_empty_lines():
         lines_with_out_empty = list()
         for l in lines:
-            l = l.decode('utf-8').strip('\r\n')
-            print l
-            print repr(l)
             if '    ' in l:
                 l = l.replace('    ', '')
             if l:
@@ -86,5 +83,5 @@ def get_time():
 if __name__ == '__main__':
     with open("D:\Profile\Desktop\ReleaseNotes.txt") as w:
         print format_commit_msg(w.readlines())
-    print repr('1. æ´åSIM 9/20 SDK')
-    print ( '\xef\xbb\xbf1. \xe6\x95\xb4\xe5\x90\x88SIM 9/20 SDK')
+    print '1. \xe6\x95\xb4\xe5\x90\x88SIM 9/20 SDK'
+    print '1. \xc3\xa6\xc2\x95\xc2\xb4\xc3\xa5\xc2\x90\xc2\x88SIM 9/20 SDK'
