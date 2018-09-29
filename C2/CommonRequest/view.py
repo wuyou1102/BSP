@@ -12,6 +12,19 @@ PATH_WEEKLY = Path.WeeklyBuild
 PATH_DAILY = Path.DailyBuild
 
 
+def release_notes(request):
+    if request.method == 'GET':
+        context = dict()
+        relative_path = request.GET["path"]
+        _type = request.GET["type"]
+        abs_path = os.path.join(Path.get_path(_type), relative_path)
+        context['name'] = __get_commit_history_name(relative_path)
+        context['release_notes'] = __parse_release_note(abs_path)
+        return render(request, 'ReleaseNotes.html', context)
+    else:
+        return HttpResponse('method must be get')
+
+
 def commit_history(request):
     if request.method == 'GET':
         context = dict()
@@ -120,6 +133,12 @@ def __parse_commits(path):
         with open(path, 'r') as rfile:
             lines = rfile.readlines()
             return Function.format_commit_msg(lines)
+    else:
+        return []
+def __parse_release_note(path):
+    if os.path.exists(path):
+        with open(path, 'r') as rfile:
+            return rfile.readlines()
     else:
         return []
 
