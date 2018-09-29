@@ -31,7 +31,7 @@ def get_commit_blocks(lines):
             if '    ' in l:
                 l = l.replace('    ', '')
             if l:
-                lines_with_out_empty.append(l)
+                lines_with_out_empty.append(l.decode('gbk').encode('utf-8'))
         return lines_with_out_empty
 
     lines = remove_empty_lines()
