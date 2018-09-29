@@ -1,7 +1,7 @@
 # -*- encoding:UTF-8 -*-
 import os
 import time
-
+from urllib import quote
 
 def file_iterator(file_name, chunk_size=1024):
     with open(file_name) as f:
@@ -41,7 +41,7 @@ def get_commit_blocks(lines):
             if block:
                 blocks.append(block)
                 block = list()
-        block.append(line)
+        block.append(quote(line))
     if block:
         blocks.append(block)
     return blocks
