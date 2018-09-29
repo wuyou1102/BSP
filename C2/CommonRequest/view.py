@@ -4,7 +4,10 @@ from django.http import StreamingHttpResponse
 from django.http import HttpResponse
 import os
 from C2.Utility import Function, Path
+import sys
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
 PATH_WEEKLY = Path.WeeklyBuild
 PATH_DAILY = Path.DailyBuild
 
