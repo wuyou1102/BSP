@@ -19,7 +19,9 @@ def commit_history(request):
         _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
         # context['name'] = __get_commit_history_name(relative_path)
-        context['name'] = "王庆军，请教大王"
+        name="王庆军，请教大王"
+        print repr(name)
+        context['name'] = name
         context['commits'] = __parse_commits(abs_path)
         return render(request, 'CommitHistory.html', context)
     else:
