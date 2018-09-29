@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import os
 from C2.Utility import Function, Path
 
-PATH_WEEKLY = Path.DailyBuild
+PATH_WEEKLY = Path.WeeklyBuild
 PATH_DAILY = Path.DailyBuild
 
 
