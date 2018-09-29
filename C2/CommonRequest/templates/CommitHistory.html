@@ -3,7 +3,7 @@
 <script>
     function AddReleaseNotes(){
         var Table = document.getElementById("getintouch");
-        var Commits = {{commits}};
+        var Commits = {{commits|safe}};
         console.log(Commits);
         var Container="";
         for(i in Commits){
