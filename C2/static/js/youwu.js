@@ -62,7 +62,7 @@ function CreateCommitHistory(CommitHistory){
 }
 function CreateReleaseNotesHref(Path){
     var hyperlink = document.createElement('a');
-    url="/ReleaseNotes?type=Daily&path="+Path
+    url="/ReleaseNotes?type=Weekly&path="+Path
     hyperlink.href=url;
     var text_name=document.createTextNode("查看");
     hyperlink.appendChild(text_name);

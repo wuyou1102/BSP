@@ -30,14 +30,6 @@ function CreateRow(build){
     Row.appendChild(upload_button)
     return Row
 }
-function CreateReleaseNotesHref(Path){
-    var hyperlink = document.createElement('a');
-    url="/ReleaseNotes?type=Weekly&path="+Path
-    hyperlink.href=url;
-    var text_name=document.createTextNode("查看");
-    hyperlink.appendChild(text_name);
-    return hyperlink;
-}
 
 window.onload=function(){
     AddRows();
