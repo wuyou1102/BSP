@@ -89,7 +89,7 @@ function CreateRow(build){
                     <a href="/CommitHistory?type=Weekly&path={{ build.commit_history }}">查看</a>
                 </td>
                 <td>
-                    <a href="//ReleaseNotes?type=Weekly&path={{ build.release_notes }}">查看</a>
+                    <a href="/ReleaseNotes?type=Weekly&path={{ build.release_notes }}">查看</a>
                 </td>
                 <td>
                     {% for test_report in build.test_reports %}
@@ -108,7 +108,7 @@ function CreateRow(build){
                     <br>
                     <div class="fileUpload btn btn-success upload-btn">
                         <span>测试报告</span>
-                        <input type="file" class="upload uploadBtn" x="{{build.name}}" y="ReleaseNotes"
+                        <input type="file" class="upload uploadBtn" x="{{build.name}}" y="Report"
                                onchange="AjaxUpload()">
                     </div>
                 </td>
