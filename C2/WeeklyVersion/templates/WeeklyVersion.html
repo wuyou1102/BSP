@@ -31,10 +31,10 @@ function CreateRow(build){
     return Row
 }
 
-window.onload=function(){
-    AddRows();
-    Active("C2_WeeklyBuild");
-}
+<!--window.onload=function(){-->
+    <!--AddRows();-->
+    <!--Active("C2_WeeklyBuild");-->
+<!--}-->
 
 </script>
 <style type="text/css">
@@ -68,6 +68,11 @@ window.onload=function(){
                     <th>文件上传</th>
                     <th>历史记录</th>
                 </tr>
+                {% for build in builds %}
+                    <tr class="row_data">
+                        <td>{{build.name}}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
