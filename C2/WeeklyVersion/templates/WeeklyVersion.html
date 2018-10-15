@@ -102,13 +102,13 @@ function CreateRow(build){
                 <td>
                     <div class="fileUpload btn btn-primary upload-btn">
                         <span>发布说明</span>
-                        <input type="file" class="upload uploadBtn" x="{{build.name}}" y="ReleaseNotes"
+                        <input type="file" class="upload uploadBtn" x="{{ build.name }}" y="ReleaseNotes"
                                onchange="AjaxUpload(this)">
                     </div>
                     <br>
                     <div class="fileUpload btn btn-success upload-btn">
                         <span>测试报告</span>
-                        <input type="file" class="upload uploadBtn" x="{{build.name}}" y="Report"
+                        <input type="file" class="upload uploadBtn" x={{ build.name }} y="Report"
                                onchange="AjaxUpload(this)">
                     </div>
                     <br>
