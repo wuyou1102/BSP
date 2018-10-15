@@ -25,7 +25,7 @@ def __get_daily_build_info():
         report = os.path.join(build_path, 'Reports')
         dict_build['name'] = build
         dict_build['binaries'] = __get_binary(binary)
-        dict_build['debug_info'] = __get_debug_info(debuginfo)
+        dict_build['debug_infos'] = __get_debug_info(debuginfo)
         dict_build['commit_history'] = __get_commit_history(commit_history)
         dict_build['release_notes'] = __get_release_notes(release_notes)
         dict_build['test_reports'] = __get_test_reports(report)

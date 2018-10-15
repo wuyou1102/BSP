@@ -69,13 +69,24 @@ function CreateRow(build){
                 <td>{{build.name}}</td>
                 <td>
                     {% for binary in build.binaries %}
-                    <a href="/Download?type=Daily&path={{ binary.1 }}" download="" onclick="confirm_download()">
+                    <a href="/Download?type=Weekly&path={{ binary.1 }}" download="" onclick="return confirm_download()">
                         {{ binary.0 }}
                     </a>
                     <br>
-
                     {% endfor %}
                 </td>
+                <td>
+                    {% for debug_info in build.debug_infos %}
+                    <a href="/Download?type=Weekly&path={{ debug_info.1 }}" download="" onclick="return confirm_download()">
+                        {{ debug_info.0 }}
+                    </a>
+                    <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="/CommitHistory?type=Weekly&path={{ build.commit_history }}">查看</a>
+                </td>
+
             </tr>
             {% endfor %}
         </table>
