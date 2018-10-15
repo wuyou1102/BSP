@@ -126,12 +126,11 @@ function CreateTestReports(TestReports){
 function AjaxUpload(obj){
         var xhr = new XMLHttpRequest();
         var formData = new FormData();
-        alert(obj.files);
-        var file = obj.files[0];
+        var file = $(obj).files[0];
         var file_name= file.name;
         formData.append('file',file);
-        formData.append('version',obj.x);
-        formData.append('type',obj.y);
+        formData.append('version',$(obj).x);
+        formData.append('type',$(obj).y);
         xhr.open('post', '/Upload/', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
