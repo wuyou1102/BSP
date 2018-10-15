@@ -66,8 +66,8 @@ function CreateRow(build){
                 <td>{{build.name}}</td>
                 <td>
                     {% for binary in build.binaries %}
-                    <a href="/Download?type=Daily&path=" +{{ binary[1] }}>
-                        {{ binary[[0] }}
+                    <a href="/Download?type=Daily&path=" +{{ binary.1 }} download="" >
+                        {{ binary.0 }}
                     </a>
                     <br>
 
