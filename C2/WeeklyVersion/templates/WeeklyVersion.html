@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
+function confirm_download() {
+    return confirm("是否确认下载?");
+};
 
 function CreateRow(build){
     var Row=document.createElement('tr');
@@ -66,7 +69,7 @@ function CreateRow(build){
                 <td>{{build.name}}</td>
                 <td>
                     {% for binary in build.binaries %}
-                    <a href="/Download?type=Daily&path=" +{{ binary.1 }} download="" >
+                    <a href="/Download?type=Daily&path={{ binary.1 }}" download="" onclick="confirm_download()">
                         {{ binary.0 }}
                     </a>
                     <br>
