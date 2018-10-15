@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
-function AddRows(){
-    var Table = document.getElementById("version_table");
-    var Builds = {{builds|safe}};
-    console.log(Builds);
-    var TableRow="";
-    for(i in Builds){
-        TableRow=CreateRow(Builds[i]);
-        Table.appendChild(TableRow);
-    }
-}
+
 function CreateRow(build){
     var Row=document.createElement('tr');
     Row.className = "row_data";
@@ -36,6 +27,8 @@ function CreateRow(build){
     <!--Active("C2_WeeklyBuild");-->
 <!--}-->
 
+
+
 </script>
 <style type="text/css">
 </style>
@@ -49,32 +42,41 @@ function CreateRow(build){
     <title>感悟科技</title>
 </head>
 <body>
+<div>
+    {% include "LogoTitle.html"%}
+</div>
+<div class="build_body">
     <div>
-        {% include "LogoTitle.html"%}
+        {% include "NavigationBar.html"%}
     </div>
-    <div class="build_body">
-        <div>
-            {% include "NavigationBar.html"%}
-        </div>
-        <div class="build_table">
-            <table class="altrowstable" id="version_table">
-                <tr class="row_title">
-                    <th>版本号/版本发布时间</th>
-                    <th>软件下载</th>
-                    <th>调试信息</th>
-                    <th>提交记录</th>
-                    <th>发布说明</th>
-                    <th>测试报告</th>
-                    <th>文件上传</th>
-                    <th>历史记录</th>
-                </tr>
-                {% for build in builds %}
-                    <tr class="row_data">
-                        <td>{{build.name}}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
+    <div class="build_table">
+        <table class="altrowstable" id="version_table">
+            <tr class="row_title">
+                <th>版本号/版本发布时间</th>
+                <th>软件下载</th>
+                <th>调试信息</th>
+                <th>提交记录</th>
+                <th>发布说明</th>
+                <th>测试报告</th>
+                <th>文件上传</th>
+                <th>历史记录</th>
+            </tr>
+            {% for build in builds %}
+            <tr class="row_data">
+                <td>{{build.name}}</td>
+                <td>
+                    {% for binary in build.binaries %}
+                    <a href="/Download?type=Daily&path=" +{{ binary[1] }}>
+                        {{ binary[[0] }}
+                    </a>
+                    <br>
+
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
+</div>
 </body>
 </html>
