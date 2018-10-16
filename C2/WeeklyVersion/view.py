@@ -23,12 +23,14 @@ def __get_daily_build_info():
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
         release_notes = os.path.join(build_path, 'ReleaseNotes.txt')
         report = os.path.join(build_path, 'Reports')
+        history = os.path.join(build_path, 'Backup', 'History.txt')
         dict_build['name'] = build
         dict_build['binaries'] = __get_binary(binary)
         dict_build['debug_infos'] = __get_debug_info(debuginfo)
         dict_build['commit_history'] = __get_commit_history(commit_history)
         dict_build['release_notes'] = __get_release_notes(release_notes)
         dict_build['test_reports'] = __get_test_reports(report)
+        dict_build['history'] = __get_history(history)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
 
@@ -48,6 +50,12 @@ def __get_test_reports(path):
         _file = [f, file_path]
         lst.append(_file)
     return lst
+
+
+def __get_history(path):
+    if os.path.exists(path):
+        return path.replace(PATH_WEEKLY, '')
+    return "None"
 
 
 def __get_binary(path):

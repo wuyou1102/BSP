@@ -31,4 +31,5 @@ urlpatterns = [
                   url(r'^Upload/', CommonRequest.upload_file),
                   url(r'^CommitHistory/', CommonRequest.commit_history),
                   url(r'^ReleaseNotes/', CommonRequest.release_notes),
+                  url(r'^History/', CommonRequest.view_history),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

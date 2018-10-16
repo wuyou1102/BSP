@@ -19,9 +19,22 @@ def release_notes(request):
         relative_path = request.GET["path"]
         _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
-        context['name'] = __get_commit_history_name(relative_path)
+        context['name'] = __get_name_from_path(relative_path)
         context['release_notes'] = __parse_release_note(abs_path)
         return render(request, 'ReleaseNotes.html', context)
+    else:
+        return HttpResponse('method must be get')
+
+
+def view_history(request):
+    if request.method == 'GET':
+        context = dict()
+        relative_path = request.GET["path"]
+        _type = request.GET["type"]
+        abs_path = os.path.join(Path.get_path(_type), relative_path)
+        context['name'] = __get_name_from_path(relative_path)
+        context['history'] = __parse_history(abs_path)
+        return render(request, 'History.html', context)
     else:
         return HttpResponse('method must be get')
 
@@ -32,7 +45,7 @@ def commit_history(request):
         relative_path = request.GET["path"]
         _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
-        context['name'] = __get_commit_history_name(relative_path)
+        context['name'] = __get_name_from_path(relative_path)
         context['commits'] = __parse_commits(abs_path)
         return render(request, 'CommitHistory.html', context)
     else:
@@ -124,7 +137,7 @@ def __write_history(history, msg):
         f.write("{time} : {msg}\n".format(time=Function.get_timestamp(), msg=msg))
 
 
-def __get_commit_history_name(path):
+def __get_name_from_path(path):
     name, text = os.path.split(path)
     return name
 
@@ -150,6 +163,17 @@ def __parse_release_note(path):
     else:
         return []
 
+def __parse_history(path):
+    if os.path.exists(path):
+        with open(path, 'r') as rfile:
+            lst = []
+            for line in rfile.readlines():
+                line = line.strip('\r\n')
+                if line:
+                    lst.append(line)
+            return lst
+    else:
+        return []
 
 def __format_file_name(path):
     _path = path.split(os.sep)
