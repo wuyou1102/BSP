@@ -47,7 +47,7 @@ def download_file(request):
             file_name = __format_file_name(relative_path)
             response = StreamingHttpResponse(Function.file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
-            response['Content-Disposition'] = 'attachment; filename=%s' % file_name
+            response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(file_name)
             return response
         else:
             return HttpResponse(u"对不起，没有找到文件：%s" % relative_path)
