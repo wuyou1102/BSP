@@ -5,6 +5,7 @@ from django.http import HttpResponse
 import os
 from C2.Utility import Function, Path
 import sys
+from django.utils.encoding import escape_uri_path
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -47,7 +48,7 @@ def download_file(request):
             file_name = __format_file_name(relative_path)
             response = StreamingHttpResponse(Function.file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
-            response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(file_name)
+            response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(file_name))
             return response
         else:
             return HttpResponse(u"对不起，没有找到文件：%s" % relative_path)
