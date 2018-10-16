@@ -5,33 +5,9 @@ function confirm_download() {
     return confirm("是否确认下载?");
 };
 
-function CreateRow(build){
-    var Row=document.createElement('tr');
-    Row.className = "row_data";
-    var name =  CreateNameTD(build.name);
-    var binary = CreateBinaryTD(build.binary);
-    var debug_info = CreateDebugInfo(build.debug_info);
-    var commit_history = CreateCommitHistory(build.commit_history);
-    var release_notes= CreateReleaseNotes(build.release_notes);
-    var test_reports = CreateTestReports(build.test_reports);
-    var upload_button = CreateUpload(build.name);
-    Row.appendChild(name)
-    Row.appendChild(binary)
-    Row.appendChild(debug_info)
-    Row.appendChild(commit_history)
-    Row.appendChild(release_notes)
-    Row.appendChild(test_reports)
-    Row.appendChild(upload_button)
-    return Row
-}
-
-<!--window.onload=function(){-->
-    <!--AddRows();-->
-    <!--Active("C2_WeeklyBuild");-->
-<!--}-->
-
-
-
+window.onload=function(){
+    Active("C2_WeeklyBuild");
+};
 
 
 </script>
