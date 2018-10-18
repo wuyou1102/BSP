@@ -118,6 +118,7 @@ def store_release_notes(store_path, uploadfile, history, backup):
 
 def store_report(store_path, uploadfile, history, backup):
     file_name = uploadfile.name
+    file_name = file_name.replace('&', '_')
     Function.create_folder(path=store_path)
     __write_history(history=history, msg="Upload %s" % file_name)
     file_path = os.path.join(store_path, file_name)
@@ -164,6 +165,7 @@ def __parse_release_note(path):
     else:
         return []
 
+
 def __parse_history(path):
     if os.path.exists(path):
         with open(path, 'r') as rfile:
@@ -175,6 +177,7 @@ def __parse_history(path):
             return lst
     else:
         return []
+
 
 def __format_file_name(path):
     _path = path.split(os.sep)
