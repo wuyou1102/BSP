@@ -20,7 +20,7 @@ def __get_daily_build_info():
         build_path = os.path.join(PATH_DAILY, build)
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
         dict_build['name'] = build
-        dict_build['binary'] = __get_binary(build_path)
+        dict_build['binaries'] = __get_binary(build_path)
         dict_build['commit_history'] = __get_commit_history(commit_history)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
@@ -32,7 +32,6 @@ def __get_binary(path):
         return lst
     for f in os.listdir(path):
         if f.endswith('.img'):
-            print f
             file_path = os.path.join(path, f).replace(PATH_DAILY, '')
             file_name = f.rstrip('.img')
             _file = [file_name, file_path]
