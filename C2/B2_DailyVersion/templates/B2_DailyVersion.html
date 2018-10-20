@@ -54,8 +54,8 @@ window.onload=function(){
                     {% endfor %}
                 </td>
                 <td>
-                    {% if build.commit_history != None %}
-                    <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
+                    {% if build.commit_history != "None" %}
+                        <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
                     {% endif %}
                 </td>
             </tr>
