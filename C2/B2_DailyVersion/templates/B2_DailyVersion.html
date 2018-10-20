@@ -43,7 +43,7 @@ window.onload=function(){
             <tr class="row_data">
                 <td>{{build.name}}</td>
                 <td>
-                    {%with i=100%}
+                    {% with i=0 %}
                     {% for binary in build.binaries %}
                     {{ i|add:"1" }}
                     <a href="/Download?type=B2Daily&path={{ binary.1 }}" download=""
