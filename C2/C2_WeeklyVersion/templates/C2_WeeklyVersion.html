@@ -64,10 +64,14 @@ window.onload=function(){
                     {% endfor %}
                 </td>
                 <td>
-                    <a href="/CommitHistory?type=C2Weekly&path={{ build.commit_history }}">查看</a>
+                    {% if build.commit_history != "None" %}
+                        <a href="/CommitHistory?type=C2Weekly&path={{ build.commit_history }}">查看</a>
+                    {% endif %}
                 </td>
                 <td>
-                    <a href="/ReleaseNotes?type=C2Weekly&path={{ build.release_notes }}">查看</a>
+                    {% if build.release_notes != "None" %}
+                        <a href="/ReleaseNotes?type=C2Weekly&path={{ build.release_notes }}">查看</a>
+                    {% endif %}
                 </td>
                 <td>
                     {% for test_report in build.test_reports %}
