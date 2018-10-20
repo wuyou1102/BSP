@@ -9,8 +9,6 @@ from django.utils.encoding import escape_uri_path
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-PATH_WEEKLY = Path.WeeklyBuild
-PATH_DAILY = Path.DailyBuild
 
 
 def release_notes(request):
@@ -76,18 +74,18 @@ def upload_file(request):
         _data = request.POST["version"]
         _type = request.POST["type"]
 
-        backup_folder = Function.create_folder(os.path.join(PATH_WEEKLY, _data, "Backup"))
+        backup_folder = Function.create_folder(os.path.join(Path.get_path(_type), _data, "Backup"))
         history_text = os.path.join(backup_folder, "History.txt")
         if uploadfile is None:
             return HttpResponse("Nothing Upload")
         else:
             if _type == "ReleaseNotes":
-                store_path = Function.create_folder(os.path.join(PATH_WEEKLY, _data))
+                store_path = Function.create_folder(os.path.join(Path.get_path(_type), _data))
                 result = store_release_notes(store_path=store_path, uploadfile=uploadfile, history=history_text,
                                              backup=backup_folder)
                 return HttpResponse(result)
             elif _type == "Report":
-                store_path = Function.create_folder(os.path.join(PATH_WEEKLY, _data, "Reports"))
+                store_path = Function.create_folder(os.path.join(Path.get_path(_type), _data, "Reports"))
                 result = store_report(store_path=store_path, uploadfile=uploadfile, history=history_text,
                                       backup=backup_folder)
                 return HttpResponse(result)
