@@ -8,6 +8,7 @@ window.onload=function(){
 
 
 
+
 </script>
 <style type="text/css">
 </style>
@@ -47,7 +48,7 @@ window.onload=function(){
                        onclick="return confirm_download()">
                         {{ binary.0 }}
                     </a>
-                        {% if i%2==0 %}
+                        {% if i%%2==0 %}
                         <br>
                         {% endif %}
                     {% endfor %}
