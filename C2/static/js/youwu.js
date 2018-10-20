@@ -130,7 +130,7 @@ function AjaxUpload(that,version,cls,type){
         var file_name= file.name;
         formData.append('file',file);
         formData.append('version',version);
-        formData.append('class',cls);
+        formData.append('cls',cls);
         formData.append('type',type);
         xhr.open('post', '/Upload/', true);
         xhr.onreadystatechange = function () {
