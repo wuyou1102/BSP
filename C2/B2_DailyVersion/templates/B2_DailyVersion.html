@@ -7,6 +7,7 @@ window.onload=function(){
 };
 
 
+
 </script>
 <style type="text/css">
 </style>
@@ -35,14 +36,20 @@ window.onload=function(){
                 <th>提交记录</th>
             </tr>
             {% for build in builds %}
+
             <tr class="row_data">
                 <td>{{build.name}}</td>
                 <td>
+                    {%with i=100%}
                     {% for binary in build.binaries %}
-                    <a href="/Download?type=B2Daily&path={{ binary.1 }}" download="" onclick="return confirm_download()">
+                    {{ i|add:"2" }}
+                    <a href="/Download?type=B2Daily&path={{ binary.1 }}" download=""
+                       onclick="return confirm_download()">
                         {{ binary.0 }}
                     </a>
-                    <br>
+                        {% if i%2==0 %}
+                        <br>
+                        {% endif %}
                     {% endfor %}
                 </td>
                 <td>
