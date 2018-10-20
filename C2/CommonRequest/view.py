@@ -73,18 +73,18 @@ def upload_file(request):
         uploadfile = request.FILES.get('file')
         _data = request.POST["version"]
         _type = request.POST["type"]
-
+        _class = request.GET["class"]
         backup_folder = Function.create_folder(os.path.join(Path.get_path(_type), _data, "Backup"))
         history_text = os.path.join(backup_folder, "History.txt")
         if uploadfile is None:
             return HttpResponse("Nothing Upload")
         else:
-            if _type == "ReleaseNotes":
+            if _class == "ReleaseNotes":
                 store_path = Function.create_folder(os.path.join(Path.get_path(_type), _data))
                 result = store_release_notes(store_path=store_path, uploadfile=uploadfile, history=history_text,
                                              backup=backup_folder)
                 return HttpResponse(result)
-            elif _type == "Report":
+            elif _class == "Report":
                 store_path = Function.create_folder(os.path.join(Path.get_path(_type), _data, "Reports"))
                 result = store_report(store_path=store_path, uploadfile=uploadfile, history=history_text,
                                       backup=backup_folder)
