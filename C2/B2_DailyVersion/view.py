@@ -9,7 +9,7 @@ PATH_DAILY = Path.DailyBuild
 def get_build_info(request):
     context = dict()
     context['builds'] = __get_daily_build_info()
-    return render(request, 'DailyVersion.html', context)
+    return render(request, 'C2_DailyVersion.html', context)
 
 
 def __get_daily_build_info():

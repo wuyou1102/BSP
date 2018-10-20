@@ -9,7 +9,7 @@ PATH_WEEKLY = Path.WeeklyBuild
 def get_build_info(request):
     context = dict()
     context['builds'] = __get_daily_build_info()
-    return render(request, 'WeeklyVersion.html', context)
+    return render(request, 'C2_WeeklyVersion.html', context)
 
 
 def __get_daily_build_info():
