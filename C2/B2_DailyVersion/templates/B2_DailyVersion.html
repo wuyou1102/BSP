@@ -43,9 +43,9 @@ window.onload=function(){
             <tr class="row_data">
                 <td>{{build.name}}</td>
                 <td>
-                    {% with i=0 %}
+                    {% set i = 0 %}
                     {% for binary in build.binaries %}
-                    {{ i|add:"1" }}
+                    {% set i++ %}
                     <a href="/Download?type=B2Daily&path={{ binary.1 }}" download=""
                        onclick="return confirm_download()">
                         {{ binary.0 }}
