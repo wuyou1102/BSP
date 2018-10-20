@@ -1,34 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
-function AddRows(){
-    var Table = document.getElementById("version_table");
-    var Builds = {{builds|safe}};
-    console.log(Builds);
-    var TableRow="";
-    for(i in Builds){
-        TableRow=CreateRow(Builds[i]);
-        Table.appendChild(TableRow);
-    }
-}
-function CreateRow(build){
-    var Row=document.createElement('tr');
-    Row.className = "row_data";
-    var name =  CreateNameTD(build.name);
-    var binary = CreateBinaryTD(build.binary);
-    var debug_info = CreateDebugInfo(build.debug_info);
-    var commit_history = CreateCommitHistory(build.commit_history);
-    Row.appendChild(name)
-    Row.appendChild(binary)
-    Row.appendChild(debug_info)
-    Row.appendChild(commit_history)
-    return Row
-}
 
 window.onload=function(){
-    AddRows();
-    Active("C2_DailyBuild");
-}
+    Active("B2_DailyBuild");
+};
+
+
 </script>
 <style type="text/css">
 </style>
@@ -36,29 +14,44 @@ window.onload=function(){
     <meta charset="UTF-8">
     <link href="/static/css/youwu.css" rel="stylesheet" type="text/css">
     <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/static/js/youwu.js" type="text/javascript"></script>
+
     <title>感悟科技</title>
 </head>
 <body>
+<div>
+    {% include "LogoTitle.html"%}
+</div>
+<div class="build_body">
     <div>
-        {% include "LogoTitle.html"%}
+        {% include "NavigationBar.html"%}
     </div>
-    <div class="build_body">
-        <div>
-            {% include "NavigationBar.html"%}
-        </div>
-        <div class="build_table">
-            <table class="altrowstable" id="version_table">
-                <tr class="row_title">
-                    <th>版本号/版本发布时间</th>
-                    <th>软件下载</th>
-                    <th>调试信息</th>
-                    <th>提交记录</th>
-                    <!--<th>Report</th>-->
-                </tr>
-            </table>
-        </div>
+    <div class="build_table">
+        <table class="altrowstable" id="version_table">
+            <tr class="row_title">
+                <th>版本号/版本发布时间</th>
+                <th>软件下载</th>
+                <th>提交记录</th>
+            </tr>
+            {% for build in builds %}
+            <tr class="row_data">
+                <td>{{build.name}}</td>
+                <td>
+                    {% for binary in build.binaries %}
+                    <a href="/Download?type=B2Daily&path={{ binary.1 }}" download="" onclick="return confirm_download()">
+                        {{ binary.0 }}
+                    </a>
+                    <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
-
+</div>
 </body>
 </html>

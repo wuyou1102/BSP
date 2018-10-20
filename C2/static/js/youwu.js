@@ -143,3 +143,6 @@ function AjaxUpload(that,version,type){
         };
         xhr.send(formData);
 }
+function confirm_download() {
+    return confirm("是否确认下载?");
+};
