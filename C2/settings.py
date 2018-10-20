@@ -56,9 +56,13 @@ ROOT_URLCONF = 'C2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + "/C2/C2_DailyVersion/templates",
-                 BASE_DIR + "/C2/C2_WeeklyVersion/templates",
-                 BASE_DIR + "/C2/CommonRequest/templates", ],
+        'DIRS': [
+            BASE_DIR + "/C2/C2_DailyVersion/templates",
+            BASE_DIR + "/C2/C2_WeeklyVersion/templates",
+            BASE_DIR + "/C2/B2_DailyVersion/templates",
+            # BASE_DIR + "/C2/B2_WeeklyVersion/templates",
+            BASE_DIR + "/C2/CommonRequest/templates",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
