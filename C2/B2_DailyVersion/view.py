@@ -36,7 +36,7 @@ def __get_binary(path):
             file_name = f.rstrip('.img')
             _file = [file_name, file_path]
             lst.append(_file)
-    return lst
+    return sorted(lst, key=lambda k: k[0], reverse=True)
 
 
 def __get_commit_history(path):
