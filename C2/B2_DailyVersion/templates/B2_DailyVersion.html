@@ -43,18 +43,16 @@ window.onload=function(){
             <tr class="row_data">
                 <td>{{build.name}}</td>
                 <td>
-                    {% with i=0 %}
                     {% for binary in build.binaries %}
-                    {% i = i+1 %}
                     <a href="/Download?type=B2Daily&path={{ binary.1 }}" download=""
                        onclick="return confirm_download()">
                         {{ binary.0 }}
                     </a>
-                    {% if i|divisibleby:2 %}
+                    {% if forloop.counter|divisibleby:2 %}
                     <br>
                     {% endif %}
                     {% endfor %}
-                    {% endwith %}
+
                 </td>
                 <td>
                     <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
