@@ -32,6 +32,7 @@ def __get_binary(path):
         return lst
     for f in os.listdir(path):
         if f.endswith('.img'):
+            print f
             file_path = os.path.join(path, f).replace(PATH_DAILY, '')
             file_name = f.rstrip('.img')
             _file = [file_name, file_path]
