@@ -43,12 +43,12 @@ window.onload=function(){
                 <td>
                     {%with i=100%}
                     {% for binary in build.binaries %}
-                    {{ i|add:"2" }}
+                    {{ i|add:"1" }}
                     <a href="/Download?type=B2Daily&path={{ binary.1 }}" download=""
                        onclick="return confirm_download()">
                         {{ binary.0 }}
                     </a>
-                        {% if i%%2==0 %}
+                        {% if i|divisibleby:2 %}
                         <br>
                         {% endif %}
                     {% endfor %}
