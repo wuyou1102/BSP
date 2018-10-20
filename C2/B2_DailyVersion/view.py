@@ -18,10 +18,9 @@ def __get_daily_build_info():
     for build in builds:
         dict_build = dict()
         build_path = os.path.join(PATH_DAILY, build)
-        binary = os.path.join(build_path, 'Binary')
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
         dict_build['name'] = build
-        dict_build['binary'] = __get_binary(binary)
+        dict_build['binary'] = __get_binary(build_path)
         dict_build['commit_history'] = __get_commit_history(commit_history)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
