@@ -73,7 +73,7 @@ def upload_file(request):
         uploadfile = request.FILES.get('file')
         _data = request.POST["version"]
         _type = request.POST["type"]
-        _class = request.GET["cls"]
+        _class = request.POST["cls"]
         backup_folder = Function.create_folder(os.path.join(Path.get_path(_type), _data, "Backup"))
         history_text = os.path.join(backup_folder, "History.txt")
         if uploadfile is None:
