@@ -22,8 +22,8 @@ def __get_daily_build_info():
         debuginfo = os.path.join(build_path, 'DebugInfo')
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
         dict_build['name'] = build
-        dict_build['binary'] = __get_binary(binary)
-        dict_build['debug_info'] = __get_debug_info(debuginfo)
+        dict_build['binaries'] = __get_binary(binary)
+        dict_build['debug_infos'] = __get_debug_info(debuginfo)
         dict_build['commit_history'] = __get_commit_history(commit_history)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
