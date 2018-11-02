@@ -20,8 +20,8 @@ def version_number_config(request):
         context['C2'] = __parse_version_config(os.path.join(VersionConfig_Path, "C2.txt"))
         print context
         return render(request, 'BuildNumberConfig.html', context)
-    else:
-        return HttpResponse('method must be get')
+    elif request.method == 'POST':
+        print request.POST
 
 
 def __parse_version_config(path):
