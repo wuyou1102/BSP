@@ -16,10 +16,16 @@
 <div>
     {% include "LogoTitle.html"%}
 </div>
-<div class="build_body">
+<div class="config_body">
     <form id='C2'>
-        项目名称:<input type="text" name="project" value={{ C2.Project }}><br>
-        硬件版本:<input type="text" name="lastname" value={{ C2.HW }}><br>
+        <div>
+            <b>项目名称: </b>
+            <input type="text" name="project" value={{ C2.Project }}>
+        </div>
+        <div>
+            <b>硬件版本: </b>
+            <input type="text" name="project" value={{ C2.HW }}>
+        </div>
 
         <input type="submit" value="Submit">
     </form>
