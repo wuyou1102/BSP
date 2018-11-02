@@ -12,6 +12,7 @@
 
 
 
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -26,7 +27,7 @@
     {% include "LogoTitle.html"%}
 </div>
 <div class="config_body">
-    <form  method="post">
+    <form method="post">
         <div>
             <input type="text" name="Form" value="C2" hidden="true">
         </div>
@@ -59,7 +60,7 @@
         </div>
         <div class="config_row">
             <b> 内部版本 : </b>
-            <input type="text" name="Internal" value={{ C2.Internal }} readonly="true">
+            <input type="text" name="Internal" value="{{ C2.Internal }}" readonly="true">
         </div>
         <div>
             <input class="config_button" type="submit" value="保存">
