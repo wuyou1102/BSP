@@ -22,7 +22,7 @@ def version_number_config(request):
         form = data['Form']
         if form == "C2":
             __writer_version_config(os.path.join(VersionConfig_Path, "C2.txt"), data=data)
-        return render(request, 'BuildNumberConfig.html', __get_version_config_context())
+        return HttpResponse("Success")
 
 
 def __get_version_config_context():
