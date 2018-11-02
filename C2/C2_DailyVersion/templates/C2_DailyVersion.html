@@ -18,42 +18,47 @@ window.onload=function(){
     <div>
         {% include "LogoTitle.html"%}
     </div>
-    <div class="build_table">
-        <table class="altrowstable" id="version_table">
-            <tr class="row_title">
-                <th>版本号/版本发布时间</th>
-                <th>软件下载</th>
-                <th>调试信息</th>
-                <th>提交记录</th>
-            </tr>
-            {% for build in builds %}
-            <tr class="row_data">
-                <td>{{build.name}}</td>
-                <td>
-                    {% for binary in build.binaries %}
-                    <a href="/Download?type=C2Daily&path={{ binary.1 }}" download="" onclick="return confirm_download()">
-                        {{ binary.0 }}
-                    </a>
-                    <br>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for debug_info in build.debug_infos %}
-                    <a href="/Download?type=C2Daily&path={{ debug_info.1 }}" download=""
-                       onclick="return confirm_download()">
-                        {{ debug_info.0 }}
-                    </a>
-                    <br>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% if build.commit_history != "None" %}
-                        <a href="/CommitHistory?type=C2Daily&path={{ build.commit_history }}">查看</a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+    <div class="build_body">
+        <div>
+            {% include "NavigationBar.html"%}
+        </div>
+        <div class="build_table">
+            <table class="altrowstable" id="version_table">
+                <tr class="row_title">
+                    <th>版本号/版本发布时间</th>
+                    <th>软件下载</th>
+                    <th>调试信息</th>
+                    <th>提交记录</th>
+                </tr>
+                {% for build in builds %}
+                <tr class="row_data">
+                    <td>{{build.name}}</td>
+                    <td>
+                        {% for binary in build.binaries %}
+                        <a href="/Download?type=C2Daily&path={{ binary.1 }}" download="" onclick="return confirm_download()">
+                            {{ binary.0 }}
+                        </a>
+                        <br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for debug_info in build.debug_infos %}
+                        <a href="/Download?type=C2Daily&path={{ debug_info.1 }}" download=""
+                           onclick="return confirm_download()">
+                            {{ debug_info.0 }}
+                        </a>
+                        <br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if build.commit_history != "None" %}
+                            <a href="/CommitHistory?type=C2Daily&path={{ build.commit_history }}">查看</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </body>
 </html>
