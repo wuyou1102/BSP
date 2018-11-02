@@ -29,10 +29,10 @@ urlpatterns = [
                   url(r'^C2_DailyBuild/', C2_DailyVersion.get_build_info),
                   url(r'^C2_WeeklyBuild/', C2_WeeklyVersion.get_build_info),
                   url(r'^B2_DailyBuild/', B2_DailyVersion.get_build_info),
-                  # url(r'^C2_WeeklyBuild/', C2_WeeklyVersion.get_build_info),
                   url(r'^Download/', CommonRequest.download_file),
                   url(r'^Upload/', CommonRequest.upload_file),
                   url(r'^CommitHistory/', CommonRequest.commit_history),
                   url(r'^ReleaseNotes/', CommonRequest.release_notes),
                   url(r'^History/', CommonRequest.view_history),
+                  url(r'^VersionConfig/', CommonRequest.version_number_config),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

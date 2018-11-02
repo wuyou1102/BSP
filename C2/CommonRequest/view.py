@@ -10,6 +10,30 @@ from django.utils.encoding import escape_uri_path
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+VersionConfig_Path = '/home/bspserver/sda/VersionConfig/'
+sep = ' *|* '
+
+
+def version_number_config(request):
+    if request.method == 'GET':
+        context = dict()
+        context['C2'] = __parse_release_note(os.path.join(VersionConfig_Path, "C2.txt"))
+        return render(request, 'BuildNumberConfig.html', context)
+    else:
+        return HttpResponse('method must be get')
+
+
+def __parse_version_config(path):
+    if os.path.exists(path):
+        config = dict()
+        with open(path) as r_file:
+            for line in r_file.readlines():
+                attrs = line.split(sep)
+                config[attrs[0]] = attrs[1]
+            return config
+    else:
+        return {}
+
 
 def release_notes(request):
     if request.method == 'GET':
