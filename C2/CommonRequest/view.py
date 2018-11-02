@@ -18,6 +18,7 @@ def version_number_config(request):
     if request.method == 'GET':
         context = dict()
         context['C2'] = __parse_release_note(os.path.join(VersionConfig_Path, "C2.txt"))
+        print context
         return render(request, 'BuildNumberConfig.html', context)
     else:
         return HttpResponse('method must be get')
