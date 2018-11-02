@@ -25,7 +25,8 @@ window.onload=function(){
         <div class="build_table">
             <table class="altrowstable" id="version_table">
                 <tr class="row_title">
-                    <th>版本号/版本发布时间</th>
+                    <th>编译时间</th>
+                    <th>版本号</th>
                     <th>软件下载</th>
                     <th>调试信息</th>
                     <th>提交记录</th>
@@ -33,6 +34,7 @@ window.onload=function(){
                 {% for build in builds %}
                 <tr class="row_data">
                     <td>{{build.name}}</td>
+                    <td>{{build.version}}</td>
                     <td>
                         {% for binary in build.binaries %}
                         <a href="/Download?type=C2Daily&path={{ binary.1 }}" download="" onclick="return confirm_download()">

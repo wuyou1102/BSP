@@ -91,7 +91,6 @@ def commit_history(request):
 def download_file(request):
     if request.method == 'GET':
         relative_path = request.GET["path"]
-        print relative_path
         _type = request.GET["type"]
         file_path = os.path.join(Path.get_path(_type), relative_path)
         if os.path.exists(file_path):
