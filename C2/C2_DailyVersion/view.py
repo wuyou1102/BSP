@@ -21,12 +21,22 @@ def __get_daily_build_info():
         binary = os.path.join(build_path, 'Binary')
         debuginfo = os.path.join(build_path, 'DebugInfo')
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
+        version = os.path.join(build_path, 'Version.txt')
         dict_build['name'] = build
         dict_build['binaries'] = __get_binary(binary)
         dict_build['debug_infos'] = __get_debug_info(debuginfo)
         dict_build['commit_history'] = __get_commit_history(commit_history)
+        dict_build['version'] = __get_version_number(version)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
+
+
+def __get_version_number(path):
+    if os.path.exists(path):
+        with open(path, 'r') as f:
+            return f.read().strip('\r\n')
+    else:
+        return ''
 
 
 def __get_binary(path):
