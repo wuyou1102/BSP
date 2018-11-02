@@ -11,6 +11,7 @@
     }
 
 
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -25,37 +26,40 @@
     {% include "LogoTitle.html"%}
 </div>
 <div class="config_body">
-    <form id='C2' name="form" value="C2">
+    <form id='C2'>
         <div class="config_title">
             <b> C2 版本号配置</b>
         </div>
+        <div>
+            <input type="text" name="Form" value="C2" hidden="true">
+        </div>
         <div class="config_row">
             <b> 项目名称 : </b>
-            <input type="text" name="project" value={{ C2.Project }}>
+            <input type="text" name="Project" value={{ C2.Project }}>
         </div>
         <div class="config_row">
             <b> 硬件版本 : </b>
-            <input type="text" name="project" value={{ C2.HW }}>
+            <input type="text" name="HW" value={{ C2.HW }}>
         </div>
         <div class="config_row">
             <b> 出货市场 : </b>
-            <input type="text" name="project" value={{ C2.Market }}>
+            <input type="text" name="Market" value={{ C2.Market }}>
         </div>
         <div class="config_row">
             <b> 保留字段 : </b>
-            <input type="text" name="project" value={{ C2.Reserved }}>
+            <input type="text" name="Reserved" value={{ C2.Reserved }}>
         </div>
         <div class="config_row">
             <b> 主版本号 : </b>
-            <input type="text" name="project" value={{ C2.Edition }}>
+            <input type="text" name="Edition" value={{ C2.Edition }}>
         </div>
         <div class="config_row">
             <b> 次版本号 : </b>
-            <input type="text" name="project" value={{ C2.Release }}>
+            <input type="text" name="Release" value={{ C2.Release }}>
         </div>
         <div class="config_row">
             <b> 内部版本 : </b>
-            <input type="text" name="project" value={{ C2.Internal }} disabled="true">
+            <input type="text" name="Internal" value={{ C2.Internal }} disabled="true">
         </div>
         <div>
             <input class="config_button" type="submit" value="保存">
