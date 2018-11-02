@@ -16,12 +16,25 @@ sep = ' *|* '
 
 def version_number_config(request):
     if request.method == 'GET':
-        context = dict()
-        context['C2'] = __parse_version_config(os.path.join(VersionConfig_Path, "C2.txt"))
-        print context
-        return render(request, 'BuildNumberConfig.html', context)
+        return render(request, 'BuildNumberConfig.html', __get_version_config_context())
     elif request.method == 'POST':
-        print request.POST
+        data = request.POST
+        form = data['Form']
+        if form == "C2":
+            __writer_version_config(os.path.join(VersionConfig_Path, "C2.txt"), data=data)
+        return render(request, 'BuildNumberConfig.html', __get_version_config_context())
+
+
+def __get_version_config_context():
+    context = dict()
+    context['C2'] = __parse_version_config(os.path.join(VersionConfig_Path, "C2.txt"))
+    return context
+
+
+def __writer_version_config(path, data):
+    with open(path, 'w') as w_file:
+        for attr_name in ['Project', 'HW', 'Market', 'Reserved', 'Edition', 'Release', 'Internal']:
+            w_file.write('{name}{sep}{value}\n'.format(name=attr_name, value=data[attr_name], sep=sep))
 
 
 def __parse_version_config(path):
