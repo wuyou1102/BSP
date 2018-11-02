@@ -3,6 +3,13 @@
 <script>
 </script>
 <style>
+    .config_row{
+        margin: 5px 15px 5px 15px;
+    }
+    .config_button{
+
+    }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -18,36 +25,40 @@
 </div>
 <div class="config_body">
     <form id='C2'>
-        <div>
+        <div class="config_title">
+            <b> C2 版本号配置</b>
+        </div>
+        <div class="config_row">
             <b> 项目名称 : </b>
             <input type="text" name="project" value={{ C2.Project }}>
         </div>
-        <div>
+        <div class="config_row">
             <b> 硬件版本 : </b>
             <input type="text" name="project" value={{ C2.HW }}>
         </div>
-        <div>
+        <div class="config_row">
             <b> 出货市场 : </b>
             <input type="text" name="project" value={{ C2.Market }}>
         </div>
-        <div>
+        <div class="config_row">
             <b> 保留字段 : </b>
             <input type="text" name="project" value={{ C2.Reserved }}>
         </div>
-        <div>
+        <div class="config_row">
             <b> 主版本号 : </b>
             <input type="text" name="project" value={{ C2.Edition }}>
         </div>
-        <div>
+        <div class="config_row">
             <b> 次版本号 : </b>
             <input type="text" name="project" value={{ C2.Release }}>
         </div>
-        <div>
-            <b>内部版本号: </b>
-            <input type="text" name="project" value={{ C2.Internal }}>
+        <div class="config_row">
+            <b> 内部版本 : </b>
+            <input type="text" name="project" value={{ C2.Internal }} disabled="true">
         </div>
-
-        <input type="submit" value="保存">
+        <div>
+            <input class="config_button" type="submit" value="保存">
+        </div>
     </form>
 </div>
 </body>
