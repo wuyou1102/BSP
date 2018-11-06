@@ -21,7 +21,7 @@ def __get_daily_build_info():
         binary = os.path.join(build_path, 'Binary')
         debuginfo = os.path.join(build_path, 'DebugInfo')
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
-        version = os.path.join(build_path, 'Version.txt')
+        version = os.path.join(build_path, 'VersionNumber.txt')
         dict_build['name'] = build
         dict_build['binaries'] = __get_binary(binary)
         dict_build['debug_infos'] = __get_debug_info(debuginfo)
