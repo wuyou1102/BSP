@@ -24,6 +24,7 @@ def __get_daily_build_info():
         release_notes = os.path.join(build_path, 'ReleaseNotes.txt')
         report = os.path.join(build_path, 'Reports')
         history = os.path.join(build_path, 'Backup', 'History.txt')
+        version = os.path.join(build_path, 'VersionNumber.txt')
         dict_build['name'] = build
         dict_build['binaries'] = __get_binary(binary)
         dict_build['debug_infos'] = __get_debug_info(debuginfo)
@@ -31,6 +32,7 @@ def __get_daily_build_info():
         dict_build['release_notes'] = __get_release_notes(release_notes)
         dict_build['test_reports'] = __get_test_reports(report)
         dict_build['history'] = __get_history(history)
+        dict_build['version'] = __get_version_number(version)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
 
@@ -88,3 +90,11 @@ def __get_commit_history(path):
     if os.path.exists(path):
         return path.replace(PATH_WEEKLY, '')
     return "None"
+
+
+def __get_version_number(path):
+    if os.path.exists(path):
+        with open(path, 'r') as f:
+            return f.read().strip('\r\n')
+    else:
+        return ''
