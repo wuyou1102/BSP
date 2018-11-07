@@ -153,7 +153,7 @@ def store_release_notes(store_path, uploadfile, history, backup):
 
 def store_report(store_path, uploadfile, history, backup):
     file_name = uploadfile.name
-    file_name = file_name.replace('&', '_')
+    file_name = file_name.replace('&', '_').replace('+', '_')
     Function.create_folder(path=store_path)
     __write_history(history=history, msg="Upload %s" % file_name)
     file_path = os.path.join(store_path, file_name)
