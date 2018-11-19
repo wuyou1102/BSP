@@ -1,76 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<!--<script>-->
-<!--function AddReleaseNotes(){-->
-<!--var Table = document.getElementById("getintouch");-->
-<!--var Commits = {{commits|safe}};-->
-<!--var Container="";-->
-<!--for(i in Commits){-->
-<!--Container=CreateContainer(Commits[i]);-->
-<!--Table.appendChild(Container);-->
-<!--}-->
-<!--}-->
-<!--function CreateContainer(Commit){-->
-<!--var Container=document.createElement('div');-->
-<!--Container.className = "container";-->
-<!--var Attributes = Commit.attr;-->
-<!--var Message=Commit.msg-->
-<!--var AttrRow="";-->
-<!--for(i in Attributes){-->
-<!--AttrRow=CreateAttrRow(Attributes[i]);-->
-<!--Container.appendChild(AttrRow);-->
-<!--}-->
-<!--var MsgRow = CreateMsgRow(Message)-->
-<!--Container.appendChild(MsgRow);-->
-<!--return Container;-->
-<!--}-->
-<!--function CreateAttrRow(Attribute){-->
-<!--var Div=document.createElement('div');-->
-<!--Div.className="row clearfix";-->
-<!--var DivName=CreateAttrName(Attribute[0]);-->
-<!--var DivValue=CreateAttrValue(Attribute[1]);-->
-<!--Div.appendChild(DivName);-->
-<!--Div.appendChild(DivValue);-->
-<!--return Div;-->
-<!--}-->
-<!--function CreateAttrName(Name){-->
-<!--var Div=document.createElement('div');-->
-<!--Div.className="attr_name";-->
-<!--var Text=document.createTextNode(Name);-->
-<!--Div.appendChild(Text);-->
-<!--return Div;-->
-<!--}-->
-<!--function CreateAttrValue(Value){-->
-<!--var Div=document.createElement('div');-->
-<!--Div.className="attr_value";-->
-<!--var Text=document.createTextNode(Value);-->
-<!--Div.appendChild(Text);-->
-<!--return Div;-->
-<!--}-->
-<!--function CreateMsgRow(Message){-->
-<!--var Div=document.createElement('div');-->
-<!--Div.className="row clearfix";-->
-<!--var DivName=CreateAttrName("Message :");-->
-<!--var DivMsg = CreateMsgDiv(Message);-->
-<!--Div.appendChild(DivName);-->
-<!--Div.appendChild(DivMsg);-->
-<!--return Div;-->
-<!--}-->
-<!--function CreateMsgDiv(Message){-->
-<!--var Div=document.createElement('div');-->
-<!--Div.className="attr_value attr_msg";-->
-<!--for(i in Message){-->
-<!--var Text = document.createTextNode(Message[i]);-->
-<!--Div.appendChild(Text);-->
-<!--Div.appendChild(document.createElement("br"));-->
-<!--}-->
-<!--return Div;-->
-<!--}-->
-<!--window.onload=function(){-->
-<!--AddReleaseNotes();-->
-<!--}-->
-
-<!--</script>-->
 <style>
     .attr_name {
         font-size:20px;
@@ -99,8 +28,6 @@
     .clearfix {
         margin-top:20px;
     }
-
-
 
 </style>
 <head>
@@ -140,7 +67,7 @@
             </div>
             <div class="attr_value attr_msg">
                 {% for line in commit.msg %}
-                    {{ line }}<br>
+                {{ line }}<br>
                 {% endfor %}
             </div>
         </div>
