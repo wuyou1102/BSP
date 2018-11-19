@@ -58,7 +58,7 @@
                 <div class="attr_name">
                     {{ attr.0 }}
                 </div>
-                <div attr_name="attr_value">
+                <div class="attr_value">
                     {{ attr.1 }}
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <div class="attr_name">
                     Message :
                 </div>
-                <div attr_name="attr_value attr_msg">
+                <div class="attr_value attr_msg">
                     {% for line in commit.msg %}
                     <br> {{ line }}
                     {% endfor %}
