@@ -1,11 +1,13 @@
 # -*- encoding:UTF-8 -*-
-from django.shortcuts import render
-from django.http import StreamingHttpResponse
-from django.http import HttpResponse
 import os
-from C2.Utility import Function, Path
 import sys
+
+from django.http import HttpResponse
+from django.http import StreamingHttpResponse
+from django.shortcuts import render
 from django.utils.encoding import escape_uri_path
+
+from C2.Utility import Function, Path
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -92,9 +94,10 @@ def download_file(request):
     if request.method == 'GET':
         relative_path = request.GET["path"]
         _type = request.GET["type"]
+        version = __get_version(Path.get_path(_type), relative_path)
         file_path = os.path.join(Path.get_path(_type), relative_path)
         if os.path.exists(file_path):
-            file_name = __format_file_name(relative_path)
+            file_name = __format_file_name(relative_path, version)
             response = StreamingHttpResponse(Function.file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
             response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(file_name))
@@ -103,6 +106,15 @@ def download_file(request):
             return HttpResponse(u"对不起，没有找到文件：%s" % relative_path)
     else:
         return HttpResponse('method must be get')
+
+
+def __get_version(path, relative_path):
+    data = relative_path.split(os.sep)[0]
+    version_txt = os.path.join(path, data, 'VersionNumber.txt')
+    if os.path.exists(version_txt):
+        with open(version_txt, 'r') as f:
+            return f.read()
+    return ''
 
 
 def upload_file(request):
@@ -214,8 +226,11 @@ def __parse_history(path):
         return []
 
 
-def __format_file_name(path):
+def __format_file_name(path, version):
     _path = path.split(os.sep)
+    if version:
+        _path[0] = version
+
     # for m in ["Binary", "DebugInfo"]:
     #     if m in _path:
     #         _path.remove(m)
