@@ -4,6 +4,8 @@
 window.onload=function(){
     Active("B2_DailyBuild");
 };
+
+
 </script>
 <style type="text/css">
 </style>
@@ -27,7 +29,8 @@ window.onload=function(){
     <div class="build_table">
         <table class="altrowstable" id="version_table">
             <tr class="row_title">
-                <th>版本号/版本发布时间</th>
+                <th>编译时间</th>
+                <th>版本号</th>
                 <th>软件下载</th>
                 <th>提交记录</th>
             </tr>
@@ -35,20 +38,19 @@ window.onload=function(){
 
             <tr class="row_data">
                 <td>{{build.name}}</td>
+                <td>{{build.version}}</td>
                 <td>
-                    {% for binary in build.binaries %}
-                    <a href="/Download?type=B2Daily&path={{ binary.1 }}" download=""
+                    {% for image in build.images %}
+                    <a href="/Download?type=B2Daily&path={{ image.1 }}" download=""
                        onclick="return confirm_download()">
-                        {{ binary.0 }}
+                        {{ image.0 }}
                     </a>
-                    {% if forloop.counter|divisibleby:2 %}
                     <br>
-                    {% endif %}
                     {% endfor %}
                 </td>
                 <td>
                     {% if build.commit_history != "None" %}
-                        <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
+                    <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
                     {% endif %}
                 </td>
             </tr>
