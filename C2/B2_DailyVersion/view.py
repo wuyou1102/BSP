@@ -3,8 +3,8 @@ from django.shortcuts import render
 import os
 from C2.Utility import Path
 
-PATH_9A_DAILY = Path.B2_DailyBuild
-PATH_9B_DAILY = Path.B2_DailyBuild
+PATH_9A_DAILY = Path.B2_9A_DailyBuild
+PATH_9B_DAILY = Path.B2_9B_DailyBuild
 
 
 def get_9A_build_info(request):
