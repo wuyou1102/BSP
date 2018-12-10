@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls import include
 from django.contrib import admin
 import C2_DailyVersion
 import C2_WeeklyVersion
-import B2_DailyVersion
 import CommonRequest
 
 from django.conf.urls.static import static
@@ -28,8 +28,7 @@ urlpatterns = [
                   url(r'^$', C2_DailyVersion.get_build_info),
                   url(r'^C2_DailyBuild/', C2_DailyVersion.get_build_info),
                   url(r'^C2_WeeklyBuild/', C2_WeeklyVersion.get_build_info),
-                  url(r'^B2_9A_DailyBuild/', B2_DailyVersion.get_9A_build_info),
-                  url(r'^B2_9B_DailyBuild/', B2_DailyVersion.get_9B_build_info),
+                  url(r'^B2_DailyBuild/', include('B2_DailyVersion.urls', namespace='B2_DailyBuild')),
                   url(r'^Download/', CommonRequest.download_file),
                   url(r'^Upload/', CommonRequest.upload_file),
                   url(r'^CommitHistory/', CommonRequest.commit_history),
