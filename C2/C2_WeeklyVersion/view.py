@@ -1,7 +1,7 @@
 # -*- encoding:UTF-8 -*-
 from django.shortcuts import render
 import os
-from Server.Utility import Path
+from C2.Utility import Path
 
 PATH_WEEKLY = Path.C2_WeeklyBuild
 

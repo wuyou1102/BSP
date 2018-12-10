@@ -1,7 +1,7 @@
 # -*- encoding:UTF-8 -*-
 from django.shortcuts import render
 import os
-from Server.Utility import Path
+from C2.Utility import Path
 
 PATH_9A_DAILY = Path.B2_9A_DailyBuild
 PATH_9B_DAILY = Path.B2_9B_DailyBuild
