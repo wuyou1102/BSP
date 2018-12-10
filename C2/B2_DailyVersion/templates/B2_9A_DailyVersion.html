@@ -40,7 +40,7 @@ window.onload=function(){
                 <td>{{build.version}}</td>
                 <td>
                     {% for image in build.images %}
-                    <a href="/Download?type=B2Daily&path={{ image.1 }}" download=""
+                    <a href="/Download?type=B29ADaily&path={{ image.1 }}" download=""
                        onclick="return confirm_download()">
                         {{ image.0 }}
                     </a>
@@ -49,7 +49,7 @@ window.onload=function(){
                 </td>
                 <td>
                     {% if build.commit_history != "None" %}
-                    <a href="/CommitHistory?type=B2Daily&path={{ build.commit_history }}">查看</a>
+                    <a href="/CommitHistory?type=B29ADaily&path={{ build.commit_history }}">查看</a>
                     {% endif %}
                 </td>
             </tr>
