@@ -7,7 +7,7 @@ from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from django.utils.encoding import escape_uri_path
 
-from C2.Utility import Function, Path
+from Server.Utility import Function, Path
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -22,14 +22,14 @@ def version_number_config(request):
     elif request.method == 'POST':
         data = request.POST
         form = data['Form']
-        if form == "C2":
-            __writer_version_config(os.path.join(VersionConfig_Path, "C2.txt"), data=data)
+        if form == "Server":
+            __writer_version_config(os.path.join(VersionConfig_Path, "Server.txt"), data=data)
         return render(request, 'BuildNumberConfig.html', __get_version_config_context())
 
 
 def __get_version_config_context():
     context = dict()
-    context['C2'] = __parse_version_config(os.path.join(VersionConfig_Path, "C2.txt"))
+    context['Server'] = __parse_version_config(os.path.join(VersionConfig_Path, "Server.txt"))
     return context
 
 
