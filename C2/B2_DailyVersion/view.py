@@ -6,10 +6,16 @@ from C2.Utility import Path
 PATH_DAILY = Path.B2_DailyBuild
 
 
-def get_build_info(request):
+def get_9A_build_info(request):
     context = dict()
     context['builds'] = __get_daily_build_info()
-    return render(request, 'B2_DailyVersion.html', context)
+    return render(request, 'B2_9A_DailyVersion.html', context)
+
+
+def get_9B_build_info(request):
+    context = dict()
+    context['builds'] = __get_daily_build_info()
+    return render(request, 'B2_9B_DailyVersion.html', context)
 
 
 def __get_daily_build_info():
