@@ -41,8 +41,7 @@ window.onload=function(){
                 <td>
                     {% for image in build.images %}
                     <a href="/Download?type=B2{{ type }}Daily&path={{ image.1 }}" download=""
-                       onclick="return confirm_download()">
-                        {{ image.0 }}
+                       onclick="return confirm_download()">下载
                     </a>
                     <br>
                     {% endfor %}
