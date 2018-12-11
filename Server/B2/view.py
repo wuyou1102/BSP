@@ -2,21 +2,22 @@
 from django.shortcuts import render
 import os
 from Server.Utility import Path
+from django.http import HttpResponse
 
 PATH_9A_DAILY = Path.B2_9A_DailyBuild
 PATH_9B_DAILY = Path.B2_9B_DailyBuild
 
 
-def get_9A_build_info(request):
-    context = dict()
-    context['builds'] = __get_daily_build_info(PATH_9A_DAILY)
-    return render(request, '9A_DailyVersion.html', context)
-
-
-def get_9B_build_info(request):
-    context = dict()
-    context['builds'] = __get_daily_build_info(PATH_9B_DAILY)
-    return render(request, '9B_DailyVersion.html', context)
+def GetDailyBuildInfo(request):
+    if request.method == 'GET':
+        _type = request.GET["type"]
+        path = __get_path(_type)
+        context = dict()
+        context['type'] = _type
+        context['builds'] = __get_daily_build_info(path)
+        return render(request, 'DailyBuild.html', context)
+    else:
+        return HttpResponse('method must be get')
 
 
 def __get_daily_build_info(path):
@@ -61,3 +62,10 @@ def __get_commit_history(path, need_replace):
     if os.path.exists(path):
         return path.replace(need_replace, '')
     return "None"
+
+
+def __get_path(_type):
+    if _type == "9A":
+        return PATH_9A_DAILY
+    else:
+        return PATH_9B_DAILY
