@@ -2,16 +2,12 @@
 <html lang="en">
 <script>
 
-function Active(id){
-    var navi = document.getElementById(id);
-    navi.className = "active";
-    navi.next="hello {{ type }}";
-}
-
 window.onload=function(){
-    Active("B2_DailyBuild");
+    Rename();
+    var navi = document.getElementById("B2_DailyBuild");
+    navi.className = "active";
+    navi.next="B2_DailyBuild- {{ type }}";
 };
-
 
 </script>
 <style type="text/css">
