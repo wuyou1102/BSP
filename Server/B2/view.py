@@ -1,23 +1,52 @@
 # -*- encoding:UTF-8 -*-
 from django.shortcuts import render
 import os
-from Server.Utility import Path
+import config
 from django.http import HttpResponse
 
 
 def GetDailyBuildInfo(request):
     if request.method == 'GET':
         _type = request.GET["type"]
-        path = __get_path(_type)
+        path = __get_daily_path(_type)
         context = dict()
         context['type'] = _type
         context['builds'] = __get_daily_build_info(path)
-        return render(request, 'DailyBuild.html', context)
+        return render(request, 'B2_DailyBuild.html', context)
+    else:
+        return HttpResponse('method must be get')
+
+
+def GetWeeklyBuildInfo(request):
+    if request.method == 'GET':
+        _type = request.GET["type"]
+        path = __get_daily_path(_type)
+        context = dict()
+        context['type'] = _type
+        context['builds'] = __get_daily_build_info(path)
+        return render(request, 'B2_WeeklyBuild.html', context)
     else:
         return HttpResponse('method must be get')
 
 
 def __get_daily_build_info(path):
+    lst = []
+    builds = os.listdir(path)
+    for build in builds:
+        dict_build = dict()
+        build_path = os.path.join(path, build)
+        version = os.path.join(build_path, 'VersionNumber.txt')
+        commit_history = os.path.join(build_path, 'CommitHistory.txt')
+        dict_build['name'] = build
+        dict_build['version'] = __get_version_number(version)
+        dict_build['images'] = __get_images(build_path, need_replace=path)
+        dict_build['commit_history'] = __get_commit_history(commit_history, need_replace=path)
+
+        lst.append(dict_build)
+    return sorted(lst, key=lambda k: k['name'], reverse=True)
+
+
+def __get_weekly_build_info(path):
     lst = []
     builds = os.listdir(path)
     for build in builds:
@@ -61,8 +90,15 @@ def __get_commit_history(path, need_replace):
     return "None"
 
 
-def __get_path(_type):
+def __get_daily_path(_type):
     if _type == "9A":
-        return Path.B2_9A_DailyBuild
+        return config.PATH_DAILY_9A
     else:
-        return Path.B2_9B_DailyBuild
+        return config.PATH_DAILY_9B
+
+
+def __get_weekly_path(_type):
+    if _type == "9A":
+        return config.PATH_WEEKLY_9A
+    else:
+        return config.PATH_WEEKLY_9B
