@@ -19,10 +19,8 @@ from django.contrib import admin
 import C2_DailyVersion
 import C2_WeeklyVersion
 import CommonRequest
-import B2_DailyVersion
 from django.conf.urls.static import static
 from django.conf import settings
-
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^$', C2_DailyVersion.get_build_info),
