@@ -28,7 +28,7 @@ urlpatterns = [
                   url(r'^$', C2_DailyVersion.get_build_info),
                   url(r'^C2_DailyBuild/', C2_DailyVersion.get_build_info),
                   url(r'^C2_WeeklyBuild/', C2_WeeklyVersion.get_build_info),
-                  url(r'^B2_DailyBuild/', include('B2_DailyVersion.urls', namespace='B2_DailyBuild')),
+                  url(r'^B2_DailyBuild/', include('Server.B2_DailyVersion.urls', namespace='B2_DailyBuild')),
                   url(r'^Download/', CommonRequest.download_file),
                   url(r'^Upload/', CommonRequest.upload_file),
                   url(r'^CommitHistory/', CommonRequest.commit_history),
