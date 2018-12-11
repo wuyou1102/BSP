@@ -23,14 +23,6 @@
         padding: 8px 0 8px 16px;
         text-decoration: none;
     }
-    li  p{
-                    display: inline-block;
-                    width: 0px;
-                    height: 0px;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-top: 5px solid#2f2f2f;
-    }
 
     li a.active {
         background-color: #4CAF50;
@@ -66,7 +58,7 @@
 </div>
 <script>
     $('.menu').click(function(){
-        $(this).next('.list-menu').slideDown();
+        $(this).next('.list-menu').slideToggle();
     })
 
 </script>
