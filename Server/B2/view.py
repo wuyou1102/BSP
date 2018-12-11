@@ -52,23 +52,6 @@ def __get_weekly_build_info(path):
     for build in builds:
         dict_build = dict()
         build_path = os.path.join(path, build)
-        version = os.path.join(build_path, 'VersionNumber.txt')
-        commit_history = os.path.join(build_path, 'CommitHistory.txt')
-        dict_build['name'] = build
-        dict_build['version'] = __get_version_number(version)
-        dict_build['images'] = __get_images(build_path, need_replace=path)
-        dict_build['commit_history'] = __get_commit_history(commit_history, need_replace=path)
-
-        lst.append(dict_build)
-    return sorted(lst, key=lambda k: k['name'], reverse=True)
-
-
-def __get_weekly_build_info(path):
-    lst = []
-    builds = os.listdir(path)
-    for build in builds:
-        dict_build = dict()
-        build_path = os.path.join(path, build)
         commit_history = os.path.join(build_path, 'CommitHistory.txt')
         release_notes = os.path.join(build_path, 'ReleaseNotes.txt')
         report = os.path.join(build_path, 'Reports')
@@ -78,8 +61,8 @@ def __get_weekly_build_info(path):
         dict_build['images'] = __get_images(build_path, need_replace=path)
         dict_build['commit_history'] = __get_commit_history(commit_history, need_replace=path)
         dict_build['release_notes'] = __get_release_notes(release_notes, need_replace=path)
-        dict_build['test_reports'] = __get_test_reports(report)
-        dict_build['history'] = __get_history(history)
+        dict_build['test_reports'] = __get_test_reports(report, need_replace=path)
+        dict_build['history'] = __get_history(history, need_replace=path)
         dict_build['version'] = __get_version_number(version)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
