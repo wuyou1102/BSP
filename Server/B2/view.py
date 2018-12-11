@@ -4,9 +4,6 @@ import os
 from Server.Utility import Path
 from django.http import HttpResponse
 
-PATH_9A_DAILY = Path.B2_9A_DailyBuild
-PATH_9B_DAILY = Path.B2_9B_DailyBuild
-
 
 def GetDailyBuildInfo(request):
     if request.method == 'GET':
@@ -66,6 +63,6 @@ def __get_commit_history(path, need_replace):
 
 def __get_path(_type):
     if _type == "9A":
-        return PATH_9A_DAILY
+        return Path.B2_9A_DailyBuild
     else:
-        return PATH_9B_DAILY
+        return Path.B2_9B_DailyBuild
