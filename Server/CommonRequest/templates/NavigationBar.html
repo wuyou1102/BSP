@@ -48,7 +48,7 @@
         <li><a id="C2_DailyBuild" href="/C2_DailyBuild">C2_DailyBuild</a></li>
         <li><a id="C2_WeeklyBuild" href="/C2_WeeklyBuild">C2_WeeklyBuild</a></li>
         <li>
-            <h1 class="menu">B2_DailyBuild</h1>
+            <a class="menu" href="#">B2_DailyBuild</a>
             <ul class="list-menu">
                 <li><a id="B2_9A_DailyBuild" href="/B2_DailyBuild/9A">9A</a></li>
                 <li><a id="B2_9B_DailyBuild" href="/B2_DailyBuild/9B">9B</a></li>
@@ -58,9 +58,8 @@
 </div>
 <script>
     $('.menu').click(function(){
-        $(this).next('.list-menu').slideToggle();
+        $(this).next('.list-menu').slideToggle("slow");
     })
-
 </script>
 </body>
 </html>
