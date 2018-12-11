@@ -16,10 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
-from view import GetDailyBuildInfo
-
+import view
 
 urlpatterns = [
-                  url(r'^$', GetDailyBuildInfo),
-                  url(r'^DailyBuild/', GetDailyBuildInfo),
+                  url(r'^DailyBuild/', view.GetDailyBuildInfo),
+                  url(r'^WeeklyBuild/', view.GetWeeklyBuildInfo),
+                  url(r'^$', view.GetDailyBuildInfo),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
