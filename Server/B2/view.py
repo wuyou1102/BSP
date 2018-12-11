@@ -47,9 +47,9 @@ def __get_images(path, need_replace):
     if not os.path.exists(path):
         return lst
     for f in os.listdir(path):
-        if f.endswith('.img'):
+        if f.endswith('.zip'):
             file_path = os.path.join(path, f).replace(need_replace, '')
-            file_name = f.rstrip('.img')
+            file_name = f.rstrip('.zip')
             _file = [file_name, file_path]
             lst.append(_file)
     return sorted(lst, key=lambda k: k[0], reverse=False)

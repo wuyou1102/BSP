@@ -97,7 +97,10 @@ def download_file(request):
         version = __get_version(Path.get_path(_type), relative_path)
         file_path = os.path.join(Path.get_path(_type), relative_path)
         if os.path.exists(file_path):
-            file_name = __format_file_name(relative_path, version)
+            if _type in ['b29adaily', 'b29bdaily']:
+                file_name = os.path.basename(file_path)
+            else:
+                file_name = __format_file_name(relative_path, version)
             response = StreamingHttpResponse(Function.file_iterator(file_path))
             response['Content-Type'] = 'application/octet-stream'
             response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(file_name))
@@ -235,3 +238,7 @@ def __format_file_name(path, version):
     #     if m in _path:
     #         _path.remove(m)
     return "_".join(_path)
+
+
+def __get_file_name(path):
+    _path = path.split(os.sep)
