@@ -37,6 +37,7 @@
         display:none;
     }
 
+
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
@@ -46,7 +47,7 @@
         <li><a id="C2_DailyBuild" href="/C2_DailyBuild">C2_DailyBuild</a></li>
         <li><a id="C2_WeeklyBuild" href="/C2_WeeklyBuild">C2_WeeklyBuild</a></li>
         <li class="sub">
-            <a class="menu" href="#">B2_DailyBuild</a>
+            <a class="menu" id="B2_DailyBuild">B2_DailyBuild</a>
             <ul class="list-menu">
                 <li><a id="B2_9A_DailyBuild" href="/B2/DailyBuild?type=9A">9A</a></li>
                 <li><a id="B2_9B_DailyBuild" href="/B2/DailyBuild?type=9B">9B</a></li>
@@ -58,6 +59,7 @@
     $('.menu').click(function(){
         $(this).next('.list-menu').slideToggle("slow");
     })
+
 </script>
 </body>
 </html>
