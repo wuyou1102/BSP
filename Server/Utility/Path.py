@@ -10,16 +10,20 @@ B2_WeeklyBuild_9A = B2Config.PATH_WEEKLY_9A
 B2_WeeklyBuild_9B = B2Config.PATH_WEEKLY_9B
 
 __switch = {
-    "c2daily": C2_DailyBuild,
-    "c2weekly": C2_WeeklyBuild,
-    "c2trigger": C2_TriggerBuild,
-    "b29adaily": B2_DailyBuild_9A,
-    "b29bdaily": B2_DailyBuild_9B,
+    "C2Daily": C2_DailyBuild,
+    "C2Weekly": C2_WeeklyBuild,
+    "C2Trigger": C2_TriggerBuild,
+    "B29ADaily": B2_DailyBuild_9A,
+    "B29BDaily": B2_DailyBuild_9B,
+    "B29AWeekly": B2_WeeklyBuild_9A,
+    "B29BWeekly": B2_WeeklyBuild_9B,
 }
+
+switch = dict((k.lower(), v) for k, v in __switch.items())
 
 
 def get_path(_type):
-    return __switch.get(_type.lower(), C2_DailyBuild)
+    return switch.get(_type.lower(), C2_DailyBuild)
 
 
 if __name__ == '__main__':
