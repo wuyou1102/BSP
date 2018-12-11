@@ -23,13 +23,13 @@ def version_number_config(request):
         data = request.POST
         form = data['Form']
         if form == "Server":
-            __writer_version_config(os.path.join(VersionConfig_Path, "Server.txt"), data=data)
+            __writer_version_config(os.path.join(VersionConfig_Path, "C2.txt"), data=data)
         return render(request, 'BuildNumberConfig.html', __get_version_config_context())
 
 
 def __get_version_config_context():
     context = dict()
-    context['Server'] = __parse_version_config(os.path.join(VersionConfig_Path, "Server.txt"))
+    context['Server'] = __parse_version_config(os.path.join(VersionConfig_Path, "C2.txt"))
     return context
 
 
