@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <head>
     <style type="text/css">
     body {
@@ -29,7 +30,7 @@
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;
                     border-top: 5px solid#2f2f2f;
-                      }
+    }
 
     li a.active {
         background-color: #4CAF50;
@@ -40,7 +41,8 @@
         background-color: #555;
         color: white;
     }
-
+    .list-menu{
+    display:none;
 
 
 
@@ -53,14 +55,18 @@
         <li><a id="C2_DailyBuild" href="/C2_DailyBuild">C2_DailyBuild</a></li>
         <li><a id="C2_WeeklyBuild" href="/C2_WeeklyBuild">C2_WeeklyBuild</a></li>
         <li>
-            <span><p></p>B2_DailyBuild</span>
-            <ul>
-                <li><a id="9A" href="/B2_DailyBuild/9A">B2_9A_DailyBuild</a></li>
-                <li><a id="9B" href="/B2_DailyBuild/9B">B2_9B_DailyBuild</a></li>
+            <h1 class="menu">B2_DailyBuild</h1>
+            <ul class="list-menu">
+                <li><a id="9A" href="/B2_DailyBuild/9A">9A</a></li>
+                <li><a id="9B" href="/B2_DailyBuild/9B">9B</a></li>
             </ul>
         </li>
     </ul>
 </div>
-
+<script>
+    $('.menu').click(function(){
+        $(this).next('.list-menu').show();
+    })
+</script>
 </body>
 </html>
