@@ -54,7 +54,7 @@ def __parse_version_config(path):
 def release_notes(request):
     if request.method == 'GET':
         context = dict()
-        relative_path = request.GET["path"]
+        relative_path = get_relative_path(request)
         _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
         context['name'] = __get_name_from_path(relative_path)
@@ -67,7 +67,7 @@ def release_notes(request):
 def view_history(request):
     if request.method == 'GET':
         context = dict()
-        relative_path = request.GET["path"]
+        relative_path = get_relative_path(request)
         _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
         context['name'] = __get_name_from_path(relative_path)
@@ -80,7 +80,7 @@ def view_history(request):
 def commit_history(request):
     if request.method == 'GET':
         context = dict()
-        relative_path = request.GET["path"]
+        relative_path = get_relative_path(request)
         _type = request.GET["type"]
         abs_path = os.path.join(Path.get_path(_type), relative_path)
         print abs_path
@@ -93,7 +93,7 @@ def commit_history(request):
 
 def download_file(request):
     if request.method == 'GET':
-        relative_path = request.GET["path"]
+        relative_path = get_relative_path(request)
         _type = request.GET["type"]
         version = __get_version(Path.get_path(_type), relative_path)
         file_path = os.path.join(Path.get_path(_type), relative_path)
@@ -234,12 +234,14 @@ def __format_file_name(path, version):
     _path = path.split(os.sep)
     if version:
         _path[0] = version
-
     # for m in ["Binary", "DebugInfo"]:
     #     if m in _path:
     #         _path.remove(m)
     return "_".join(_path)
 
 
-def __get_file_name(path):
-    _path = path.split(os.sep)
+def get_relative_path(request):
+    path = request.GET["path"]
+    if path[0] == '/':
+        path = path.lstrip('/')
+    return path
