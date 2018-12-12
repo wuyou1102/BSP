@@ -20,7 +20,7 @@ def GetDailyBuildInfo(request):
 def GetWeeklyBuildInfo(request):
     if request.method == 'GET':
         _type = request.GET["type"]
-        path = __get_daily_path(_type)
+        path = __get_weekly_path(_type)
         context = dict()
         context['type'] = _type
         context['builds'] = __get_weekly_build_info(path)
