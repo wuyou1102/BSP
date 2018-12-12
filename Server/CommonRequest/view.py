@@ -98,7 +98,7 @@ def download_file(request):
         version = __get_version(Path.get_path(_type), relative_path)
         file_path = os.path.join(Path.get_path(_type), relative_path)
         if os.path.exists(file_path):
-            if _type.lower() in ['b29adaily', 'b29bdaily']:
+            if _type.lower() in ['b29adaily', 'b29bdaily', 'b29aweekly', 'b29bweekly']:
                 file_name = os.path.basename(file_path)
             else:
                 file_name = __format_file_name(relative_path, version)
