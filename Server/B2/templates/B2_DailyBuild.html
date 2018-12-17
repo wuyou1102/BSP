@@ -57,7 +57,11 @@ window.onload=function(){
                 </td>
                 <td>
                     {% if build.is_released != "True" %}
-                    <button type="button" class="btn btn-outline-success">可发布</button>
+                    <div class="fileUpload btn btn-success upload-btn">
+                        <span>测试报告</span>
+                        <input type="file" class="upload uploadBtn"
+                               onchange="AjaxUpload(this,'{{build.name}}','Report','C2Weekly')">
+                    </div>
                     <br>
                     {% else %}
                     <div class="fileUpload btn btn-success upload-btn">
