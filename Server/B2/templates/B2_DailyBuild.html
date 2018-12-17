@@ -56,13 +56,10 @@ window.onload=function(){
                 </td>
                 <td>
                     {% if build.is_released != "True" %}
-                    <a class="btn btn-outline-info">
-                        <span>已发布</span>
-                    </a>
+                    <button type="button" class="btn btn-outline-primary">可发布</button>
                     <br>
                     {% else %}
-                    <a class="btn btn-outline-success">
-                        <span>已发布</span>
+                    <a class="btn btn-outline-success" href="#" role="button">Link</a>
                     </a>
                     <br>
                     {% endif %}
