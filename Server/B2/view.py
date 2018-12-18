@@ -41,9 +41,16 @@ def __get_daily_build_info(path):
         dict_build['version'] = __get_version_number(version)
         dict_build['images'] = __get_images(build_path, need_replace=path)
         dict_build['commit_history'] = __get_commit_history(commit_history, need_replace=path)
-
+        dict_build['is_released'] == __is_build_released(build_path)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
+
+
+def __is_build_released(path):
+    weekly_path = path.replace(config.PATH_DAILY, config.PATH_WEEKLY)
+    if os.path.exists(weekly_path):
+        return True
+    return False
 
 
 def __get_weekly_build_info(path):

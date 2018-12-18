@@ -56,13 +56,13 @@ window.onload=function(){
                     {% endif %}
                 </td>
                 <td>
-                    {% if build.is_released != "False" %}
+                    {% if build.is_released == "True" %}
                     <div class="btn btn-success">
                         <span>已发布</span>
                     </div>
                     <br>
                     {% else %}
-                    <div class="btn btn-primary " onclick="">
+                    <div class="btn btn-primary" onclick="">
                         <span>可发布</span>
                     </div>
                     <br>
