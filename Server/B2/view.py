@@ -41,7 +41,7 @@ def __get_daily_build_info(path):
         dict_build['version'] = __get_version_number(version)
         dict_build['images'] = __get_images(build_path, need_replace=path)
         dict_build['commit_history'] = __get_commit_history(commit_history, need_replace=path)
-        dict_build['is_released'] == __is_build_released(build_path)
+        dict_build['is_released'] = __is_build_released(build_path)
         lst.append(dict_build)
     return sorted(lst, key=lambda k: k['name'], reverse=True)
 
