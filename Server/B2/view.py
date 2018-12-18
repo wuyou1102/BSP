@@ -29,6 +29,23 @@ def GetWeeklyBuildInfo(request):
         return HttpResponse('method must be get')
 
 
+def ReleaseVersion(request):
+    if request.method == 'POST':
+        pwd = request.GET["pwd"]
+        if pwd in ['wuyou', 'yuzhong', 'wangyun']:
+            hw = request.GET["hw"]
+            build = request.GET["build"]
+            daily_path = os.path.join(__get_daily_path(hw), build)
+            weekly_path = os.path.join(__get_weekly_path(hw), build)
+            print daily_path
+            print weekly_path
+            return HttpResponse(u"发布成功")
+        else:
+            return HttpResponse(u"密码错误")
+    else:
+        return HttpResponse('method must be post')
+
+
 def __get_daily_build_info(path):
     lst = []
     builds = os.listdir(path)

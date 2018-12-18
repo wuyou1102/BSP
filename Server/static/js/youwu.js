@@ -148,8 +148,8 @@ function confirm_download() {
     return confirm("是否确认下载?");
 };
 
-function release_version(project,hw,build){
-    Alert(project);
+function release_version(hw,build){
+
     Alert(hw);
     Alert(build);
 }

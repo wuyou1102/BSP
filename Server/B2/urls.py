@@ -21,5 +21,6 @@ import view
 urlpatterns = [
                   url(r'^DailyBuild/', view.GetDailyBuildInfo),
                   url(r'^WeeklyBuild/', view.GetWeeklyBuildInfo),
+                  url(r'^ReleaseVersion/', view.ReleaseVersion),
                   url(r'^$', view.GetDailyBuildInfo),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
