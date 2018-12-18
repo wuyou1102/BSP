@@ -31,10 +31,10 @@ def GetWeeklyBuildInfo(request):
 
 def ReleaseVersion(request):
     if request.method == 'POST':
-        pwd = request.GET["password"]
+        pwd = request.POST["pwd"]
         if pwd in ['wuyou', 'yuzhong', 'wangyun']:
-            hw = request.GET["hw"]
-            build = request.GET["build"]
+            hw = request.POST["hw"]
+            build = request.POST["build"]
             daily_path = os.path.join(__get_daily_path(hw), build)
             weekly_path = os.path.join(__get_weekly_path(hw), build)
             print daily_path
