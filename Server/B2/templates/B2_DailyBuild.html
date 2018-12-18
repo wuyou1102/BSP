@@ -9,7 +9,7 @@ window.onload=function(){
 };
 
 function release_version(hw,build){
-    pwd = prompt("请输入你的密码：","");
+    var pwd = prompt("请输入你的密码：","");
     if (pwd !=null){
         var xhr = new XMLHttpRequest();
         var formData = new FormData();
