@@ -9,10 +9,13 @@ window.onload=function(){
 };
 
 function release_version(hw,build){
+    pwd = prompt("请输入你的密码：","");
+    if (pwd !=null){
         var xhr = new XMLHttpRequest();
         var formData = new FormData();
         formData.append('hw',hw);
         formData.append('build',build);
+        formData.append('pwd',pwd);
         xhr.open('post', '/B2/ReleaseVersion/', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
@@ -24,9 +27,12 @@ function release_version(hw,build){
             }
         };
         xhr.send(formData);
+    }else{
+        alert("用户取消了发布");
+    }
+
+
 }
-
-
 
 </script>
 <style type="text/css">
