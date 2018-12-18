@@ -31,7 +31,7 @@ def GetWeeklyBuildInfo(request):
 
 def ReleaseVersion(request):
     if request.method == 'POST':
-        pwd = request.GET["pwd"]
+        pwd = request.GET["password"]
         if pwd in ['wuyou', 'yuzhong', 'wangyun']:
             hw = request.GET["hw"]
             build = request.GET["build"]

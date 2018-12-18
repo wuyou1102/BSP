@@ -15,7 +15,7 @@ function release_version(hw,build){
         var formData = new FormData();
         formData.append('hw',hw);
         formData.append('build',build);
-        formData.append('pwd',pwd);
+        formData.append('password',pwd);
         xhr.open('post', '/B2/ReleaseVersion/', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
