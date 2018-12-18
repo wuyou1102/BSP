@@ -9,6 +9,8 @@ window.onload=function(){
 };
 
 
+
+
 </script>
 <style type="text/css">
 </style>
@@ -58,12 +60,12 @@ window.onload=function(){
                 <td>
                     {% if build.is_released %}
                     <div class="btn btn-success">
-                        <span>已发布</span>
+                        <span> 已发布 </span>
                     </div>
                     <br>
                     {% else %}
-                    <div class="btn btn-primary" onclick="">
-                        <span>可发布</span>
+                    <div class="btn btn-primary" onclick="release_version('B2','{{ type }}','{{build.name}}')">
+                        <span> 可发布 </span>
                     </div>
                     <br>
                     {% endif %}
