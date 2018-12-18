@@ -3,6 +3,7 @@ from django.shortcuts import render
 import os
 import config
 from django.http import HttpResponse
+import shutil
 
 
 def GetDailyBuildInfo(request):
@@ -37,8 +38,7 @@ def ReleaseVersion(request):
             build = request.POST["build"]
             daily_path = os.path.join(__get_daily_path(hw), build)
             weekly_path = os.path.join(__get_weekly_path(hw), build)
-            print daily_path
-            print weekly_path
+            shutil.copytree(src=daily_path, dst=weekly_path)
             return HttpResponse(u"发布成功")
         else:
             return HttpResponse(u"密码错误")
