@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from django.utils.encoding import escape_uri_path
-
 from Server.Utility import Function, Path
+import chardet
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -197,6 +197,7 @@ def __get_name_from_path(path):
 
 def __parse_commits(path):
     if os.path.exists(path):
+
         with open(path, 'r') as rfile:
             lines = rfile.readlines()
             return Function.format_commit_msg(lines)
@@ -206,11 +207,14 @@ def __parse_commits(path):
 
 def __parse_release_note(path):
     if os.path.exists(path):
+        encoding = get_encoding(file=path)
         with open(path, 'r') as rfile:
             lst = []
             for line in rfile.readlines():
                 line = line.strip('\r\n')
                 if line:
+                    if encoding == "GB2312":
+                        line = line.decode("gb2312").encode("utf-8")
                     lst.append(line)
             return lst
     else:
@@ -245,3 +249,8 @@ def get_relative_path(request):
     if path[0] == '/':
         path = path.lstrip('/')
     return path
+
+
+def get_encoding(file):
+    with open(file, 'rb') as f:
+        return chardet.detect(f.read())['encoding']
