@@ -197,7 +197,7 @@ def __get_name_from_path(path):
 
 def __parse_commits(path):
     if os.path.exists(path):
-        with open(path, 'r') as rfile:
+        with open(path, 'rb') as rfile:
             lines = rfile.readlines()
             return Function.format_commit_msg(lines)
     else:
@@ -206,7 +206,7 @@ def __parse_commits(path):
 
 def __parse_release_note(path):
     if os.path.exists(path):
-        with open(path, 'r') as rfile:
+        with open(path, 'rb') as rfile:
             lst = []
             for line in rfile.readlines():
                 line = line.strip('\r\n')
@@ -219,7 +219,7 @@ def __parse_release_note(path):
 
 def __parse_history(path):
     if os.path.exists(path):
-        with open(path, 'r') as rfile:
+        with open(path, 'rb') as rfile:
             lst = []
             for line in rfile.readlines():
                 line = line.strip('\r\n')
