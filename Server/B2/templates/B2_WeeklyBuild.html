@@ -7,6 +7,8 @@ window.onload=function(){
     navi.innerHTML="B2_WeeklyBuild   [{{ type }}]"
 };
 
+
+
 </script>
 <style type="text/css">
 </style>
@@ -44,20 +46,24 @@ window.onload=function(){
                 <td>{{build.version}}</td>
                 <td>
                     {% for image in build.images %}
-                    <a href="/Download?type=B2{{ type }}Weekly&path={{ image.1 }}" download="" onclick="return confirm_download()">
-                        下载
-                    </a>
+                    {% if '9B01' in image.1 %}
+                    <a href="/Download?type=B2{{ type }}Weekly&path={{ image.1 }}" download=""
+                       onclick="return confirm_download()">正常版本</a>
+                    {% else %}
+                    <a href="/Download?type=B2{{ type }}Weekly&path={{ image.1 }}" download=""
+                       onclick="return confirm_download()">贴牌版本</a>
+                    {% endif %}
                     <br>
                     {% endfor %}
                 </td>
                 <td>
                     {% if build.commit_history != "None" %}
-                        <a href="/CommitHistory?type=B2{{ type }}Weekly&path={{ build.commit_history }}">查看</a>
+                    <a href="/CommitHistory?type=B2{{ type }}Weekly&path={{ build.commit_history }}">查看</a>
                     {% endif %}
                 </td>
                 <td>
                     {% if build.release_notes != "None" %}
-                        <a href="/ReleaseNotes?type=B2{{ type }}Weekly&path={{ build.release_notes }}">查看</a>
+                    <a href="/ReleaseNotes?type=B2{{ type }}Weekly&path={{ build.release_notes }}">查看</a>
                     {% endif %}
                 </td>
                 <td>

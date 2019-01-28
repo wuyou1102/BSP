@@ -70,12 +70,10 @@ function release_version(hw,build){
                     {% for image in build.images %}
                     {% if '9B01' in image.1 %}
                     <a href="/Download?type=B2{{ type }}Daily&path={{ image.1 }}" download=""
-                       onclick="return confirm_download()">SENSETHINK
-                    </a>
+                       onclick="return confirm_download()">正常版本</a>
                     {% else %}
                     <a href="/Download?type=B2{{ type }}Daily&path={{ image.1 }}" download=""
-                       onclick="return confirm_download()">ODM
-                    </a>
+                       onclick="return confirm_download()">贴牌版本</a>
                     {% endif %}
                     <br>
                     {% endfor %}
