@@ -68,7 +68,7 @@ function release_version(hw,build){
                 <td>{{build.version}}</td>
                 <td>
                     {% for image in build.images %}
-                    {% if '9B01' in {{ image.1 }} %}
+                    {% if '9B01' in image.1 %}
                     <a href="/Download?type=B2{{ type }}Daily&path={{ image.1 }}" download=""
                        onclick="return confirm_download()">SENSETHINK
                     </a>
