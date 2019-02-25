@@ -12,7 +12,11 @@ def foods(request):
 
 
 def __get_foods():
-    lst = [u"京味饺子", u"传小乙麻辣香锅", u"肯德基", u"红烧牛肉面", u"顾一碗馄饨"]
+    lst = list()
+    with open('Server/ChiShenMe/foods.txt') as f:
+        for line in f.readlines():
+
+
     return " ".join(lst)
 
 
