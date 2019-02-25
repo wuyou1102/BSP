@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+function confirm_download() {
+    return confirm("是否确认下载?");
+};
+
+window.onload=function(){
+    Active("C2_WeeklyBuild");
+};
+
+
+
+</script>
+<style type="text/css">
+</style>
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/youwu.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/static/js/youwu.js" type="text/javascript"></script>
+
+    <title>感悟科技</title>
+</head>
+<body>
+<div>
+    {% include "LogoTitle.html"%}
+</div>
+<div class="build_body">
+    <div>
+        {% include "NavigationBar.html"%}
+    </div>
+    <div class="build_table">
+        <table class="altrowstable" id="version_table">
+            <tr class="row_title">
+                <th>版本号</th>
+                <th>软件下载</th>
+                <th>调试信息</th>
+                <th>提交记录</th>
+                <th>发布说明</th>
+                <th>测试报告</th>
+                <th>文件上传</th>
+                <th>上传记录</th>
+                <th>编译时间</th>
+            </tr>
+            {% for build in builds %}
+            <tr class="row_data">
+                <td>{{build.version}}</td>
+                <td>
+                    {% for binary in build.binaries %}
+                    <a href="/Download?type=C2Weekly&path={{ binary.1 }}" download="" onclick="return confirm_download()">
+                        {{ binary.0 }}
+                    </a>
+                    <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for debug_info in build.debug_infos %}
+                    <a href="/Download?type=C2Weekly&path={{ debug_info.1 }}" download=""
+                       onclick="return confirm_download()">
+                        {{ debug_info.0 }}
+                    </a>
+                    <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% if build.commit_history != "None" %}
+                        <a href="/CommitHistory?type=C2Weekly&path={{ build.commit_history }}">查看</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if build.release_notes != "None" %}
+                        <a href="/ReleaseNotes?type=C2Weekly&path={{ build.release_notes }}">查看</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% for test_report in build.test_reports %}
+                    <a href="/Download?type=C2Weekly&path={{ test_report.1 }}" download="">
+                        {{ test_report.0 }}
+                    </a>
+                    <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <div class="fileUpload btn btn-primary upload-btn">
+                        <span>发布说明</span>
+                        <input type="file" class="upload uploadBtn"
+                               onchange="AjaxUpload(this,'{{build.name}}','ReleaseNotes','C2Weekly')">
+                    </div>
+                    <br>
+                    <div class="fileUpload btn btn-success upload-btn">
+                        <span>测试报告</span>
+                        <input type="file" class="upload uploadBtn"
+                               onchange="AjaxUpload(this,'{{build.name}}','Report','C2Weekly')">
+                    </div>
+                    <br>
+                </td>
+                <td>
+                    <a href="/History?type=C2Weekly&path={{ build.history }}">查看</a>
+                </td>
+                <td>{{build.name}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>

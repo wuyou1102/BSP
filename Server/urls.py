@@ -19,6 +19,7 @@ from django.contrib import admin
 import C2_DailyVersion
 import C2_WeeklyVersion
 import CommonRequest
+import WhatForEat
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -34,4 +35,5 @@ urlpatterns = [
                   url(r'^ReleaseNotes/', CommonRequest.release_notes),
                   url(r'^History/', CommonRequest.view_history),
                   url(r'^VersionConfig/', CommonRequest.version_number_config),
+                  url(r'^chishenme/', WhatForEat.foods),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
