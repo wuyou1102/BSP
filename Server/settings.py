@@ -60,8 +60,9 @@ TEMPLATES = [
             BASE_DIR + "/Server/C2_DailyVersion/templates",
             BASE_DIR + "/Server/C2_WeeklyVersion/templates",
             BASE_DIR + "/Server/B2/templates",
+            BASE_DIR + "/Server/ChiShenMe/templates",
             # BASE_DIR + "/Server/B2_WeeklyVersion/templates",
-                BASE_DIR + "/Server/CommonRequest/templates",
+            BASE_DIR + "/Server/CommonRequest/templates",
         ],
         'APP_DIRS': True,
         'OPTIONS': {

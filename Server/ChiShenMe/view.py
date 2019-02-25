@@ -6,7 +6,7 @@ import os
 def foods(request):
     context = dict()
     context['foods'] = __get_foods()
-    return render(request, 'WhatForEat.html', context)
+    return render(request, 'ChiShenMe.html', context)
 
 
 def __get_foods():
