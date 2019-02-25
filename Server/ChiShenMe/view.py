@@ -12,13 +12,12 @@ def foods(request):
 
 
 def __get_foods():
-    lst = [u"青椒肉丝", u"酸菜鱼"]
+    lst = [u"京味饺子", u"传小乙麻辣香锅", u"肯德基", u"红烧牛肉面", u"顾一碗馄饨"]
     return " ".join(lst)
 
 
 def __get_period():
-    now = datetime.now().hour
-    print now
+    now = datetime.now().hour + 8
     if now in range(5, 10):
         return u"早饭"
     elif now in range(10, 16):
