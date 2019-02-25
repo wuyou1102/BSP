@@ -18,6 +18,7 @@ def __get_foods():
 
 def __get_period():
     now = datetime.now().hour
+    print now
     if now in range(5, 10):
         return u"早饭"
     elif now in range(10, 16):
