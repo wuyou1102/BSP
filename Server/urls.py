@@ -34,5 +34,5 @@ urlpatterns = [
                   url(r'^ReleaseNotes/', CommonRequest.release_notes),
                   url(r'^History/', CommonRequest.view_history),
                   url(r'^VersionConfig/', CommonRequest.version_number_config),
-                  url(r'^ChiShenMe/', include('Server.ChiShenMe.urls', namespace='ChiShenMe')),
+                  url(r'^(?i)ChiShenMe/', include('Server.ChiShenMe.urls', namespace='ChiShenMe')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
