@@ -15,8 +15,7 @@ def __get_foods():
     lst = list()
     with open('Server/ChiShenMe/foods.txt') as f:
         for line in f.readlines():
-
-
+            lst.append(line.strip('\r\n'))
     return " ".join(lst)
 
 
